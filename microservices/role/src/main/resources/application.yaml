@@ -1,0 +1,11 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: ms-role
+
+  r2dbc:
+    username: admin
+    password: change_me
+    url: r2dbc:postgres://localhost:5432/ecm
