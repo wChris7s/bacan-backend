@@ -7,7 +7,7 @@ repositories {
 }
 
 dependencies {
-    Properties properties = new Properties();
+    Properties properties = new Properties()
     FileInputStream fis = new FileInputStream("${rootDir.parentFile}/gradle.properties")
     properties.load(fis)
     properties.forEach { key, value ->
