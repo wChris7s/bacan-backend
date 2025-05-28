@@ -1,10 +1,10 @@
-package com.bacan.app.infrastructure.adapter.out.persistence;
+package com.bacan.app.infrastructure.adapter.out.persistence.persistence;
 
 import com.bacan.app.application.port.out.persistence.RoleDatabasePort;
 import com.bacan.app.domain.role.Role;
-import com.bacan.app.infrastructure.adapter.out.persistence.entity.RoleEntity;
-import com.bacan.app.infrastructure.adapter.out.persistence.mapper.RoleEntityMapper;
-import com.bacan.app.infrastructure.adapter.out.persistence.repository.RoleRepository;
+import com.bacan.app.infrastructure.adapter.out.persistence.persistence.entity.RoleEntity;
+import com.bacan.app.infrastructure.adapter.out.persistence.persistence.mapper.RoleEntityMapper;
+import com.bacan.app.infrastructure.adapter.out.persistence.persistence.repository.RoleRepository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
