@@ -1,0 +1,13 @@
+package com.bacan.app.infrastructure.adapter.in.http.dto;
+
+import lombok.Builder;
+import lombok.Data;
+import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
+
+@Value
+@Builder
+@Jacksonized
+public class CreateAddressDto {
+  String street;
+}
