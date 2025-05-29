@@ -1,4 +1,5 @@
 rootProject.name = 'bacan-backend'
+
 include ':common'
 include ':common:model'
 include ':microservices'

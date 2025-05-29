@@ -38,7 +38,7 @@ CREATE TABLE bacan."user"
 
 CREATE TABLE bacan.permissions
 (
-    user_id varchar(20) NOT NULL,
+    user_id int8 NOT NULL,
     role_id int8        NOT NULL,
     CONSTRAINT permissions_pk PRIMARY KEY (user_id, role_id),
     CONSTRAINT permissions_role_fk FOREIGN KEY (role_id) REFERENCES bacan."role" (id),

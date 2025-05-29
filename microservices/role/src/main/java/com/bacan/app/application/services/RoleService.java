@@ -7,6 +7,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class RoleService implements RoleUseCase {
 
@@ -29,4 +30,16 @@ public class RoleService implements RoleUseCase {
   public Flux<Role> getAllRoles() {
     return this.roleDatabasePort.findAllRoles();
   }
+
+  @Override
+  public Mono<Void> validateRoles(List<Long> roleIds) {
+    return this.roleDatabasePort.countAllByIdIsIn(roleIds)
+        .flatMap(total -> {
+          if (roleIds.size() == total.intValue()) {
+            return Mono.empty();
+          }
+          return Mono.error(() -> new RuntimeException("One or more roles are invalid."));
+        });
+  }
+
 }

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+
 @RestController()
 @RequestMapping(path = "/api/role")
 public class RoleController {
@@ -22,6 +24,11 @@ public class RoleController {
   public Flux<RoleDto> getAllRoles() {
     return this.roleUseCase.getAllRoles()
         .map(RoleDtoMapper::mapToDto);
+  }
+
+  @GetMapping(path = "/validate")
+  public Mono<Void> validateRoles(@RequestParam List<Long> roleIds) {
+    return this.roleUseCase.validateRoles(roleIds);
   }
 
   @PostMapping
