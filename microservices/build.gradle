@@ -4,4 +4,8 @@ subprojects {
         plugin "app-spring.plugin"
         plugin "app-model.plugin"
     }
+
+    tasks.named('test') {
+        useJUnitPlatform()
+    }
 }

@@ -4,10 +4,14 @@ import com.bacan.app.domain.role.Role;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-public interface RoleDatabasePort {
-    Mono<Role> createRole(Role role);
+import java.util.List;
 
-    Flux<Role> findAllRoles();
+public interface RoleDatabasePort {
+  Mono<Role> createRole(Role role);
+
+  Flux<Role> findAllRoles();
+
+  Mono<Long> countAllByIdIsIn(List<Long> roleIds);
 }
 
 
