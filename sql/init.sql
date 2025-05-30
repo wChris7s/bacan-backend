@@ -1,4 +1,5 @@
-CREATE SCHEMA bacan
+CREATE SCHEMA bacan;
+
 CREATE TABLE bacan.country
 (
     id         bigserial    NOT NULL,
@@ -36,9 +37,9 @@ CREATE TABLE bacan."user"
     CONSTRAINT user_pk PRIMARY KEY (document_id)
 );
 
-CREATE TABLE bacan.permissions
+CREATE TABLE bacan.user_role
 (
-    user_id int8 NOT NULL,
+    user_id varchar(20) NOT NULL,
     role_id int8        NOT NULL,
     CONSTRAINT permissions_pk PRIMARY KEY (user_id, role_id),
     CONSTRAINT permissions_role_fk FOREIGN KEY (role_id) REFERENCES bacan."role" (id),

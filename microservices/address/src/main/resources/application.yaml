@@ -1,11 +1,10 @@
 server:
-  port: 8081
-
+  port: 9092
+  address: localhost
 spring:
   application:
     name: ms-address
-
-  r2dbc:
-    username: admin
-    password: change_me
-    url: r2dbc:postgres://localhost:5432/ecm
+  profiles:
+    active: local
+  config:
+    import: configserver:http://localhost:8982
