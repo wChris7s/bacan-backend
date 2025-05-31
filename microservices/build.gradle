@@ -2,7 +2,7 @@ subprojects {
     apply {
         plugin "app-base.plugin"
         plugin "app-spring.plugin"
-        plugin "app-model.plugin"
+        plugin "app-domain.plugin"
     }
 
     tasks.named('test') {

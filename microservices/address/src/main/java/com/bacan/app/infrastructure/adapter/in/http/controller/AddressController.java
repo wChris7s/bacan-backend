@@ -1,6 +1,6 @@
 package com.bacan.app.infrastructure.adapter.in.http.controller;
 
-import com.bacan.app.application.port.in.http.AddressUseCase;
+import com.bacan.app.application.port.in.AddressUseCase;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

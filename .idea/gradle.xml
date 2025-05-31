@@ -24,6 +24,8 @@
             <option value="$PROJECT_DIR$/cloud" />
             <option value="$PROJECT_DIR$/cloud/config-server" />
             <option value="$PROJECT_DIR$/common" />
+            <option value="$PROJECT_DIR$/common/dto" />
+            <option value="$PROJECT_DIR$/common/mapper" />
             <option value="$PROJECT_DIR$/common/model" />
             <option value="$PROJECT_DIR$/microservices" />
             <option value="$PROJECT_DIR$/microservices/address" />

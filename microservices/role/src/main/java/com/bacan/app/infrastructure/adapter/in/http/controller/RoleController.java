@@ -1,10 +1,10 @@
 package com.bacan.app.infrastructure.adapter.in.http.controller;
 
-import com.bacan.app.application.port.in.http.RoleUseCase;
-import com.bacan.app.domain.role.Role;
-import com.bacan.app.infrastructure.adapter.in.http.dto.CreateRoleDto;
-import com.bacan.app.infrastructure.adapter.in.http.dto.RoleDto;
-import com.bacan.app.infrastructure.adapter.in.http.mapper.RoleDtoMapper;
+import com.bacan.app.application.port.in.RoleUseCase;
+import com.bacan.app.domain.model.role.Role;
+import com.bacan.app.infrastructure.adapter.in.http.controller.mapper.role.RoleDTOMapper;
+import com.bacan.app.infrastructure.adapter.in.http.dto.role.CreateRoleDTO;
+import com.bacan.app.infrastructure.adapter.in.http.dto.role.RoleDTO;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 
 @RestController()
-@RequestMapping(path = "/api/role")
+@RequestMapping(path = "/bcn/api/ms-role")
 public class RoleController {
   private final RoleUseCase roleUseCase;
 
@@ -21,9 +21,9 @@ public class RoleController {
   }
 
   @GetMapping
-  public Flux<RoleDto> getAllRoles() {
+  public Flux<RoleDTO> getAllRoles() {
     return this.roleUseCase.getAllRoles()
-        .map(RoleDtoMapper::mapToDto);
+        .map(RoleDTOMapper::mapToDto);
   }
 
   @GetMapping(path = "/validate")
@@ -32,8 +32,8 @@ public class RoleController {
   }
 
   @PostMapping
-  public Mono<Void> createRole(@RequestBody CreateRoleDto createRoleDto) {
-    Role role = RoleDtoMapper.mapToModel(createRoleDto);
+  public Mono<Void> createRole(@RequestBody CreateRoleDTO createRoleDto) {
+    Role role = RoleDTOMapper.mapToModel(createRoleDto);
     return this.roleUseCase.createRole(role).then();
   }
 }

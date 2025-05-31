@@ -1,8 +1,8 @@
 package com.bacan.app.application.services;
 
-import com.bacan.app.application.port.in.http.AddressUseCase;
+import com.bacan.app.application.port.in.AddressUseCase;
 import com.bacan.app.application.port.out.persistence.AddressDataBasePort;
-import com.bacan.app.domain.address.Address;
+import com.bacan.app.domain.model.address.Address;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

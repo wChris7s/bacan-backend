@@ -1,6 +1,6 @@
 package com.bacan.app.infrastructure.config;
 
-import com.bacan.app.application.port.in.http.AddressUseCase;
+import com.bacan.app.application.port.in.AddressUseCase;
 import com.bacan.app.application.port.out.persistence.AddressDataBasePort;
 import com.bacan.app.application.services.AddressService;
 import com.bacan.app.infrastructure.adapter.out.persistence.AddressPostgresAdapter;

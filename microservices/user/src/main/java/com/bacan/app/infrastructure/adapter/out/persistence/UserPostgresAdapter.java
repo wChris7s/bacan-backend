@@ -1,7 +1,7 @@
 package com.bacan.app.infrastructure.adapter.out.persistence;
 
 import com.bacan.app.application.port.out.persistence.UserDatabasePort;
-import com.bacan.app.domain.user.User;
+import com.bacan.app.domain.model.user.User;
 
 import com.bacan.app.infrastructure.adapter.out.persistence.entity.UserEntity;
 import com.bacan.app.infrastructure.adapter.out.persistence.mapper.UserEntityMapper;

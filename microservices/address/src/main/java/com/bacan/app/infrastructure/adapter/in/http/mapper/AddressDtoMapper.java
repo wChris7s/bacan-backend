@@ -1,6 +1,6 @@
 package com.bacan.app.infrastructure.adapter.in.http.mapper;
 
-import com.bacan.app.domain.address.Address;
+import com.bacan.app.domain.model.address.Address;
 import com.bacan.app.infrastructure.adapter.in.http.dto.AddressDto;
 
 public class AddressDtoMapper {

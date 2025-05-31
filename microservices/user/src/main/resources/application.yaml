@@ -8,3 +8,6 @@ spring:
     active: local
   config:
     import: configserver:http://localhost:8982
+application:
+  ms-role:
+    baseUrl: http://localhost:9091
