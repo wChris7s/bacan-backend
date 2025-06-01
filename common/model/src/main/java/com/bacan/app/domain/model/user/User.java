@@ -9,7 +9,7 @@ import java.util.List;
 
 @Builder
 public record User(
-    Long documentId,
+    String documentId,
     String name,
     String lastname,
     LocalDateTime birthDate,

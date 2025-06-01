@@ -5,6 +5,6 @@ import lombok.With;
 
 @Builder
 public record UserRole(
-    @With Long userId,
+    @With String userId,
     @With Long roleId) {
 }

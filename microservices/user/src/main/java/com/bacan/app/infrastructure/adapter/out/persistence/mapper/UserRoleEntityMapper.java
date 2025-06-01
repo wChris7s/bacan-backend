@@ -7,14 +7,14 @@ public class UserRoleEntityMapper {
   public static UserRoleEntity mapToEntity(UserRole userRole) {
     return UserRoleEntity.builder()
         .userId(userRole.userId())
-        .rolId(userRole.userId())
+        .roleId(userRole.roleId())
         .build();
   }
 
   public static UserRole mapToModel(UserRoleEntity userRole) {
     return UserRole.builder()
         .userId(userRole.getUserId())
-        .roleId(userRole.getUserId())
+        .roleId(userRole.getRoleId())
         .build();
   }
 }

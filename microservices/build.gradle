@@ -5,6 +5,10 @@ subprojects {
         plugin "app-domain.plugin"
     }
 
+    dependencies {
+        implementation project(':common:cors')
+    }
+
     tasks.named('test') {
         useJUnitPlatform()
     }

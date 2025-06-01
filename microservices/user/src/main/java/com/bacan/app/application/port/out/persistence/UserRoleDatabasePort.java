@@ -4,5 +4,5 @@ import com.bacan.app.domain.model.user.UserRole;
 import reactor.core.publisher.Mono;
 
 public interface UserRoleDatabasePort {
-  Mono<UserRole> createUserRole(UserRole userRole);
+  Mono<Void> createUserRole(UserRole userRole);
 }

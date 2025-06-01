@@ -24,7 +24,13 @@ public class UserDTOMapper {
 
   public static User mapToModel(CreateUserDTO user) {
     return User.builder()
+        .documentId(user.getDocumentId())
         .name(user.getName())
+        .lastname(user.getLastname())
+        .birthDate(user.getBirthDate())
+        .phone(user.getPhone())
+        .email(user.getEmail())
+        .password(user.getPassword())
         .roles(user.getRoleIds()
             .stream()
             .map(roleId -> Role.builder().id(roleId).build())

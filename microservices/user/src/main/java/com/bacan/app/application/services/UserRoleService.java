@@ -7,6 +7,7 @@ import com.bacan.app.domain.model.user.UserRole;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 public class UserRoleService implements UserRoleUseCase {
   private final Logger logger = LoggerFactory.getLogger(UserRoleService.class);
@@ -17,13 +18,14 @@ public class UserRoleService implements UserRoleUseCase {
   }
 
   @Override
-  public Flux<UserRole> createUserRoles(User user) {
+  public Mono<Void> createUserRoles(User user) {
     return Flux.fromIterable(user.roles())
         .flatMap(role -> {
           UserRole userRole = new UserRole(user.documentId(), role.getId());
           return userRoleDatabasePort.createUserRole(userRole);
         })
         .doOnComplete(() -> logger.info("User's roles for user ID {} was created.", user.documentId()))
-        .doOnError(e -> logger.error("Error details: {}", e.getMessage()));
+        .doOnError(e -> logger.error("Error details: {}", e.getMessage()))
+        .then();
   }
 }

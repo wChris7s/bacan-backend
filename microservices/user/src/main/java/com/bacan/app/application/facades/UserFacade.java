@@ -31,6 +31,6 @@ public class UserFacade implements UserFacadeUseCase {
         .collectList()
         .flatMap(rolePort::validateRoleIds)
         .then(Mono.defer(() -> userUseCase.createUser(user)))
-        .flatMap(savedUser -> userRoleUseCase.createUserRoles(savedUser).then());
+        .flatMap(savedUser -> userRoleUseCase.createUserRoles(savedUser.withRoles(user.roles())).then());
   }
 }

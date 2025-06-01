@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Setter
 @Builder
 public class UserDTO {
-  Long documentId;
+  String documentId;
   String name;
   String lastname;
   LocalDateTime birthDate;

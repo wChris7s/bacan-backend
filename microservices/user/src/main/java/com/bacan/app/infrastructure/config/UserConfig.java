@@ -14,9 +14,11 @@ import com.bacan.app.infrastructure.adapter.out.persistence.UserPostgresAdapter;
 import com.bacan.app.infrastructure.adapter.out.persistence.UserRolePostgresAdapter;
 import com.bacan.app.infrastructure.adapter.out.persistence.repository.UserRepository;
 import com.bacan.app.infrastructure.adapter.out.persistence.repository.UserRoleRepository;
+import io.r2dbc.spi.ConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.r2dbc.core.DatabaseClient;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
@@ -29,6 +31,11 @@ public class UserConfig {
   @Bean
   public UserUseCase userUseCase(UserDatabasePort userDatabasePort) {
     return new UserService(userDatabasePort);
+  }
+
+  @Bean
+  public UserRoleRepository userRoleRepository(ConnectionFactory connectionFactory) {
+    return new UserRoleRepository(DatabaseClient.create(connectionFactory));
   }
 
   @Bean

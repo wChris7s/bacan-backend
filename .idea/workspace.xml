@@ -5,57 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="861e18c5-5113-4892-bda7-1ac4f6da64a2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/model/user/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/model/user/UserRole.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/src/main/groovy/app-model.plugin.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/src/main/groovy/app-spring.plugin.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/src/main/groovy/app-spring.plugin.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cloud/config-server/src/main/resources/config/application-local.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cloud/config-server/src/main/resources/config/application-local.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/address/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/model/address/Address.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/role/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/model/role/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/user/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/user/UserRole.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/application/port/in/http/AddressUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/application/port/in/AddressUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/application/port/out/persistence/AddressDataBasePort.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/application/port/out/persistence/AddressDataBasePort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/application/services/AddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/application/services/AddressService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/AddressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/AddressController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/infrastructure/adapter/in/http/mapper/AddressDtoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/infrastructure/adapter/in/http/mapper/AddressDtoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/AddressPostgresAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/AddressPostgresAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/mapper/AddressEntityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/mapper/AddressEntityMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/infrastructure/config/AddressConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/infrastructure/config/AddressConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/dto/src/main/java/com/bacan/app/infrastructure/adapter/in/http/dto/user/CreateUserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/dto/src/main/java/com/bacan/app/infrastructure/adapter/in/http/dto/user/CreateUserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/dto/src/main/java/com/bacan/app/infrastructure/adapter/in/http/dto/user/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/dto/src/main/java/com/bacan/app/infrastructure/adapter/in/http/dto/user/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/mapper/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/mapper/user/UserDTOMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/mapper/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/mapper/user/UserDTOMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/model/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/model/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/model/user/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/model/user/UserRole.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservices/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/application/port/in/http/RoleUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/application/port/in/RoleUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/application/port/out/persistence/RoleDatabasePort.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/application/port/out/persistence/RoleDatabasePort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/application/services/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/application/services/RoleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/RoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/in/http/dto/CreateRoleDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/in/http/dto/RoleDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/in/http/mapper/RoleDtoMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/persistence/RolePostgresAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/RolePostgresAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/persistence/entity/RoleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/entity/RoleEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/persistence/mapper/RoleEntityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/mapper/RoleEntityMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/persistence/repository/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/repository/RoleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/config/RoleConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/config/RoleConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/role/src/test/java/com/bacan/app/application/port/in/http/RoleUseCaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/role/src/test/java/com/bacan/app/application/port/in/RoleUseCaseTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/port/in/http/UserRoleUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/port/in/UserRoleUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/port/in/http/UserUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/port/in/UserUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/port/out/http/RolePort.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/port/out/http/RolePort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/port/out/persistence/UserDatabasePort.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/port/out/persistence/UserDatabasePort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/facades/UserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/facades/UserFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/port/in/UserRoleUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/port/in/UserRoleUseCase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/port/out/persistence/UserRoleDatabasePort.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/port/out/persistence/UserRoleDatabasePort.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/services/UserRoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/services/UserRoleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/in/http/dto/CreateUserDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/in/http/dto/UserDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/in/http/mapper/UserDtoMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/http/RolePortClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/http/RolePortClientAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/UserPostgresAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/UserPostgresAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/UserRolePostgresAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/UserRolePostgresAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/entity/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/entity/UserRoleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/entity/UserRoleEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/mapper/UserEntityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/mapper/UserEntityMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/mapper/UserRoleEntityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/mapper/UserRoleEntityMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/repository/UserRoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/repository/UserRoleRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/config/UserConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/config/UserConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/resources/application.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,35 +79,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Docker.docker/docker-compose.yaml: Compose Deployment.executor": "Run",
-    "Gradle.Build bacan-backend.executor": "Run",
-    "Gradle.Download Sources.executor": "Run",
-    "Gradle.buildSrc [dependencies].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "604",
-    "RequestMappingsPanelWidth1": "603",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.ConfigServerApplication.executor": "Run",
-    "Spring Boot.RoleApplication.executor": "Run",
-    "Spring Boot.UserApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/cw-lambda/Workspace/avimar/cw-app",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "spring",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Docker.docker/docker-compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build bacan-backend.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.buildSrc [dependencies].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ConfigServerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.RoleApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.UserApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/cw-lambda/Workspace/avimar/cw-app&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;spring&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -240,12 +211,26 @@
       <workItem from="1748608345171" duration="5172000" />
       <workItem from="1748654002290" duration="1969000" />
       <workItem from="1748663210388" duration="5030000" />
-      <workItem from="1748706445296" duration="4096000" />
+      <workItem from="1748706445296" duration="4192000" />
+      <workItem from="1748736828697" duration="6460000" />
+      <workItem from="1748743902863" duration="2407000" />
+      <workItem from="1748752231217" duration="2722000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

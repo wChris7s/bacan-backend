@@ -2,7 +2,6 @@ package com.bacan.app.infrastructure.adapter.out.persistence;
 
 import com.bacan.app.application.port.out.persistence.UserDatabasePort;
 import com.bacan.app.domain.model.user.User;
-
 import com.bacan.app.infrastructure.adapter.out.persistence.entity.UserEntity;
 import com.bacan.app.infrastructure.adapter.out.persistence.mapper.UserEntityMapper;
 import com.bacan.app.infrastructure.adapter.out.persistence.repository.UserRepository;
@@ -19,12 +18,14 @@ public class UserPostgresAdapter implements UserDatabasePort {
   @Override
   public Mono<User> createUser(User user) {
     UserEntity userEntity = UserEntityMapper.mapToEntity(user);
+    userEntity.setNew(true);
     return this.userRepository.save(userEntity)
         .map(UserEntityMapper::mapToModel);
   }
 
   @Override
   public Flux<User> findAllUsers() {
-    return null;
+    return this.userRepository.findAll()
+        .map(UserEntityMapper::mapToModel);
   }
 }

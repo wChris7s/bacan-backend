@@ -23,7 +23,7 @@ public class UserService implements UserUseCase {
 
   @Override
   public Mono<User> createUser(User user) {
-    LocalDateTime actualDateTime = LocalDateTime.now(ZoneId.of(" America/Lima"));
+    LocalDateTime actualDateTime = LocalDateTime.now(ZoneId.of("America/Lima"));
     return this.userDatabasePort.createUser(user
             .withProfilePhoto(UserStorage.DEFAULT_PROFILE_PHOTO)
             .withEnabled(true)
