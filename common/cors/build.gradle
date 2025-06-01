@@ -1,0 +1,4 @@
+plugins {
+    id 'app-base.plugin'
+    id 'app-spring.plugin'
+}
