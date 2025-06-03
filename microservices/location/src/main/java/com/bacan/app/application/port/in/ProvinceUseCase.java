@@ -1,0 +1,8 @@
+package com.bacan.app.application.port.in;
+
+import com.bacan.app.domain.model.location.province.Province;
+import reactor.core.publisher.Flux;
+
+public interface ProvinceUseCase {
+  Flux<Province> findProvincesByStateId(String stateId);
+}
