@@ -10,6 +10,8 @@ public interface RoleDatabasePort {
   Flux<Role> findAllRoles();
 
   Mono<Role> findRoleById(Long roleId);
+
+  Flux<Role> findAllPublicRoles();
 }
 
 

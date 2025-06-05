@@ -24,6 +24,12 @@ public class RoleController {
       .map(RoleDTOMapper::mapToDto);
   }
 
+  @GetMapping("/public")
+  public Flux<RoleDTO> getAllPublicRoles() {
+    return this.roleUseCase.getAllPublicRoles()
+      .map(RoleDTOMapper::mapToDto);
+  }
+
   @GetMapping(path = "/{roleId}/validate")
   public Mono<Void> validateRoles(@PathVariable Long roleId) {
     return this.roleUseCase.validateRole(roleId);

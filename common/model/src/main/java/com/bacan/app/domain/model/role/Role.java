@@ -17,4 +17,5 @@ public class Role {
     LocalDateTime updatedAt;
     @With
     boolean enabled;
+    boolean isPublic;
 }

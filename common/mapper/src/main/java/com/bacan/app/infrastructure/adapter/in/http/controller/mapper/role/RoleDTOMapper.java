@@ -11,9 +11,6 @@ public class RoleDTOMapper {
     return RoleDTO.builder()
       .id(role.getId())
       .name(role.getName())
-      .createdAt(role.getCreatedAt())
-      .updatedAt(role.getUpdatedAt())
-      .enabled(role.isEnabled())
       .build();
   }
 

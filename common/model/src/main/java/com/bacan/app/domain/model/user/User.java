@@ -22,5 +22,6 @@ public record User(
   @With boolean enabled,
   @With LocalDateTime passwordModifiedDate,
   @With Role role,
-  @With Address address) {
+  @With Address address,
+  Long phoneCountryId) {
 }

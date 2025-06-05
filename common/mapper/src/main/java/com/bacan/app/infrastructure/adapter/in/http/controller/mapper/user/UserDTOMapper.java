@@ -30,6 +30,7 @@ public class UserDTOMapper {
       .lastname(user.getLastname())
       .birthDate(user.getBirthdate())
       .phone(user.getPhone())
+      .phoneCountryId(user.getPhoneCountryId())
       .email(user.getEmail())
       .password(user.getPassword())
       .role(RoleDTOMapper.mapToModel(user.getRoleId()))

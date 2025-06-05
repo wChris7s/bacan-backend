@@ -15,11 +15,11 @@ import java.time.LocalDateTime;
 @Table(name = "address", schema = "bacan")
 public class AddressEntity {
   @Id
-  Long id;
+  String id;
   @Column(value = "user_id")
   String userId;
   @Column(value = "country_id")
-  String countryId;
+  Long countryId;
   @Column(value = "state_id")
   String stateId;
   @Column(value = "province_id")

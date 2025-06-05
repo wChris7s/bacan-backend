@@ -9,5 +9,7 @@ public interface RoleUseCase {
 
   Flux<Role> getAllRoles();
 
+  Flux<Role> getAllPublicRoles();
+
   Mono<Void> validateRole(Long roleId);
 }

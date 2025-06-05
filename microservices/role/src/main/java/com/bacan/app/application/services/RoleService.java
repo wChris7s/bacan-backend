@@ -9,7 +9,6 @@ import reactor.core.publisher.Mono;
 import java.time.LocalDateTime;
 
 public class RoleService implements RoleUseCase {
-
   private final RoleDatabasePort roleDatabasePort;
 
   public RoleService(RoleDatabasePort roleDatabasePort) {
@@ -28,6 +27,11 @@ public class RoleService implements RoleUseCase {
   @Override
   public Flux<Role> getAllRoles() {
     return this.roleDatabasePort.findAllRoles();
+  }
+
+  @Override
+  public Flux<Role> getAllPublicRoles() {
+    return this.roleDatabasePort.findAllPublicRoles();
   }
 
   @Override

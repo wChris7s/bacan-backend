@@ -9,7 +9,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public class RolePostgresAdapter implements RoleDatabasePort {
-
   private final RoleRepository roleRepository;
 
   public RolePostgresAdapter(RoleRepository roleRepository) {
@@ -23,7 +22,6 @@ public class RolePostgresAdapter implements RoleDatabasePort {
       .map(RoleEntityMapper::mapToModel);
   }
 
-
   @Override
   public Flux<Role> findAllRoles() {
     return this.roleRepository.findAll()
@@ -33,6 +31,12 @@ public class RolePostgresAdapter implements RoleDatabasePort {
   @Override
   public Mono<Role> findRoleById(Long roleId) {
     return this.roleRepository.findById(roleId)
+      .map(RoleEntityMapper::mapToModel);
+  }
+
+  @Override
+  public Flux<Role> findAllPublicRoles() {
+    return this.roleRepository.findAllByIsPublic(true)
       .map(RoleEntityMapper::mapToModel);
   }
 }

@@ -6,7 +6,6 @@ import com.bacan.app.domain.model.user.User;
 import com.bacan.app.domain.model.user.UserRole;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public class UserRoleService implements UserRoleUseCase {
@@ -19,13 +18,12 @@ public class UserRoleService implements UserRoleUseCase {
 
   @Override
   public Mono<Void> createUserRoles(User user) {
-    return Flux.fromIterable(user.roles())
-        .flatMap(role -> {
-          UserRole userRole = new UserRole(user.documentId(), role.getId());
-          return userRoleDatabasePort.createUserRole(userRole);
-        })
-        .doOnComplete(() -> logger.info("User's roles for user ID {} was created.", user.documentId()))
-        .doOnError(e -> logger.error("Error details: {}", e.getMessage()))
-        .then();
+    return userRoleDatabasePort.createUserRole(UserRole.builder()
+        .userId(user.documentId())
+        .roleId(user.role().getId())
+        .build())
+      .doOnSuccess(unused -> logger.info("User's role for user ID {} was created.", user.documentId()))
+      .doOnError(e -> logger.error("Error details: {}", e.getMessage()))
+      .then();
   }
 }

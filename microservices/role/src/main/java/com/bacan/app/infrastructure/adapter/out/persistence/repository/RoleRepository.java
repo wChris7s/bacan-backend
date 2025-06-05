@@ -1,11 +1,10 @@
 package com.bacan.app.infrastructure.adapter.out.persistence.repository;
 
 import com.bacan.app.infrastructure.adapter.out.persistence.entity.RoleEntity;
+import org.springframework.data.r2dbc.repository.Query;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
-import reactor.core.publisher.Mono;
-
-import java.util.Collection;
+import reactor.core.publisher.Flux;
 
 public interface RoleRepository extends ReactiveCrudRepository<RoleEntity, Long> {
-  Mono<Long> countAllByIdIsIn(Collection<Long> ids);
+  Flux<RoleEntity> findAllByIsPublic(boolean isPublic);
 }

@@ -21,8 +21,7 @@ public class UserEntity implements Persistable<String> {
   private String documentId;
   private String name;
   private String lastname;
-  @Column("birth_date")
-  private LocalDateTime birthDate;
+  private LocalDateTime birthdate;
   private String phone;
   private String email;
   private String password;
@@ -35,6 +34,8 @@ public class UserEntity implements Persistable<String> {
   private boolean enabled;
   @Column("password_modified_date")
   private LocalDateTime passwordModifiedDate;
+  @Column("phone_country_id")
+  private Long phoneCountryId;
 
   @Transient
   private boolean isNew;

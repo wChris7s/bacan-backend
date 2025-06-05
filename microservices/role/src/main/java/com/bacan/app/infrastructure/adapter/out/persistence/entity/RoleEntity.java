@@ -20,4 +20,6 @@ public class RoleEntity {
     @Column(value = "updated_at")
     LocalDateTime updatedAt;
     boolean enabled;
+    @Column(value = "is_public")
+    boolean isPublic;
 }
