@@ -29,7 +29,7 @@
             <option value="$PROJECT_DIR$/common/mapper" />
             <option value="$PROJECT_DIR$/common/model" />
             <option value="$PROJECT_DIR$/microservices" />
-            <option value="$PROJECT_DIR$/microservices/address" />
+            <option value="$PROJECT_DIR$/microservices/location" />
             <option value="$PROJECT_DIR$/microservices/role" />
             <option value="$PROJECT_DIR$/microservices/user" />
           </set>
