@@ -1,0 +1,11 @@
+server:
+  port: 9091
+  address: localhost
+spring:
+  application:
+    name: ms-role
+  profiles:
+    active: local
+  config:
+    import: configserver:http://localhost:8982
+    
