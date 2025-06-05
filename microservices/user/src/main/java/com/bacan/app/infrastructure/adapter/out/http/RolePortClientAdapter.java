@@ -4,8 +4,6 @@ import com.bacan.app.application.port.out.http.RolePort;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
-import java.util.List;
-
 public class RolePortClientAdapter implements RolePort {
 
   private final WebClient webClient;
@@ -15,14 +13,14 @@ public class RolePortClientAdapter implements RolePort {
   }
 
   @Override
-  public Mono<Void> validateRoleIds(List<Long> roleIds) {
+  public Mono<Void> validateRole(Long role) {
     return webClient.get()
-        .uri(uriBuilder -> uriBuilder
-            .path("/validate")
-            .queryParam("roleIds", roleIds.toArray())
-            .build())
-        .retrieve()
-        .bodyToMono(Void.class)
-        .doOnError(e -> System.err.println("Error validating roles: " + e.getMessage()));
+      .uri(uriBuilder -> uriBuilder
+        .path("/validate")
+        .queryParam("role", role)
+        .build())
+      .retrieve()
+      .bodyToMono(Void.class)
+      .doOnError(e -> System.err.println("Error validating roles: " + e.getMessage()));
   }
 }

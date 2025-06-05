@@ -1,17 +1,22 @@
 package com.bacan.app.infrastructure.config;
 
 import com.bacan.app.application.facades.UserFacade;
+import com.bacan.app.application.port.in.AddressUseCase;
 import com.bacan.app.application.port.in.UserFacadeUseCase;
 import com.bacan.app.application.port.in.UserRoleUseCase;
 import com.bacan.app.application.port.in.UserUseCase;
 import com.bacan.app.application.port.out.http.RolePort;
+import com.bacan.app.application.port.out.persistence.AddressDatabasePort;
 import com.bacan.app.application.port.out.persistence.UserDatabasePort;
 import com.bacan.app.application.port.out.persistence.UserRoleDatabasePort;
+import com.bacan.app.application.services.AddressService;
 import com.bacan.app.application.services.UserRoleService;
 import com.bacan.app.application.services.UserService;
 import com.bacan.app.infrastructure.adapter.out.http.RolePortClientAdapter;
+import com.bacan.app.infrastructure.adapter.out.persistence.AddressPostgresAdapter;
 import com.bacan.app.infrastructure.adapter.out.persistence.UserPostgresAdapter;
 import com.bacan.app.infrastructure.adapter.out.persistence.UserRolePostgresAdapter;
+import com.bacan.app.infrastructure.adapter.out.persistence.repository.AddressRepository;
 import com.bacan.app.infrastructure.adapter.out.persistence.repository.UserRepository;
 import com.bacan.app.infrastructure.adapter.out.persistence.repository.UserRoleRepository;
 import io.r2dbc.spi.ConnectionFactory;
@@ -49,11 +54,22 @@ public class UserConfig {
   }
 
   @Bean
+  public AddressDatabasePort addressDatabasePort(AddressRepository addressRepository) {
+    return new AddressPostgresAdapter(addressRepository);
+  }
+
+  @Bean
+  public AddressUseCase addressUseCase(AddressDatabasePort addressDatabasePort) {
+    return new AddressService(addressDatabasePort);
+  }
+
+  @Bean
   public UserFacadeUseCase userFacadeUseCase(
-      UserUseCase userUseCase,
-      UserRoleUseCase userRoleUseCase,
-      RolePort rolePort) {
-    return new UserFacade(userUseCase, userRoleUseCase, rolePort);
+    UserUseCase userUseCase,
+    UserRoleUseCase userRoleUseCase,
+    RolePort rolePort,
+    AddressUseCase addressUseCase) {
+    return new UserFacade(userUseCase, userRoleUseCase, rolePort, addressUseCase);
   }
 
   @Bean
