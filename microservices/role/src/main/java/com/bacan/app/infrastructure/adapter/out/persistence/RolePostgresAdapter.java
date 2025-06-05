@@ -8,8 +8,6 @@ import com.bacan.app.infrastructure.adapter.out.persistence.repository.RoleRepos
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.List;
-
 public class RolePostgresAdapter implements RoleDatabasePort {
 
   private final RoleRepository roleRepository;
@@ -22,18 +20,19 @@ public class RolePostgresAdapter implements RoleDatabasePort {
   public Mono<Role> createRole(Role role) {
     RoleEntity roleEntity = RoleEntityMapper.mapToEntity(role);
     return this.roleRepository.save(roleEntity)
-        .map(RoleEntityMapper::mapToModel);
+      .map(RoleEntityMapper::mapToModel);
   }
 
 
   @Override
   public Flux<Role> findAllRoles() {
     return this.roleRepository.findAll()
-        .map(RoleEntityMapper::mapToModel);
+      .map(RoleEntityMapper::mapToModel);
   }
 
   @Override
-  public Mono<Long> countAllByIdIsIn(List<Long> roleIds) {
-    return this.roleRepository.countAllByIdIsIn(roleIds);
+  public Mono<Role> findRoleById(Long roleId) {
+    return this.roleRepository.findById(roleId)
+      .map(RoleEntityMapper::mapToModel);
   }
 }

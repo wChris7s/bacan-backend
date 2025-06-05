@@ -4,12 +4,10 @@ import com.bacan.app.domain.model.role.Role;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.List;
-
 public interface RoleUseCase {
-    Mono<Role> createRole(Role role);
+  Mono<Role> createRole(Role role);
 
-    Flux<Role> getAllRoles();
+  Flux<Role> getAllRoles();
 
-    Mono<Void> validateRoles(List<Long> roleIds);
+  Mono<Void> validateRole(Long roleId);
 }

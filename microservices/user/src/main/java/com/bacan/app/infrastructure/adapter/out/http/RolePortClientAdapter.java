@@ -13,12 +13,11 @@ public class RolePortClientAdapter implements RolePort {
   }
 
   @Override
-  public Mono<Void> validateRole(Long role) {
+  public Mono<Void> validateRole(Long roleId) {
     return webClient.get()
       .uri(uriBuilder -> uriBuilder
-        .path("/validate")
-        .queryParam("role", role)
-        .build())
+        .path("/{id}/validate")
+        .build(roleId))
       .retrieve()
       .bodyToMono(Void.class)
       .doOnError(e -> System.err.println("Error validating roles: " + e.getMessage()));

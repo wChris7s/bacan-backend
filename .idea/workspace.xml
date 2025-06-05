@@ -4,35 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="861e18c5-5113-4892-bda7-1ac4f6da64a2" name="Changes" comment="feat: add default data for location's tables">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="861e18c5-5113-4892-bda7-1ac4f6da64a2" name="Changes" comment="feat: update tables and gradle modules">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/dto/src/main/java/com/bacan/app/infrastructure/adapter/in/http/dto/user/CreateUserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/dto/src/main/java/com/bacan/app/infrastructure/adapter/in/http/dto/user/CreateUserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/mapper/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/mapper/role/RoleDTOMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/mapper/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/mapper/role/RoleDTOMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/mapper/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/mapper/user/UserDTOMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/mapper/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/mapper/user/UserDTOMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/model/address/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/model/address/Address.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/model/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/model/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/address/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/AddressApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/application/port/in/AddressUseCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/application/port/out/persistence/AddressDataBasePort.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/application/services/AddressService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/AddressController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/infrastructure/adapter/in/http/dto/AddressDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/infrastructure/adapter/in/http/dto/CreateAddressDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/infrastructure/adapter/in/http/mapper/AddressDtoMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/AddressPostgresAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/entity/AddressEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/mapper/AddressEntityMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/repository/AddressRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/address/src/main/java/com/bacan/app/infrastructure/config/AddressConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/address/src/main/resources/application.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/facades/UserFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/facades/UserFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/port/out/http/RolePort.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/port/out/http/RolePort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/application/port/in/RoleUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/application/port/in/RoleUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/application/port/out/persistence/RoleDatabasePort.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/application/port/out/persistence/RoleDatabasePort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/application/services/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/application/services/RoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/RoleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/RolePostgresAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/RolePostgresAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/http/RolePortClientAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/http/RolePortClientAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/config/UserConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/config/UserConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/init.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,6 +105,7 @@
       <recent name="$PROJECT_DIR$/microservices/catalog/src/main/java/com/bacan/app/category" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.bacan.app.application.port.out.persistence" />
       <recent name="com.bacan.app.infrastructure.adapter.out.persistence.repository" />
       <recent name="com.bacan.app.infrastructure.adapter.out.persistence.mapper" />
       <recent name="com.bacan.app.infrastructure.adapter.out.persistence.entity" />
@@ -278,7 +258,7 @@
       <workItem from="1749046401074" duration="2324000" />
       <workItem from="1749071299835" duration="1282000" />
       <workItem from="1749079129392" duration="2922000" />
-      <workItem from="1749094882408" duration="498000" />
+      <workItem from="1749094882408" duration="2945000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add cors config">
       <option name="closed" value="true" />
@@ -312,7 +292,23 @@
       <option name="project" value="LOCAL" />
       <updated>1748969612349</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat: add address service and update user facade">
+      <option name="closed" value="true" />
+      <created>1749095612628</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1749095612629</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat: update tables and gradle modules">
+      <option name="closed" value="true" />
+      <created>1749095824478</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1749095824478</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,7 +330,9 @@
     <MESSAGE value="refac: update user service and common dependencies" />
     <MESSAGE value="feat: add location microservice" />
     <MESSAGE value="feat: add default data for location's tables" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add default data for location's tables" />
+    <MESSAGE value="feat: add address service and update user facade" />
+    <MESSAGE value="feat: update tables and gradle modules" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: update tables and gradle modules" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
