@@ -7,6 +7,7 @@ import org.springframework.data.domain.Persistable;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -21,7 +22,7 @@ public class UserEntity implements Persistable<String> {
   private String documentId;
   private String name;
   private String lastname;
-  private LocalDateTime birthdate;
+  private LocalDate birthdate;
   private String phone;
   private String email;
   private String password;

@@ -5,6 +5,7 @@ import com.bacan.app.domain.model.role.Role;
 import lombok.Builder;
 import lombok.With;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Builder
@@ -12,7 +13,7 @@ public record User(
   String documentId,
   String name,
   String lastname,
-  LocalDateTime birthDate,
+  LocalDate birthDate,
   String phone,
   String email,
   String password,

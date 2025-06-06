@@ -4,31 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="861e18c5-5113-4892-bda7-1ac4f6da64a2" name="Changes" comment="fix: update role validator">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
+    <list default="true" id="861e18c5-5113-4892-bda7-1ac4f6da64a2" name="Changes" comment="fix: update address entity to handle user_id">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/dto/src/main/java/com/bacan/app/infrastructure/adapter/in/http/dto/role/RoleDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/dto/src/main/java/com/bacan/app/infrastructure/adapter/in/http/dto/role/RoleDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/dto/src/main/java/com/bacan/app/infrastructure/adapter/in/http/dto/user/CreateUserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/dto/src/main/java/com/bacan/app/infrastructure/adapter/in/http/dto/user/CreateUserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/mapper/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/mapper/role/RoleDTOMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/mapper/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/mapper/role/RoleDTOMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/mapper/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/mapper/user/UserDTOMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/mapper/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/mapper/user/UserDTOMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/model/address/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/model/address/Address.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/model/role/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/model/role/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/model/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/model/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/location/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/location/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/application/port/in/RoleUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/application/port/in/RoleUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/application/port/out/persistence/RoleDatabasePort.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/application/port/out/persistence/RoleDatabasePort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/application/services/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/application/services/RoleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/RoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/RolePostgresAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/RolePostgresAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/entity/RoleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/entity/RoleEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/mapper/RoleEntityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/mapper/RoleEntityMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/repository/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/role/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/repository/RoleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/services/UserRoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/services/UserRoleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/entity/AddressEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/entity/AddressEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/entity/UserEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/mapper/AddressEntityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/mapper/AddressEntityMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/mapper/UserEntityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/mapper/UserEntityMapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -279,7 +256,8 @@
       <workItem from="1749079129392" duration="2922000" />
       <workItem from="1749094882408" duration="3713000" />
       <workItem from="1749100668049" duration="3682000" />
-      <workItem from="1749145383249" duration="3675000" />
+      <workItem from="1749145383249" duration="5147000" />
+      <workItem from="1749164306047" duration="66000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add cors config">
       <option name="closed" value="true" />
@@ -337,7 +315,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749098804163</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fix: update address entity to handle user_id">
+      <option name="closed" value="true" />
+      <created>1749160882082</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1749160882082</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,7 +348,8 @@
     <MESSAGE value="feat: add address service and update user facade" />
     <MESSAGE value="feat: update tables and gradle modules" />
     <MESSAGE value="fix: update role validator" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: update role validator" />
+    <MESSAGE value="fix: update address entity to handle user_id" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: update address entity to handle user_id" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
