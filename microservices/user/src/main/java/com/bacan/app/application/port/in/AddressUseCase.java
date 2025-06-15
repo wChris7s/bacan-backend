@@ -5,4 +5,6 @@ import reactor.core.publisher.Mono;
 
 public interface AddressUseCase {
   Mono<Void> createUserAddress(Address address);
+
+  Mono<Void> updateUserAddress(Address address);
 }

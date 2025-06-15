@@ -9,6 +9,7 @@ import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.function.Consumer;
 
 public class AddressService implements AddressUseCase {
   private final Logger logger = LoggerFactory.getLogger(AddressService.class);
@@ -25,7 +26,21 @@ public class AddressService implements AddressUseCase {
         .withCreatedAt(actualDateTime)
         .withUpdatedAt(actualDateTime))
       .doOnSuccess(savedAddress -> logger.info("Address of user with ID {} was saved.", savedAddress.getUserId()))
-      .doOnError(e -> logger.error("Error details: {}", e.getMessage()))
+      .doOnError(getOnError())
       .then();
+  }
+
+  @Override
+  public Mono<Void> updateUserAddress(Address address) {
+    LocalDateTime actualDateTime = LocalDateTime.now(ZoneId.of("America/Lima"));
+    return this.addressDatabasePort.createAddress(address
+        .withUpdatedAt(actualDateTime))
+      .doOnSuccess(savedAddress -> logger.info("Address of user with ID {} was updated.", savedAddress.getUserId()))
+      .doOnError(getOnError())
+      .then();
+  }
+
+  private Consumer<Throwable> getOnError() {
+    return e -> logger.error("Error details: {}", e.getMessage());
   }
 }

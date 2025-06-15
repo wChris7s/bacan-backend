@@ -4,6 +4,7 @@ import com.bacan.app.domain.model.user.User;
 import com.bacan.app.infrastructure.adapter.in.http.controller.mapper.address.AddressDTOMapper;
 import com.bacan.app.infrastructure.adapter.in.http.controller.mapper.role.RoleDTOMapper;
 import com.bacan.app.infrastructure.adapter.in.http.dto.user.CreateUserDTO;
+import com.bacan.app.infrastructure.adapter.in.http.dto.user.UpdateUserDTO;
 import com.bacan.app.infrastructure.adapter.in.http.dto.user.UserDTO;
 import lombok.experimental.UtilityClass;
 
@@ -17,9 +18,21 @@ public class UserDTOMapper {
       .birthDate(user.birthDate())
       .phone(user.phone())
       .email(user.email())
-      .profilePhoto(user.profilePhoto())
+      .profilePhoto(user.photo())
       .createdAt(user.createdAt())
       .updatedAt(user.updatedAt())
+      .build();
+  }
+
+  public static User mapToModel(String documentId, UpdateUserDTO user) {
+    return User.builder()
+      .documentId(documentId)
+      .name(user.getName())
+      .lastname(user.getLastname())
+      .birthDate(user.getBirthdate())
+      .phone(user.getPhone())
+      .phoneCountryId(user.getPhoneCountryId())
+      .address(AddressDTOMapper.mapToModel(documentId, user.getAddress()))
       .build();
   }
 

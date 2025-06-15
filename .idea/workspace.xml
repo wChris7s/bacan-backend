@@ -5,7 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="861e18c5-5113-4892-bda7-1ac4f6da64a2" name="Changes" comment="fix: update address entity to handle user_id">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9be9729c-3263-4c74-9d24-3b0c3ebc7a0c.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9be9729c-3263-4c74-9d24-3b0c3ebc7a0c/storage_v2/_src_/database/ecm.j4cBAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9be9729c-3263-4c74-9d24-3b0c3ebc7a0c/storage_v2/_src_/database/ecm.j4cBAA/schema/bacan.MZeSBQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9be9729c-3263-4c74-9d24-3b0c3ebc7a0c/storage_v2/_src_/database/ecm.j4cBAA/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9be9729c-3263-4c74-9d24-3b0c3ebc7a0c/storage_v2/_src_/database/ecm.j4cBAA/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9be9729c-3263-4c74-9d24-3b0c3ebc7a0c/storage_v2/_src_/database/ecm.j4cBAA/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/src/main/groovy/app-base.plugin.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/src/main/groovy/app-base.plugin.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/src/main/groovy/app-spring.plugin.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/src/main/groovy/app-spring.plugin.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud/config-server/src/main/resources/config/application-local.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cloud/config-server/src/main/resources/config/application-local.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/cors/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/common/cors/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/dto/src/main/java/com/bacan/app/infrastructure/adapter/in/http/dto/user/CreateUserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/dto/src/main/java/com/bacan/app/infrastructure/adapter/in/http/dto/user/CreateUserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/mapper/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/mapper/address/AddressDTOMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/mapper/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/mapper/address/AddressDTOMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/mapper/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/mapper/user/UserDTOMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/mapper/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/mapper/user/UserDTOMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/model/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/model/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/template/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker/template/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/port/in/AddressUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/port/in/AddressUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/port/out/persistence/AddressDatabasePort.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/port/out/persistence/AddressDatabasePort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/services/AddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/services/AddressService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/http/RolePortClientAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/http/RolePortClientAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/AddressPostgresAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/AddressPostgresAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/entity/AddressEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/entity/AddressEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/entity/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/mapper/UserEntityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/mapper/UserEntityMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/config/UserConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/config/UserConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/init.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,8 +82,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
+        <option value="Enum" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -80,17 +117,23 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Spring Boot.ConfigServerApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.LocationApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.MediaApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.RoleApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.UserApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/cw-lambda/Workspace/bacan-backend/microservices/location/src/main/resources&quot;,
+    &quot;last_directory_selection&quot;: &quot;/home/cw-lambda/Workspace/bacan-backend/microservices/media/src/main/java/com/bacan/app&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/cw-lambda/Workspace/bacan-backend/common/storage/src/main/resources&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/home/cw-lambda/Workspace/bacan-backend/common/storage/src/main/java/com/bacan/app/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;spring&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;cn.yiiguxing.plugin.translate&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -101,8 +144,16 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/common/storage/src/main/resources" />
+      <recent name="$PROJECT_DIR$/common/storage/src/main/resources/META-INF" />
+      <recent name="$PROJECT_DIR$/common/storage/src/main/resources/META-INF.spring" />
+      <recent name="$PROJECT_DIR$/upload/default" />
       <recent name="$PROJECT_DIR$/microservices/location/src/main/resources" />
-      <recent name="$PROJECT_DIR$/microservices/catalog/src/main/java/com/bacan/app/category" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/upload/app/default" />
+      <recent name="$PROJECT_DIR$/upload/app" />
+      <recent name="$PROJECT_DIR$/upload" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.bacan.app.application.port.out.persistence" />
@@ -133,7 +184,7 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.LocationApplication">
+  <component name="RunManager" selected="Spring Boot.MediaApplication">
     <configuration name="buildSrc [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -183,6 +234,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MediaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="bacan-backend.microservices.media.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bacan.app.MediaApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bacan.app.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RoleApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="ACTIVE_PROFILES" value="local" />
       <module name="bacan-backend.microservices.role.main" />
@@ -214,6 +278,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.MediaApplication" />
         <item itemvalue="Spring Boot.LocationApplication" />
         <item itemvalue="Docker.docker/docker-compose.yaml: Compose Deployment" />
         <item itemvalue="Gradle.buildSrc [dependencies]" />
@@ -258,6 +323,20 @@
       <workItem from="1749100668049" duration="3682000" />
       <workItem from="1749145383249" duration="5147000" />
       <workItem from="1749164306047" duration="66000" />
+      <workItem from="1749421125648" duration="1210000" />
+      <workItem from="1749445974806" duration="825000" />
+      <workItem from="1749485665816" duration="2034000" />
+      <workItem from="1749490980227" duration="1242000" />
+      <workItem from="1749505288048" duration="14000" />
+      <workItem from="1749507951084" duration="60000" />
+      <workItem from="1749673938457" duration="351000" />
+      <workItem from="1749691733730" duration="602000" />
+      <workItem from="1749786593191" duration="6231000" />
+      <workItem from="1749814780315" duration="914000" />
+      <workItem from="1749815704854" duration="13215000" />
+      <workItem from="1749855289906" duration="3148000" />
+      <workItem from="1749916263513" duration="4568000" />
+      <workItem from="1749945678241" duration="3246000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add cors config">
       <option name="closed" value="true" />

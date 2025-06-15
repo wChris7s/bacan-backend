@@ -14,6 +14,7 @@ public class CreateUserDTO {
   private String documentId;
   private String name;
   private String lastname;
+  private String photo;
   private LocalDate birthdate;
   private Long phoneCountryId;
   private String phone;

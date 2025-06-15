@@ -17,7 +17,7 @@ public record User(
   String phone,
   String email,
   String password,
-  @With String profilePhoto,
+  @With String photo,
   @With LocalDateTime createdAt,
   @With LocalDateTime updatedAt,
   @With boolean enabled,

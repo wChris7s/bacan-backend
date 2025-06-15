@@ -40,3 +40,9 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+## Docker
+docker/.env
+
+## Upload
+upload

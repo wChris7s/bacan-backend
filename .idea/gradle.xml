@@ -30,6 +30,7 @@
             <option value="$PROJECT_DIR$/common/model" />
             <option value="$PROJECT_DIR$/microservices" />
             <option value="$PROJECT_DIR$/microservices/location" />
+            <option value="$PROJECT_DIR$/microservices/media" />
             <option value="$PROJECT_DIR$/microservices/role" />
             <option value="$PROJECT_DIR$/microservices/user" />
           </set>

@@ -1,3 +1,12 @@
+CREATE TABLE bacan.category
+(
+    id         bigserial    NOT NULL,
+    "name"     varchar(100) NOT NULL,
+    created_at timestamp    NOT NULL,
+    updated_at timestamp    NOT NULL,
+    CONSTRAINT category_pk PRIMARY KEY (id)
+);
+
 CREATE TABLE bacan.country
 (
     id         bigserial    NOT NULL,
@@ -9,41 +18,38 @@ CREATE TABLE bacan.country
 COMMENT
 ON TABLE bacan.country IS 'País';
 
+CREATE TABLE bacan.frontend_module
+(
+    id          bigserial    NOT NULL,
+    "name"      varchar(150) NOT NULL,
+    icon        varchar(20) NULL,
+    "path"      varchar(200) NOT NULL,
+    "position"  int4         NOT NULL,
+    displayable bool         NOT NULL,
+    CONSTRAINT module_pk PRIMARY KEY (id)
+);
+
 CREATE TABLE bacan."role"
 (
-    id         bigserial   NOT NULL,
-    "name"     varchar(20) NOT NULL,
-    created_at timestamp   NOT NULL,
-    updated_at timestamp   NOT NULL,
-    enabled    bool        NOT NULL,
+    id         bigserial          NOT NULL,
+    "name"     varchar(20)        NOT NULL,
+    created_at timestamp          NOT NULL,
+    updated_at timestamp          NOT NULL,
+    enabled    bool               NOT NULL,
+    is_public  bool DEFAULT false NOT NULL, -- Roles que puedes ser consultados sin estar autenticado
     CONSTRAINT role_pk PRIMARY KEY (id),
     CONSTRAINT role_unique UNIQUE (name)
 );
+COMMENT
+ON COLUMN bacan."role".is_public IS 'Roles que puedes ser consultados sin estar autenticado';
 
-CREATE TABLE bacan."type"
+CREATE TABLE bacan.frontend_access
 (
-    id         bigserial   NOT NULL,
-    "name"     varchar(40) NOT NULL,
-    created_at timestamp   NOT NULL,
-    updated_at timestamp   NOT NULL,
-    CONSTRAINT type_pk PRIMARY KEY (id)
-);
-
-CREATE TABLE bacan."user"
-(
-    document_id            varchar(20)  NOT NULL,
-    "name"                 varchar(100) NOT NULL,
-    lastname               varchar(100) NOT NULL,
-    birth_date             timestamp    NOT NULL,
-    phone                  varchar(20)  NOT NULL,
-    email                  varchar(254) NOT NULL,
-    "password"             varchar(255) NOT NULL,
-    profile_photo          bpchar(40) NOT NULL,
-    created_at             timestamp    NOT NULL,
-    updated_at             timestamp    NOT NULL,
-    enabled                bool         NOT NULL,
-    password_modified_date timestamp    NOT NULL,
-    CONSTRAINT user_pk PRIMARY KEY (document_id)
+    module_id int8 NOT NULL,
+    role_id   int8 NOT NULL,
+    CONSTRAINT frontend_access_pk PRIMARY KEY (module_id, role_id),
+    CONSTRAINT frontend_access_module_fk FOREIGN KEY (module_id) REFERENCES bacan.frontend_module (id),
+    CONSTRAINT frontend_access_role_fk FOREIGN KEY (role_id) REFERENCES bacan."role" (id)
 );
 
 CREATE TABLE bacan.state
@@ -57,6 +63,25 @@ CREATE TABLE bacan.state
 COMMENT
 ON TABLE bacan.state IS 'Departamento';
 
+CREATE TABLE bacan."user"
+(
+    document_id            varchar(20)  NOT NULL,
+    "name"                 varchar(40)  NOT NULL,
+    lastname               varchar(40)  NOT NULL,
+    birthdate              date         NOT NULL,
+    phone                  varchar(20)  NOT NULL,
+    email                  varchar(254) NOT NULL,
+    "password"             varchar(255) NOT NULL,
+    photo                  bytea        NOT NULL,
+    created_at             timestamp    NOT NULL,
+    updated_at             timestamp    NOT NULL,
+    enabled                bool         NOT NULL,
+    password_modified_date timestamp    NOT NULL,
+    phone_country_id       int8         NOT NULL,
+    CONSTRAINT user_pk PRIMARY KEY (document_id),
+    CONSTRAINT user_country_fk FOREIGN KEY (phone_country_id) REFERENCES bacan.country (id)
+);
+
 CREATE TABLE bacan.user_role
 (
     user_id varchar(20) NOT NULL,
@@ -64,6 +89,16 @@ CREATE TABLE bacan.user_role
     CONSTRAINT permissions_pk PRIMARY KEY (user_id, role_id),
     CONSTRAINT permissions_role_fk FOREIGN KEY (role_id) REFERENCES bacan."role" (id),
     CONSTRAINT permissions_user_fk FOREIGN KEY (user_id) REFERENCES bacan."user" (document_id)
+);
+
+CREATE TABLE bacan.wallet
+(
+    document_id varchar(20)        NOT NULL,
+    balance     float8 DEFAULT 0.0 NOT NULL,
+    created_at  timestamp          NOT NULL,
+    updated_at  timestamp          NOT NULL,
+    CONSTRAINT wallet_pk PRIMARY KEY (document_id),
+    CONSTRAINT wallet_user_fk FOREIGN KEY (document_id) REFERENCES bacan."user" (document_id) ON DELETE CASCADE
 );
 
 CREATE TABLE bacan.province
@@ -76,6 +111,20 @@ CREATE TABLE bacan.province
 );
 COMMENT
 ON TABLE bacan.province IS 'Provincia';
+
+CREATE TABLE bacan.store
+(
+    id         uuid DEFAULT uuid_generate_v4() NOT NULL,
+    "name"     varchar(200)                    NOT NULL,
+    "open"     time                            NOT NULL,
+    "close"    time                            NOT NULL,
+    story      text                            NOT NULL,
+    logo       bytea                           NOT NULL,
+    background bytea                           NOT NULL,
+    user_id    varchar(20)                     NOT NULL,
+    CONSTRAINT store_pk PRIMARY KEY (id),
+    CONSTRAINT store_user_fk FOREIGN KEY (user_id) REFERENCES bacan."user" (document_id)
+);
 
 CREATE TABLE bacan.district
 (
@@ -90,24 +139,84 @@ CREATE TABLE bacan.district
 COMMENT
 ON TABLE bacan.district IS 'Distrito';
 
+CREATE TABLE bacan.product
+(
+    id           uuid    DEFAULT uuid_generate_v4() NOT NULL,
+    store_id     uuid                               NOT NULL,
+    product_name varchar(200)                       NOT NULL,
+    price        numeric DEFAULT 0.0                NOT NULL,
+    stock        int4    DEFAULT 0                  NOT NULL,
+    description  text                               NOT NULL,
+    photo        bytea                              NOT NULL,
+    created_at   timestamp                          NOT NULL,
+    updated_at   timestamp                          NOT NULL,
+    CONSTRAINT product_pk PRIMARY KEY (id),
+    CONSTRAINT product_store_fk FOREIGN KEY (store_id) REFERENCES bacan.store (id) ON DELETE CASCADE
+);
+
+CREATE TABLE bacan.product_category
+(
+    product_id  uuid NOT NULL,
+    category_id int8 NOT NULL,
+    CONSTRAINT product_category_pk PRIMARY KEY (product_id, category_id),
+    CONSTRAINT product_category_category_fk FOREIGN KEY (category_id) REFERENCES bacan.category (id),
+    CONSTRAINT product_category_product_fk FOREIGN KEY (product_id) REFERENCES bacan.product (id)
+);
+
+CREATE TABLE bacan.sale
+(
+    id       uuid        NOT NULL,
+    store_id uuid        NOT NULL,
+    user_id  varchar(20) NOT NULL,
+    total    numeric     NOT NULL, -- Precio total de la venta
+    quantity int4        NOT NULL, -- Total de productos comprados
+    CONSTRAINT sale_pk PRIMARY KEY (id),
+    CONSTRAINT sale_store_fk FOREIGN KEY (store_id) REFERENCES bacan.store (id),
+    CONSTRAINT sale_user_fk FOREIGN KEY (user_id) REFERENCES bacan."user" (document_id)
+);
+COMMENT
+ON COLUMN bacan.sale.total IS 'Precio total de la venta';
+COMMENT
+ON COLUMN bacan.sale.quantity IS 'Total de productos comprados';
+
+CREATE TABLE bacan.sale_detail
+(
+    id         uuid    NOT NULL,
+    sale_id    uuid    NOT NULL,
+    product_id uuid    NOT NULL,
+    quantity   int4    NOT NULL,
+    sub_total  numeric NOT NULL,
+    CONSTRAINT sale_detail_pk PRIMARY KEY (id),
+    CONSTRAINT sale_detail_product_fk FOREIGN KEY (product_id) REFERENCES bacan.product (id),
+    CONSTRAINT sale_detail_sale_fk FOREIGN KEY (sale_id) REFERENCES bacan.sale (id)
+);
+
 CREATE TABLE bacan.address
 (
-    id          uuid        NOT NULL,
-    user_id     varchar(20) NOT NULL,
-    country_id  int8        NOT NULL,
-    state_id    varchar(2)  NOT NULL,
-    province_id varchar(4)  NOT NULL,
-    district_id varchar(6)  NOT NULL,
+    id          uuid DEFAULT uuid_generate_v4() NOT NULL,
+    user_id     varchar(20)                     NOT NULL,
+    country_id  int8                            NOT NULL,
+    state_id    varchar(2)                      NOT NULL,
+    province_id varchar(4)                      NOT NULL,
+    district_id varchar(6)                      NOT NULL,
     street      varchar(255) NULL,
     postal_code varchar(20) NULL,
     "number"    varchar(20) NULL,
     reference   varchar(255) NULL,
-    created_at  timestamp   NOT NULL,
-    updated_at  timestamp   NOT NULL,
+    created_at  timestamp                       NOT NULL,
+    updated_at  timestamp                       NOT NULL,
     CONSTRAINT address_pk PRIMARY KEY (id),
     CONSTRAINT address_country_fk FOREIGN KEY (country_id) REFERENCES bacan.country (id),
     CONSTRAINT address_district_fk FOREIGN KEY (district_id) REFERENCES bacan.district (id),
     CONSTRAINT address_province_fk FOREIGN KEY (province_id) REFERENCES bacan.province (id),
     CONSTRAINT address_state_fk FOREIGN KEY (state_id) REFERENCES bacan.state (id),
     CONSTRAINT address_user_fk FOREIGN KEY (user_id) REFERENCES bacan."user" (document_id) ON DELETE CASCADE
+);
+
+CREATE TABLE bacan.payment
+(
+    id           uuid      NOT NULL,
+    sale_id      uuid      NOT NULL,
+    payment_date timestamp NOT NULL,
+    CONSTRAINT payment_sale_fk FOREIGN KEY (sale_id) REFERENCES bacan.sale (id)
 );

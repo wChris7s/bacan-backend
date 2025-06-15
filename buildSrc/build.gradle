@@ -16,4 +16,5 @@ dependencies {
     fis.close()
 
     implementation "org.springframework.boot:spring-boot-gradle-plugin:${springVersion}"
+    implementation "com.palantir.gradle.docker:gradle-docker:${palantirVersion}"
 }

@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 
@@ -25,13 +26,13 @@ public class UserService implements UserUseCase {
   public Mono<User> createUser(User user) {
     LocalDateTime actualDateTime = LocalDateTime.now(ZoneId.of("America/Lima"));
     return this.userDatabasePort.createUser(user
-            .withProfilePhoto(UserStorage.DEFAULT_PROFILE_PHOTO)
-            .withEnabled(true)
-            .withCreatedAt(actualDateTime)
-            .withUpdatedAt(actualDateTime)
-            .withPasswordModifiedDate(actualDateTime))
-        .doOnSuccess(savedUser -> logger.info("User with ID {} was created.", user.documentId()))
-        .doOnError(e -> logger.error("Error details: {}", e.getMessage()));
+        .withPhoto(UserStorage.DEFAULT_PROFILE_PHOTO)
+        .withEnabled(true)
+        .withCreatedAt(actualDateTime)
+        .withUpdatedAt(actualDateTime)
+        .withPasswordModifiedDate(actualDateTime))
+      .doOnSuccess(savedUser -> logger.info("User with ID {} was created.", user.documentId()))
+      .doOnError(e -> logger.error("Error details: {}", e.getMessage()));
   }
 
   @Override

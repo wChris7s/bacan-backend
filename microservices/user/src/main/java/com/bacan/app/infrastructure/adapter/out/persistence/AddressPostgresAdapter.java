@@ -16,7 +16,14 @@ public class AddressPostgresAdapter implements AddressDatabasePort {
 
   @Override
   public Mono<Address> createAddress(Address address) {
-    AddressEntity entity = AddressEntityMapper.mapToEntity(address);
+    AddressEntity entity = AddressEntityMapper.mapToEntity(address).withNew(true);
+    return addressRepository.save(entity)
+      .map(AddressEntityMapper::mapToModel);
+  }
+
+  @Override
+  public Mono<Address> updateAddress(Address address) {
+    AddressEntity entity = AddressEntityMapper.mapToEntity(address).withNew(false);
     return addressRepository.save(entity)
       .map(AddressEntityMapper::mapToModel);
   }

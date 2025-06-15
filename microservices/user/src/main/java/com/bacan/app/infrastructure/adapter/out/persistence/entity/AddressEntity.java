@@ -2,6 +2,8 @@ package com.bacan.app.infrastructure.adapter.out.persistence.entity;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.domain.Persistable;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -13,7 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "address", schema = "bacan")
-public class AddressEntity {
+public class AddressEntity implements Persistable<String> {
   @Id
   String id;
   @Column(value = "user_id")
@@ -35,4 +37,13 @@ public class AddressEntity {
   LocalDateTime createdAt;
   @Column(value = "updated_at")
   LocalDateTime updatedAt;
+
+  @With
+  @Transient
+  private boolean isNew;
+
+  @Override
+  public boolean isNew() {
+    return isNew;
+  }
 }

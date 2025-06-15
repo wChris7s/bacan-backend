@@ -1,5 +1,6 @@
 package com.bacan.app.infrastructure.adapter.out.persistence.entity;
 
+import io.r2dbc.spi.Blob;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
@@ -26,8 +27,7 @@ public class UserEntity implements Persistable<String> {
   private String phone;
   private String email;
   private String password;
-  @Column("profile_photo")
-  private String profilePhoto;
+  private String photo;
   @Column("created_at")
   private LocalDateTime createdAt;
   @Column("updated_at")
