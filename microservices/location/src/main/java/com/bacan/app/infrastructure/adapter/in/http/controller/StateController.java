@@ -12,7 +12,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping(path = "/bcn/api/ms-location/state")
+@RequestMapping(path = "/bcn/api/location/state")
 public class StateController {
   private final StateUseCase stateUseCase;
 

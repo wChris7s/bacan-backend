@@ -66,21 +66,22 @@ public class UserConfig {
   }
 
   @Bean
+  public RolePort rolePort(@Value("${application.microservice.ms-role}") String baseUrl) {
+    return new RolePortClientAdapter(WebClient.create(baseUrl + "/bcn/api/role"));
+  }
+
+  @Bean
+  public MediaPort mediaPort(@Value("${application.microservice.ms-media}") String baseUrl) {
+    return new MediaPortClientAdapter(WebClient.create(baseUrl + "/bcn/api/media"));
+  }
+
+  @Bean
   public UserFacadeUseCase userFacadeUseCase(
     UserUseCase userUseCase,
     UserRoleUseCase userRoleUseCase,
     RolePort rolePort,
-    AddressUseCase addressUseCase) {
-    return new UserFacade(userUseCase, userRoleUseCase, rolePort, addressUseCase);
-  }
-
-  @Bean
-  public RolePort rolePort(@Value("${application.ms-role.baseUrl}") String baseUrl) {
-    return new RolePortClientAdapter(WebClient.create(baseUrl + "/bcn/api/ms-role"));
-  }
-
-  @Bean
-  public MediaPort mediaPort(@Value("${application.ms-role.baseUrl}}") String baseUrl) {
-    return new MediaPortClientAdapter(WebClient.create(baseUrl + "/bcn/api/ms-role"));
+    AddressUseCase addressUseCase,
+    MediaPort mediaPort) {
+    return new UserFacade(userUseCase, userRoleUseCase, rolePort, addressUseCase, mediaPort);
   }
 }

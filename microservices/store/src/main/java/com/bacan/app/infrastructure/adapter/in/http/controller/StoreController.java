@@ -10,7 +10,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping(path = "/bcn/api/ms-store")
+@RequestMapping(path = "/bcn/api/store")
 
 public class StoreController {
     private final StoreUseCase storeUseCase;

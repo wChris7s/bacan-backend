@@ -1,11 +1,8 @@
 server:
-  port: 9091
-  address: localhost
+  port: 9093
 spring:
   application:
-    name: ms-role
-  profiles:
-    active: local
+    name: ms-store
   config:
     import: configserver:http://localhost:8982
     

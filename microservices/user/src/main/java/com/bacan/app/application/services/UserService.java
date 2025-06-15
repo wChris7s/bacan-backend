@@ -26,7 +26,6 @@ public class UserService implements UserUseCase {
   public Mono<User> createUser(User user) {
     LocalDateTime actualDateTime = LocalDateTime.now(ZoneId.of("America/Lima"));
     return this.userDatabasePort.createUser(user
-        .withPhoto(UserStorage.DEFAULT_PROFILE_PHOTO)
         .withEnabled(true)
         .withCreatedAt(actualDateTime)
         .withUpdatedAt(actualDateTime)

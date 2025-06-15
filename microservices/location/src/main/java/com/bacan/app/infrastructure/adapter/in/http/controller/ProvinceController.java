@@ -12,7 +12,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping(path = "/bcn/api/ms-location/province")
+@RequestMapping(path = "/bcn/api/location/province")
 public class ProvinceController {
   private final ProvinceUseCase provinceUseCase;
 

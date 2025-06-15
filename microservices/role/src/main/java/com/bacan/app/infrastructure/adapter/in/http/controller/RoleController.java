@@ -10,7 +10,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController()
-@RequestMapping(path = "/bcn/api/ms-role")
+@RequestMapping(path = "/bcn/api/role")
 public class RoleController {
   private final RoleUseCase roleUseCase;
 

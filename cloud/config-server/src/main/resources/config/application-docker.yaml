@@ -2,7 +2,7 @@ spring:
   r2dbc:
     username: admin
     password: change_me
-    url: r2dbc:postgresql://localhost:5432/ecm
+    url: r2dbc:postgresql://postgres:5432/ecm
 
 logging:
   level:
@@ -19,8 +19,8 @@ application:
   upload:
     path: /home/cw-lambda/Workspace/bacan-backend/upload
   microservice:
-    ms-user: http://localhost:9090
-    ms-role: http://localhost:9091
-    ms-location: http://localhost:9092
-    ms-store: http://localhost:9093
-    ms-media: http://localhost:9094
+    ms-user: http://ms-user:9090
+    ms-role: http://ms-role:9091
+    ms-location: http://ms-location:9092
+    ms-store: http://ms-store:9093
+    ms-media: http://ms-media:9094

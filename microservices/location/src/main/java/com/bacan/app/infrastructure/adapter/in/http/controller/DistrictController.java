@@ -12,7 +12,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping(path = "/bcn/api/ms-location/district")
+@RequestMapping(path = "/bcn/api/location/district")
 public class DistrictController {
 
   private final DistrictUseCase districtUseCase;

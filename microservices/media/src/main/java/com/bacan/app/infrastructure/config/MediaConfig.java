@@ -24,7 +24,7 @@ public class MediaConfig {
 
   @Bean
   public FileManagerUseCase fileManagerUseCase(
-    @Value("${application.uploadPath}") String uploadPath,
+    @Value("${application.upload.path}") String uploadPath,
     AppStoragePort appStoragePort,
     DefaultStoragePort defaultStoragePort) {
     return new FileManagerService(uploadPath, appStoragePort, defaultStoragePort);

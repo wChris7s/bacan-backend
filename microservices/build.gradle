@@ -2,8 +2,9 @@ subprojects { Project subproject ->
   {
     apply {
       plugin "app-base.plugin"
-      plugin "app-spring.plugin"
       plugin "app-domain.plugin"
+      plugin "app-spring.plugin"
+      plugin "app-cloud.plugin"
     }
 
     logger.info("Project name: {}", subproject.name);
@@ -16,6 +17,7 @@ subprojects { Project subproject ->
 
     dependencies {
       implementation project(':common:cors')
+      implementation 'org.springframework.cloud:spring-cloud-starter-config'
     }
 
     // ======================== PALANTIR DOCKER ========================

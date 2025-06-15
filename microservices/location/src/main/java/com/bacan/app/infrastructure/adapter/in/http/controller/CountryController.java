@@ -11,7 +11,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping(path = "/bcn/api/ms-location/country")
+@RequestMapping(path = "/bcn/api/location/country")
 public class CountryController {
 
   private final CountryUseCase countryUseCase;

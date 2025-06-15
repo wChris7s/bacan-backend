@@ -1,13 +1,7 @@
 server:
   port: 9090
-  address: localhost
 spring:
   application:
     name: ms-user
-  profiles:
-    active: local
   config:
     import: configserver:http://localhost:8982
-application:
-  ms-role:
-    baseUrl: http://localhost:9091

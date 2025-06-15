@@ -1,10 +1,7 @@
 server:
-  port: 9095
-
+  port: 9094
 spring:
   application:
     name: ms-media
   config:
     import: configserver:http://localhost:8982
-  profiles:
-    active: local

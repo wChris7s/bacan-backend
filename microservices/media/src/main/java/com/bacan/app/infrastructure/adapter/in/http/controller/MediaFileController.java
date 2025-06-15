@@ -17,7 +17,7 @@ import java.io.FileNotFoundException;
 
 @Slf4j
 @RestController
-@RequestMapping("/bcn/api/static")
+@RequestMapping("/bcn/api/media")
 public class MediaFileController {
 
   private final FileManagerUseCase fileManagerUseCase;
