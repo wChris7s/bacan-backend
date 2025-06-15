@@ -6,42 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="861e18c5-5113-4892-bda7-1ac4f6da64a2" name="Changes" comment="fix: update address entity to handle user_id">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9be9729c-3263-4c74-9d24-3b0c3ebc7a0c.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9be9729c-3263-4c74-9d24-3b0c3ebc7a0c/storage_v2/_src_/database/ecm.j4cBAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9be9729c-3263-4c74-9d24-3b0c3ebc7a0c/storage_v2/_src_/database/ecm.j4cBAA/schema/bacan.MZeSBQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9be9729c-3263-4c74-9d24-3b0c3ebc7a0c/storage_v2/_src_/database/ecm.j4cBAA/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9be9729c-3263-4c74-9d24-3b0c3ebc7a0c/storage_v2/_src_/database/ecm.j4cBAA/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9be9729c-3263-4c74-9d24-3b0c3ebc7a0c/storage_v2/_src_/database/ecm.j4cBAA/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2fe6a5e8-8b12-441d-9282-5cfd81d0e56b.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2fe6a5e8-8b12-441d-9282-5cfd81d0e56b.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/src/main/groovy/app-base.plugin.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/src/main/groovy/app-base.plugin.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buildSrc/src/main/groovy/app-spring.plugin.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/src/main/groovy/app-spring.plugin.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cloud/config-server/src/main/resources/config/application-local.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cloud/config-server/src/main/resources/config/application-local.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/cors/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/common/cors/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/dto/src/main/java/com/bacan/app/infrastructure/adapter/in/http/dto/user/CreateUserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/dto/src/main/java/com/bacan/app/infrastructure/adapter/in/http/dto/user/CreateUserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/mapper/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/mapper/address/AddressDTOMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/mapper/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/mapper/address/AddressDTOMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/mapper/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/mapper/user/UserDTOMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/mapper/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/mapper/user/UserDTOMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/model/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/model/src/main/java/com/bacan/app/domain/model/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/template/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker/template/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/port/in/AddressUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/port/in/AddressUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/port/out/persistence/AddressDatabasePort.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/port/out/persistence/AddressDatabasePort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/services/AddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/services/AddressService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/application/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/in/http/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/http/RolePortClientAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/http/RolePortClientAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/AddressPostgresAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/AddressPostgresAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/entity/AddressEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/entity/AddressEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/entity/UserEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/mapper/UserEntityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/adapter/out/persistence/mapper/UserEntityMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/config/UserConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservices/user/src/main/java/com/bacan/app/infrastructure/config/UserConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/init.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +30,9 @@
     <system id="GRADLE">
       <state>
         <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/buildSrc">
           <activation />
         </task>
         <projects_view>
@@ -89,6 +59,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
@@ -96,52 +71,55 @@
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2xn2nAAIKSdmvfENU9jQejIhxjA" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Docker.docker/docker-compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Build bacan-backend.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.buildSrc [dependencies].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ConfigServerApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.LocationApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.MediaApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.RoleApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.UserApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_directory_selection&quot;: &quot;/home/cw-lambda/Workspace/bacan-backend/microservices/media/src/main/java/com/bacan/app&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/cw-lambda/Workspace/bacan-backend/common/storage/src/main/resources&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/home/cw-lambda/Workspace/bacan-backend/common/storage/src/main/java/com/bacan/app/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;cn.yiiguxing.plugin.translate&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Docker.docker/docker-compose.yaml: Compose Deployment.executor": "Run",
+    "Gradle.Build bacan-backend.executor": "Run",
+    "Gradle.Download Sources.executor": "Run",
+    "Gradle.buildSrc [dependencies].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.ConfigServerApplication.executor": "Run",
+    "Spring Boot.LocationApplication.executor": "Run",
+    "Spring Boot.MediaApplication.executor": "Run",
+    "Spring Boot.RoleApplication.executor": "Run",
+    "Spring Boot.UserApplication.executor": "Run",
+    "git-widget-placeholder": "ms-store1",
+    "last_directory_selection": "/home/cw-lambda/Workspace/bacan-backend/microservices/media/src/main/java/com/bacan/app",
+    "last_opened_file_path": "/home/cw-lambda/Workspace/bacan-backend/common/storage/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "/home/cw-lambda/Workspace/bacan-backend/common/storage/src/main/java/com/bacan/app/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "cn.yiiguxing.plugin.translate",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/common/storage/src/main/resources" />
@@ -207,6 +185,17 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="bacan-backend.microservices.location" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="bacan-backend.microservices.location" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
     <configuration name="CatalogApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="bacan-backend.microservices.catalog.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.bacan.app.CatalogApplication" />
@@ -243,6 +232,13 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RoleApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="bacan-backend.microservices.store.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bacan.app.RoleApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
