@@ -5,6 +5,7 @@ import com.bacan.app.application.port.in.UserUseCase;
 import com.bacan.app.domain.model.user.User;
 import com.bacan.app.infrastructure.adapter.in.http.controller.mapper.user.UserDTOMapper;
 import com.bacan.app.infrastructure.adapter.in.http.dto.user.CreateUserDTO;
+import com.bacan.app.infrastructure.adapter.in.http.dto.user.UpdateUserDTO;
 import com.bacan.app.infrastructure.adapter.in.http.dto.user.UserDTO;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -32,6 +33,13 @@ public class UserController {
     User user = UserDTOMapper.mapToModel(createUserDto);
     return userFacadeUseCase.createUserAndAssignTheirRoles(user);
   }
+
+  /*
+  @PutMapping("/{documentId}")
+  public Mono<Void> updateUser(@PathVariable String documentId, @RequestBody UpdateUserDTO updateUserDTO) {
+
+  }
+   */
 }
 
 

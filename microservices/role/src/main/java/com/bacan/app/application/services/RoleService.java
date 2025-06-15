@@ -7,10 +7,8 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class RoleService implements RoleUseCase {
-
   private final RoleDatabasePort roleDatabasePort;
 
   public RoleService(RoleDatabasePort roleDatabasePort) {
@@ -20,9 +18,9 @@ public class RoleService implements RoleUseCase {
   @Override
   public Mono<Role> createRole(Role role) {
     return this.roleDatabasePort.createRole(role
-        .withEnabled(true)
-        .withCreatedAt(LocalDateTime.now())
-        .withUpdatedAt(LocalDateTime.now())
+      .withEnabled(true)
+      .withCreatedAt(LocalDateTime.now())
+      .withUpdatedAt(LocalDateTime.now())
     );
   }
 
@@ -32,14 +30,14 @@ public class RoleService implements RoleUseCase {
   }
 
   @Override
-  public Mono<Void> validateRoles(List<Long> roleIds) {
-    return this.roleDatabasePort.countAllByIdIsIn(roleIds)
-        .flatMap(total -> {
-          if (roleIds.size() == total.intValue()) {
-            return Mono.empty();
-          }
-          return Mono.error(() -> new RuntimeException("One or more roles are invalid."));
-        });
+  public Flux<Role> getAllPublicRoles() {
+    return this.roleDatabasePort.findAllPublicRoles();
   }
 
+  @Override
+  public Mono<Void> validateRole(Long roleId) {
+    return this.roleDatabasePort.findRoleById(roleId)
+      .switchIfEmpty(Mono.error(() -> new RuntimeException("Role with ID " + roleId + " not found.")))
+      .then();
+  }
 }

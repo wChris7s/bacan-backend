@@ -14,3 +14,6 @@ springdoc:
     path: /bcn/api/openapi/ui/swagger-ui.html
   api-docs:
     path: /bcn/api/openapi/docs/api-docs.yaml
+
+application:
+  uploadPath: /home/cw-lambda/Workspace/bacan-backend/upload

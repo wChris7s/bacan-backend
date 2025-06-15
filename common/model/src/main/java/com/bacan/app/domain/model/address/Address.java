@@ -5,17 +5,16 @@ import lombok.Value;
 import lombok.With;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Value
 @Builder
 public class Address {
-  Long id;
+  String id;
   String userId;
   Long countryId;
-  Long stateId;
-  Long provinceId;
-  Long districtId;
+  String stateId;
+  String provinceId;
+  String districtId;
   String street;
   String postalCode;
   String number;

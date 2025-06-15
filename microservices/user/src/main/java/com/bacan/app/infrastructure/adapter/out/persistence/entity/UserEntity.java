@@ -1,5 +1,6 @@
 package com.bacan.app.infrastructure.adapter.out.persistence.entity;
 
+import io.r2dbc.spi.Blob;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
@@ -7,6 +8,7 @@ import org.springframework.data.domain.Persistable;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -21,13 +23,11 @@ public class UserEntity implements Persistable<String> {
   private String documentId;
   private String name;
   private String lastname;
-  @Column("birth_date")
-  private LocalDateTime birthDate;
+  private LocalDate birthdate;
   private String phone;
   private String email;
   private String password;
-  @Column("profile_photo")
-  private String profilePhoto;
+  private String photo;
   @Column("created_at")
   private LocalDateTime createdAt;
   @Column("updated_at")
@@ -35,6 +35,8 @@ public class UserEntity implements Persistable<String> {
   private boolean enabled;
   @Column("password_modified_date")
   private LocalDateTime passwordModifiedDate;
+  @Column("phone_country_id")
+  private Long phoneCountryId;
 
   @Transient
   private boolean isNew;

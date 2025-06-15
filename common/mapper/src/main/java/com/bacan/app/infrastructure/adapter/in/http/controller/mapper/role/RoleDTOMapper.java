@@ -9,17 +9,20 @@ import lombok.experimental.UtilityClass;
 public class RoleDTOMapper {
   public static RoleDTO mapToDto(Role role) {
     return RoleDTO.builder()
-        .id(role.getId())
-        .name(role.getName())
-        .createdAt(role.getCreatedAt())
-        .updatedAt(role.getUpdatedAt())
-        .enabled(role.isEnabled())
-        .build();
+      .id(role.getId())
+      .name(role.getName())
+      .build();
   }
 
   public static Role mapToModel(CreateRoleDTO role) {
     return Role.builder()
-        .name(role.getName())
-        .build();
+      .name(role.getName())
+      .build();
+  }
+
+  public static Role mapToModel(Long roleId) {
+    return Role.builder()
+      .id(roleId)
+      .build();
   }
 }

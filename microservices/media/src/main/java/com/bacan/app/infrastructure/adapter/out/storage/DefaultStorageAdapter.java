@@ -1,0 +1,37 @@
+package com.bacan.app.infrastructure.adapter.out.storage;
+
+import com.bacan.app.application.port.out.DefaultStoragePort;
+import com.bacan.app.domain.storage.DefaultStorageFilename;
+import com.bacan.app.domain.storage.DefaultStorageType;
+import com.bacan.app.infrastructure.adapter.out.storage.util.FileUtil;
+import lombok.extern.slf4j.Slf4j;
+import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
+
+import java.io.File;
+import java.nio.file.Files;
+
+@Slf4j
+public class DefaultStorageAdapter implements DefaultStoragePort {
+  @Override
+  public Mono<String> storeFile(String basePath, DefaultStorageType defaultStorageType) {
+    return Mono.fromCallable(() -> {
+        String filename = switch (defaultStorageType) {
+          case USER -> DefaultStorageFilename.USER_STORAGE.getFilename();
+          case STORE -> DefaultStorageFilename.STORE_STORAGE.getFilename();
+          case PRODUCT -> DefaultStorageFilename.PRODUCT_STORAGE.getFilename();
+        };
+
+        String targetFilename = FileUtil.buildFilename(filename);
+        File source = new File(basePath + "/default/" + filename);
+        File target = new File(basePath + "/" + targetFilename);
+        Files.copy(source.toPath(), target.toPath());
+        return targetFilename;
+      })
+      .subscribeOn(Schedulers.boundedElastic())
+      .onErrorResume(e -> {
+        log.error("Error copying default file: {}.", e.getMessage());
+        throw new RuntimeException("Error copying default file.");
+      });
+  }
+}

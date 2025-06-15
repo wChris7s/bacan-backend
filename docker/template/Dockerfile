@@ -1,16 +1,14 @@
 FROM amazoncorretto:21.0.7-alpine
+LABEL app.author="cw.aranibar.solaligue@gmail.com" \
+      app.github="https://github.com/wChris7s" \
+      app.version="1.0.0"
 
-LABEL authors="cw-solaligue"
+WORKDIR .
 
-ARG DEPENDENCY=""
-ARG JAR_NAME=""
+ARG JAR_FILE=""
 
 ENV SPRING_PROFILE=""
-ENV JAVA_OPTS=""
-ENV AZURE_CLIENT_ID=""
-ENV AZURE_CLIENT_SECRET=""
-ENV AZURE_TENANT_ID=""
 
-COPY ${DEPENDENCY}/${JAR_NAME} /app/app.jar
+COPY ${JAR_FILE} app.jar
 
-ENTRYPOINT exec java ${JAVA_OPTS} -cp /app/app.jar org.springframework.boot.loader.launch.JarLauncher --spring.profiles.active=${SPRING_PROFILE}
+ENTRYPOINT ["java","-jar","app.jar","--spring.profiles.active=${SPRING_PROFILE}"]

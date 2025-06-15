@@ -1,11 +1,11 @@
 package com.bacan.app.infrastructure.adapter.out.http;
 
 import com.bacan.app.application.port.out.http.RolePort;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
-import java.util.List;
-
+@Slf4j
 public class RolePortClientAdapter implements RolePort {
 
   private final WebClient webClient;
@@ -15,14 +15,16 @@ public class RolePortClientAdapter implements RolePort {
   }
 
   @Override
-  public Mono<Void> validateRoleIds(List<Long> roleIds) {
+  public Mono<Void> validateRole(Long roleId) {
     return webClient.get()
-        .uri(uriBuilder -> uriBuilder
-            .path("/validate")
-            .queryParam("roleIds", roleIds.toArray())
-            .build())
-        .retrieve()
-        .bodyToMono(Void.class)
-        .doOnError(e -> System.err.println("Error validating roles: " + e.getMessage()));
+      .uri(uriBuilder -> uriBuilder
+        .path("/{id}/validate")
+        .build(roleId))
+      .retrieve()
+      .bodyToMono(Void.class)
+      .doOnError(e -> {
+        log.error("An error occurred validating roled: {}", e.getMessage());
+        throw new RuntimeException("An error occurred validating roles.");
+      });
   }
 }
