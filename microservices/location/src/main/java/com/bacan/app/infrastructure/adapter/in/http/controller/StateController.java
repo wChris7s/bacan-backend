@@ -1,8 +1,8 @@
 package com.bacan.app.infrastructure.adapter.in.http.controller;
 
 import com.bacan.app.application.port.in.StateUseCase;
-import com.bacan.app.infrastructure.adapter.in.http.controller.mapper.location.state.StateDTOMapper;
 import com.bacan.app.infrastructure.adapter.in.http.dto.location.state.StateDTO;
+import com.bacan.app.infrastructure.adapter.in.http.mapper.location.state.StateDTOMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

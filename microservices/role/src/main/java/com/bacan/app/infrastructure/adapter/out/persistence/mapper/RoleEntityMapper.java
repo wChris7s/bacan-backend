@@ -1,6 +1,6 @@
 package com.bacan.app.infrastructure.adapter.out.persistence.mapper;
 
-import com.bacan.app.domain.model.role.Role;
+import com.bacan.app.domain.models.role.Role;
 import com.bacan.app.infrastructure.adapter.out.persistence.entity.RoleEntity;
 
 public class RoleEntityMapper {

@@ -1,8 +1,6 @@
 package com.bacan.app.application.port.in;
 
-import com.bacan.app.domain.model.user.User;
-import com.bacan.app.domain.model.user.UserRole;
-import reactor.core.publisher.Flux;
+import com.bacan.app.domain.models.user.User;
 import reactor.core.publisher.Mono;
 
 public interface UserRoleUseCase {

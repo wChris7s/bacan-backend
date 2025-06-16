@@ -1,6 +1,5 @@
 package com.bacan.app.infrastructure.adapter.out.persistence.entity;
 
-import io.r2dbc.spi.Blob;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;

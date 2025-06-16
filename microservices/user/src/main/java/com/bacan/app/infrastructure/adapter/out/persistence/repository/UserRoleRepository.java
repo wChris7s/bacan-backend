@@ -15,8 +15,8 @@ public class UserRoleRepository {
 
   public Mono<Void> createUserRole(UserRoleEntity userRoleEntity) {
     return databaseClient.sql("INSERT INTO bacan.user_role(user_id, role_id) VALUES (:userId, :roleId)")
-        .bind("userId", userRoleEntity.getUserId())
-        .bind("roleId", userRoleEntity.getRoleId())
-        .then();
+      .bind("userId", userRoleEntity.getUserId())
+      .bind("roleId", userRoleEntity.getRoleId())
+      .then();
   }
 }

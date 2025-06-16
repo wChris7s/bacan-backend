@@ -1,7 +1,7 @@
 package com.bacan.app.infrastructure.adapter.out.persistence;
 
 import com.bacan.app.application.port.out.persistence.AddressDatabasePort;
-import com.bacan.app.domain.model.address.Address;
+import com.bacan.app.domain.models.address.Address;
 import com.bacan.app.infrastructure.adapter.out.persistence.entity.AddressEntity;
 import com.bacan.app.infrastructure.adapter.out.persistence.mapper.AddressEntityMapper;
 import com.bacan.app.infrastructure.adapter.out.persistence.repository.AddressRepository;

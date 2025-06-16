@@ -2,7 +2,7 @@ package com.bacan.app.application.port.in;
 
 import com.bacan.app.application.port.out.persistence.RoleDatabasePort;
 import com.bacan.app.application.services.RoleService;
-import com.bacan.app.domain.model.role.Role;
+import com.bacan.app.domain.models.role.Role;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -36,27 +36,27 @@ class RoleUseCaseTest {
   @Test
   void createRole() {
     Role inputRole = Role.builder()
-        .name("ADMIN")
-        .build();
+      .name("ADMIN")
+      .build();
 
     Role outputRole = Role.builder()
-        .id(1L)
-        .name("ADMIN")
-        .enabled(true)
-        .createdAt(now)
-        .updatedAt(now)
-        .build();
+      .id(1L)
+      .name("ADMIN")
+      .enabled(true)
+      .createdAt(now)
+      .updatedAt(now)
+      .build();
 
     when(roleDatabasePort.createRole(any())).thenReturn(Mono.just(outputRole));
     Mono<Role> result = roleService.createRole(inputRole);
 
     StepVerifier.create(result)
-        .expectNextMatches(role -> role.getId().equals(outputRole.getId()) &&
-            role.getName().equals(outputRole.getName()) &&
-            role.getCreatedAt().equals(outputRole.getCreatedAt()) &&
-            role.getUpdatedAt().equals(outputRole.getUpdatedAt()) &&
-            role.isEnabled() == outputRole.isEnabled()
-        ).verifyComplete();
+      .expectNextMatches(role -> role.getId().equals(outputRole.getId()) &&
+        role.getName().equals(outputRole.getName()) &&
+        role.getCreatedAt().equals(outputRole.getCreatedAt()) &&
+        role.getUpdatedAt().equals(outputRole.getUpdatedAt()) &&
+        role.isEnabled() == outputRole.isEnabled()
+      ).verifyComplete();
 
     verify(roleDatabasePort, times(1)).createRole(any());
   }

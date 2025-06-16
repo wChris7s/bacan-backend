@@ -2,14 +2,12 @@ package com.bacan.app.application.services;
 
 import com.bacan.app.application.port.in.UserUseCase;
 import com.bacan.app.application.port.out.persistence.UserDatabasePort;
-import com.bacan.app.domain.constant.UserStorage;
-import com.bacan.app.domain.model.user.User;
+import com.bacan.app.domain.models.user.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 

@@ -2,10 +2,10 @@ package com.bacan.app.infrastructure.adapter.in.http.controller;
 
 import com.bacan.app.application.port.in.UserFacadeUseCase;
 import com.bacan.app.application.port.in.UserUseCase;
-import com.bacan.app.domain.model.user.User;
-import com.bacan.app.infrastructure.adapter.in.http.controller.mapper.user.UserDTOMapper;
+import com.bacan.app.domain.models.user.User;
 import com.bacan.app.infrastructure.adapter.in.http.dto.user.CreateUserDTO;
 import com.bacan.app.infrastructure.adapter.in.http.dto.user.UserDTO;
+import com.bacan.app.infrastructure.adapter.in.http.mapper.user.UserDTOMapper;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

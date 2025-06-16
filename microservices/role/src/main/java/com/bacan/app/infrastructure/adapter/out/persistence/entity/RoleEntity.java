@@ -12,14 +12,14 @@ import java.time.LocalDateTime;
 @Builder
 @Table(name = "role", schema = "bacan")
 public class RoleEntity {
-    @Id
-    Long id;
-    String name;
-    @Column(value = "created_at")
-    LocalDateTime createdAt;
-    @Column(value = "updated_at")
-    LocalDateTime updatedAt;
-    boolean enabled;
-    @Column(value = "is_public")
-    boolean isPublic;
+  @Id
+  Long id;
+  String name;
+  @Column(value = "created_at")
+  LocalDateTime createdAt;
+  @Column(value = "updated_at")
+  LocalDateTime updatedAt;
+  boolean enabled;
+  @Column(value = "is_public")
+  boolean isPublic;
 }

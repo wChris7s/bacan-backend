@@ -2,7 +2,6 @@ subprojects { Project subproject ->
   {
     apply {
       plugin "app-base.plugin"
-      plugin "app-domain.plugin"
       plugin "app-spring.plugin"
       plugin "app-cloud.plugin"
     }
@@ -16,7 +15,8 @@ subprojects { Project subproject ->
     }
 
     dependencies {
-      implementation project(':common:cors')
+      implementation project(':common:file-manager')
+      implementation project(':common:shared-core')
       implementation 'org.springframework.cloud:spring-cloud-starter-config'
     }
 

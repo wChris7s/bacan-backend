@@ -1,7 +1,7 @@
 package com.bacan.app.infrastructure.adapter.in.http.controller;
 
 import com.bacan.app.application.port.in.FileManagerUseCase;
-import com.bacan.app.domain.storage.DefaultStorageType;
+import com.bacan.app.domain.enums.DefaultStorageType;
 import com.bacan.app.infrastructure.adapter.in.http.dto.media.MediaDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;

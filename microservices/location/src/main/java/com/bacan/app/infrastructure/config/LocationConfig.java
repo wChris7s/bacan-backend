@@ -21,16 +21,16 @@ import org.springframework.context.annotation.Configuration;
 public class LocationConfig {
   @Bean
   public LocationDatabasePort locationDatabasePort(
-      CountryRepository countryRepository,
-      DistrictRepository districtRepository,
-      ProvinceRepository provinceRepository,
-      StateRepository stateRepository) {
+    CountryRepository countryRepository,
+    DistrictRepository districtRepository,
+    ProvinceRepository provinceRepository,
+    StateRepository stateRepository) {
     return LocationPostgresAdapter.builder()
-        .countryRepository(countryRepository)
-        .districtRepository(districtRepository)
-        .provinceRepository(provinceRepository)
-        .stateRepository(stateRepository)
-        .build();
+      .countryRepository(countryRepository)
+      .districtRepository(districtRepository)
+      .provinceRepository(provinceRepository)
+      .stateRepository(stateRepository)
+      .build();
   }
 
   @Bean

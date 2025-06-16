@@ -1,9 +1,9 @@
 package com.bacan.app.application.services;
 
 import com.bacan.app.application.port.in.FileManagerUseCase;
-import com.bacan.app.application.port.out.DefaultStoragePort;
 import com.bacan.app.application.port.out.AppStoragePort;
-import com.bacan.app.domain.storage.DefaultStorageType;
+import com.bacan.app.application.port.out.DefaultStoragePort;
+import com.bacan.app.domain.enums.DefaultStorageType;
 import org.springframework.core.io.Resource;
 import org.springframework.http.codec.multipart.FilePart;
 import reactor.core.publisher.Mono;

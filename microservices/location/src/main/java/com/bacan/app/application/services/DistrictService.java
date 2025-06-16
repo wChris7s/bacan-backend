@@ -2,7 +2,7 @@ package com.bacan.app.application.services;
 
 import com.bacan.app.application.port.in.DistrictUseCase;
 import com.bacan.app.application.port.out.persistence.LocationDatabasePort;
-import com.bacan.app.domain.model.location.district.District;
+import com.bacan.app.domain.models.location.district.District;
 import reactor.core.publisher.Flux;
 
 public class DistrictService implements DistrictUseCase {

@@ -1,7 +1,7 @@
 package com.bacan.app.infrastructure.adapter.out.persistence;
 
 import com.bacan.app.application.port.out.persistence.RoleDatabasePort;
-import com.bacan.app.domain.model.role.Role;
+import com.bacan.app.domain.models.role.Role;
 import com.bacan.app.infrastructure.adapter.out.persistence.entity.RoleEntity;
 import com.bacan.app.infrastructure.adapter.out.persistence.mapper.RoleEntityMapper;
 import com.bacan.app.infrastructure.adapter.out.persistence.repository.RoleRepository;

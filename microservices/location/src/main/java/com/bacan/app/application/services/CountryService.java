@@ -2,7 +2,7 @@ package com.bacan.app.application.services;
 
 import com.bacan.app.application.port.in.CountryUseCase;
 import com.bacan.app.application.port.out.persistence.LocationDatabasePort;
-import com.bacan.app.domain.model.location.country.Country;
+import com.bacan.app.domain.models.location.country.Country;
 import reactor.core.publisher.Flux;
 
 public class CountryService implements CountryUseCase {

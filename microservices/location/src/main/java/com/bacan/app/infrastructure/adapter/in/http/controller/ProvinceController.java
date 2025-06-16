@@ -1,8 +1,8 @@
 package com.bacan.app.infrastructure.adapter.in.http.controller;
 
 import com.bacan.app.application.port.in.ProvinceUseCase;
-import com.bacan.app.infrastructure.adapter.in.http.controller.mapper.location.province.ProvinceDTOMapper;
 import com.bacan.app.infrastructure.adapter.in.http.dto.location.province.ProvinceDTO;
+import com.bacan.app.infrastructure.adapter.in.http.mapper.location.province.ProvinceDTOMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

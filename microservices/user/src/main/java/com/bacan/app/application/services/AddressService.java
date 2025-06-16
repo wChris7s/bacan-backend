@@ -2,7 +2,7 @@ package com.bacan.app.application.services;
 
 import com.bacan.app.application.port.in.AddressUseCase;
 import com.bacan.app.application.port.out.persistence.AddressDatabasePort;
-import com.bacan.app.domain.model.address.Address;
+import com.bacan.app.domain.models.address.Address;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import reactor.core.publisher.Mono;

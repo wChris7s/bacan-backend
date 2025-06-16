@@ -1,8 +1,8 @@
 package com.bacan.app.infrastructure.adapter.in.http.controller;
 
 import com.bacan.app.application.port.in.CountryUseCase;
-import com.bacan.app.infrastructure.adapter.in.http.controller.mapper.location.country.CountryDTOMapper;
 import com.bacan.app.infrastructure.adapter.in.http.dto.location.country.CountryDTO;
+import com.bacan.app.infrastructure.adapter.in.http.mapper.location.country.CountryDTOMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

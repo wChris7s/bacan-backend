@@ -1,0 +1,8 @@
+plugins {
+  id 'app-base.plugin'
+  id 'app-spring.plugin'
+}
+
+dependencies {
+  implementation project(':common:shared-core')
+}

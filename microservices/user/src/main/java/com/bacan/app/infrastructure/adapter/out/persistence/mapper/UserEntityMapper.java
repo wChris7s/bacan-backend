@@ -1,6 +1,6 @@
 package com.bacan.app.infrastructure.adapter.out.persistence.mapper;
 
-import com.bacan.app.domain.model.user.User;
+import com.bacan.app.domain.models.user.User;
 import com.bacan.app.infrastructure.adapter.out.persistence.entity.UserEntity;
 
 public class UserEntityMapper {

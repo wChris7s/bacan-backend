@@ -5,7 +5,7 @@ import com.bacan.app.application.port.in.AddressUseCase;
 import com.bacan.app.application.port.in.UserFacadeUseCase;
 import com.bacan.app.application.port.in.UserRoleUseCase;
 import com.bacan.app.application.port.in.UserUseCase;
-import com.bacan.app.application.port.out.http.MediaPort;
+import com.bacan.app.application.port.out.http.FileManager;
 import com.bacan.app.application.port.out.http.RolePort;
 import com.bacan.app.application.port.out.persistence.AddressDatabasePort;
 import com.bacan.app.application.port.out.persistence.UserDatabasePort;
@@ -13,7 +13,6 @@ import com.bacan.app.application.port.out.persistence.UserRoleDatabasePort;
 import com.bacan.app.application.services.AddressService;
 import com.bacan.app.application.services.UserRoleService;
 import com.bacan.app.application.services.UserService;
-import com.bacan.app.infrastructure.adapter.out.http.MediaPortClientAdapter;
 import com.bacan.app.infrastructure.adapter.out.http.RolePortClientAdapter;
 import com.bacan.app.infrastructure.adapter.out.persistence.AddressPostgresAdapter;
 import com.bacan.app.infrastructure.adapter.out.persistence.UserPostgresAdapter;
@@ -71,17 +70,18 @@ public class UserConfig {
   }
 
   @Bean
-  public MediaPort mediaPort(@Value("${application.microservice.ms-media}") String baseUrl) {
-    return new MediaPortClientAdapter(WebClient.create(baseUrl + "/bcn/api/media"));
-  }
-
-  @Bean
   public UserFacadeUseCase userFacadeUseCase(
     UserUseCase userUseCase,
     UserRoleUseCase userRoleUseCase,
     RolePort rolePort,
     AddressUseCase addressUseCase,
-    MediaPort mediaPort) {
-    return new UserFacade(userUseCase, userRoleUseCase, rolePort, addressUseCase, mediaPort);
+    FileManager fileManager) {
+    return UserFacade.builder()
+      .userUseCase(userUseCase)
+      .userRoleUseCase(userRoleUseCase)
+      .rolePort(rolePort)
+      .addressUseCase(addressUseCase)
+      .fileManager(fileManager)
+      .build();
   }
 }

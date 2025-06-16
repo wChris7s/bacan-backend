@@ -1,6 +1,6 @@
 package com.bacan.app.application.port.in;
 
-import com.bacan.app.domain.storage.DefaultStorageType;
+import com.bacan.app.domain.enums.DefaultStorageType;
 import org.springframework.core.io.Resource;
 import org.springframework.http.codec.multipart.FilePart;
 import reactor.core.publisher.Mono;

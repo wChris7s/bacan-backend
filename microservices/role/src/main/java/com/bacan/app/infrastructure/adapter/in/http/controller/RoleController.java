@@ -1,10 +1,10 @@
 package com.bacan.app.infrastructure.adapter.in.http.controller;
 
 import com.bacan.app.application.port.in.RoleUseCase;
-import com.bacan.app.domain.model.role.Role;
-import com.bacan.app.infrastructure.adapter.in.http.controller.mapper.role.RoleDTOMapper;
+import com.bacan.app.domain.models.role.Role;
 import com.bacan.app.infrastructure.adapter.in.http.dto.role.CreateRoleDTO;
 import com.bacan.app.infrastructure.adapter.in.http.dto.role.RoleDTO;
+import com.bacan.app.infrastructure.adapter.in.http.mapper.role.RoleDTOMapper;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

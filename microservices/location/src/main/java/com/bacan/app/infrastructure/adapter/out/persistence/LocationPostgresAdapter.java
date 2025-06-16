@@ -1,10 +1,10 @@
 package com.bacan.app.infrastructure.adapter.out.persistence;
 
 import com.bacan.app.application.port.out.persistence.LocationDatabasePort;
-import com.bacan.app.domain.model.location.country.Country;
-import com.bacan.app.domain.model.location.district.District;
-import com.bacan.app.domain.model.location.province.Province;
-import com.bacan.app.domain.model.location.state.State;
+import com.bacan.app.domain.models.location.country.Country;
+import com.bacan.app.domain.models.location.district.District;
+import com.bacan.app.domain.models.location.province.Province;
+import com.bacan.app.domain.models.location.state.State;
 import com.bacan.app.infrastructure.adapter.out.persistence.mapper.CountryEntityMapper;
 import com.bacan.app.infrastructure.adapter.out.persistence.mapper.DistrictEntityMapper;
 import com.bacan.app.infrastructure.adapter.out.persistence.mapper.ProvinceEntityMapper;

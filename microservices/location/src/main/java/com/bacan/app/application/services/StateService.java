@@ -2,7 +2,7 @@ package com.bacan.app.application.services;
 
 import com.bacan.app.application.port.in.StateUseCase;
 import com.bacan.app.application.port.out.persistence.LocationDatabasePort;
-import com.bacan.app.domain.model.location.state.State;
+import com.bacan.app.domain.models.location.state.State;
 import reactor.core.publisher.Flux;
 
 public class StateService implements StateUseCase {

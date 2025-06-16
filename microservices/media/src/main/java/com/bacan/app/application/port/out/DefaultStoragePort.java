@@ -1,6 +1,6 @@
 package com.bacan.app.application.port.out;
 
-import com.bacan.app.domain.storage.DefaultStorageType;
+import com.bacan.app.domain.enums.DefaultStorageType;
 import reactor.core.publisher.Mono;
 
 public interface DefaultStoragePort {

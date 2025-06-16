@@ -2,8 +2,8 @@ package com.bacan.app.application.services;
 
 import com.bacan.app.application.port.in.UserRoleUseCase;
 import com.bacan.app.application.port.out.persistence.UserRoleDatabasePort;
-import com.bacan.app.domain.model.user.User;
-import com.bacan.app.domain.model.user.UserRole;
+import com.bacan.app.domain.models.user.User;
+import com.bacan.app.domain.models.user.UserRole;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import reactor.core.publisher.Mono;
