@@ -15,12 +15,25 @@ public class UserDTOMapper {
       .documentId(user.documentId())
       .name(user.name())
       .lastname(user.lastname())
-      .birthDate(user.birthDate())
       .phone(user.phone())
       .email(user.email())
-      .profilePhoto(user.photo())
+      .photo(user.photo())
       .createdAt(user.createdAt())
       .updatedAt(user.updatedAt())
+      .enabled(user.enabled())
+      .passwordModifiedDate(user.passwordModifiedDate())
+      .phoneCountryId(user.phoneCountryId())
+      .build();
+  }
+
+  public static User mapToModel(UserDTO user) {
+    return User.builder()
+      .documentId(user.getDocumentId())
+      .name(user.getName())
+      .lastname(user.getLastname())
+      .phone(user.getPhone())
+      .email(user.getEmail())
+      .photo(user.getPhoto())
       .build();
   }
 

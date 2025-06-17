@@ -1,16 +1,16 @@
 package com.bacan.app.infrastructure.adapter.out.http;
 
-import com.bacan.app.application.port.out.http.RolePort;
+import com.bacan.app.application.port.out.http.RoleMicroservice;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 @Slf4j
-public class RolePortClientAdapter implements RolePort {
+public class RoleMicroserviceClientAdapter implements RoleMicroservice {
 
   private final WebClient webClient;
 
-  public RolePortClientAdapter(WebClient webClient) {
+  public RoleMicroserviceClientAdapter(WebClient webClient) {
     this.webClient = webClient;
   }
 
@@ -23,8 +23,8 @@ public class RolePortClientAdapter implements RolePort {
       .retrieve()
       .bodyToMono(Void.class)
       .doOnError(e -> {
-        log.error("An error occurred validating roled: {}", e.getMessage());
-        throw new RuntimeException("An error occurred validating roles.");
+        log.error("An error occurred validating role: {}", e.getMessage());
+        throw new RuntimeException("An error occurred validating user.");
       });
   }
 }

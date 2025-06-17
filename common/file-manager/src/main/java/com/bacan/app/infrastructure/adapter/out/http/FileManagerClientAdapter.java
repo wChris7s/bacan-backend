@@ -1,7 +1,7 @@
 package com.bacan.app.infrastructure.adapter.out.http;
 
 import com.bacan.app.application.port.out.http.FileManager;
-import com.bacan.app.domain.enums.DefaultStorageType;
+import com.bacan.app.domain.enums.DefaultStorageEnum;
 import com.bacan.app.infrastructure.adapter.in.http.dto.media.MediaDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -30,16 +30,16 @@ public class FileManagerClientAdapter implements FileManager {
   }
 
   @Override
-  public Mono<String> storeDefaultFileAndGetFilename(DefaultStorageType defaultStorageType) {
+  public Mono<String> storeDefaultFileAndGetFilename(DefaultStorageEnum defaultStorageEnum) {
     return client.post()
       .uri(uriBuilder -> uriBuilder
         .path("/default/{storageType}")
-        .build(defaultStorageType))
+        .build(defaultStorageEnum))
       .retrieve()
       .bodyToMono(MediaDTO.class)
       .map(MediaDTO::getFilename)
       .doOnError(e -> {
-        log.error("An error occurred storing default file for {}: {}", defaultStorageType, e.getMessage());
+        log.error("An error occurred storing default file for {}: {}", defaultStorageEnum, e.getMessage());
         throw new RuntimeException("An error occurred storing default file.");
       });
   }

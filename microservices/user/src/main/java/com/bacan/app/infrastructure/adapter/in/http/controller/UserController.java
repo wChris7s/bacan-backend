@@ -7,7 +7,6 @@ import com.bacan.app.infrastructure.adapter.in.http.dto.user.CreateUserDTO;
 import com.bacan.app.infrastructure.adapter.in.http.dto.user.UserDTO;
 import com.bacan.app.infrastructure.adapter.in.http.mapper.user.UserDTOMapper;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController()
@@ -21,16 +20,17 @@ public class UserController {
     this.userUseCase = userUseCase;
   }
 
-  @GetMapping
-  public Flux<UserDTO> getAllUsers() {
-    return this.userUseCase.getAllUser()
-      .map(UserDTOMapper::mapToDto);
-  }
 
   @PostMapping
   public Mono<Void> createUser(@RequestBody CreateUserDTO createUserDto) {
     User user = UserDTOMapper.mapToModel(createUserDto);
     return userFacadeUseCase.createUserAndAssignTheirRoles(user);
+  }
+
+  @GetMapping("/{userId}")
+  public Mono<UserDTO> getUserById(@PathVariable String userId) {
+    return userUseCase.getUserById(userId)
+      .map(UserDTOMapper::mapToDto);
   }
 }
 

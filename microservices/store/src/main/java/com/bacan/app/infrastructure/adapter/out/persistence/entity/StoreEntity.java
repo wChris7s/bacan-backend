@@ -9,6 +9,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -16,9 +17,9 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "store", schema = "bacan")
-public class StoreEntity implements Persistable<String> {
+public class StoreEntity implements Persistable<UUID> {
   @Id
-  private String id;
+  private UUID id;
   @Column(value = "user_id")
   private String userId;
   private String name;

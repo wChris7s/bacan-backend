@@ -1,33 +1,52 @@
 package com.bacan.app.infrastructure.adapter.in.http.controller;
 
+import com.bacan.app.application.facades.StoreFacade;
 import com.bacan.app.application.port.in.http.StoreUseCase;
-import com.bacan.app.domain.models.store.Store;
-import com.bacan.app.infrastructure.adapter.in.http.dto.store.CreateStoreDTO;
-import com.bacan.app.infrastructure.adapter.in.http.dto.store.StoreDTO;
+import com.bacan.app.domain.queries.store.StoreQuery;
+import com.bacan.app.infrastructure.adapter.in.http.dto.store.StoreResponseDTO;
 import com.bacan.app.infrastructure.adapter.in.http.mapper.store.StoreDTOMapper;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.*;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+@Slf4j
 @RestController
 @RequestMapping(path = "/bcn/api/store")
-
 public class StoreController {
+  private final StoreFacade storeFacade;
+
   private final StoreUseCase storeUseCase;
 
-  public StoreController(StoreUseCase storeUseCase) {
+  public StoreController(StoreFacade storeFacade, StoreUseCase storeUseCase) {
+    this.storeFacade = storeFacade;
     this.storeUseCase = storeUseCase;
   }
 
-  @GetMapping
-  public Flux<StoreDTO> getAllStores() {
-    return this.storeUseCase.getAllStores()
-      .map(StoreDTOMapper::mapToDto);
+  @GetMapping("/")
+  public Mono<Page<StoreResponseDTO>> getAllStores(
+    @RequestParam(name = "page", defaultValue = "0") Integer page,
+    @RequestParam(name = "size", defaultValue = "5") Integer size,
+    @RequestParam(name = "direction", defaultValue = "ASC") String direction,
+    @RequestParam(name = "property") String property,
+    @RequestParam(name = "name", required = false) String name) {
+    Sort sort = Sort.by(Sort.Direction.fromString(direction), property);
+    Pageable pageable = PageRequest.of(page, size, sort);
+    StoreQuery storeQuery = StoreQuery.builder()
+      .name(name)
+      .pageable(pageable)
+      .build();
+
+    return storeFacade.getAllStoresWithUserByQuery(storeQuery)
+      .map(StoreDTOMapper::mapToDto)
+      .collectList()
+      .zipWith(storeUseCase.countAllStoresByQuery(storeQuery))
+      .map(p -> new PageImpl<>(p.getT1(), pageable, p.getT2()));
   }
 
-  @PostMapping
-  public Mono<Void> createStore(@RequestBody CreateStoreDTO createStoreDTO) {
-    Store store = StoreDTOMapper.mapToModel(createStoreDTO);
-    return this.storeUseCase.createStore(store).then();
+  @GetMapping("/{storeId}")
+  public Mono<StoreResponseDTO> getStoreById(@PathVariable String storeId) {
+    return storeFacade.getStoreWithUserById(storeId)
+      .map(StoreDTOMapper::mapToDto);
   }
 }

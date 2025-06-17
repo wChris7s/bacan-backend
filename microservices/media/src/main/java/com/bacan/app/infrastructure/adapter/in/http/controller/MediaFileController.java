@@ -1,7 +1,7 @@
 package com.bacan.app.infrastructure.adapter.in.http.controller;
 
 import com.bacan.app.application.port.in.FileManagerUseCase;
-import com.bacan.app.domain.enums.DefaultStorageType;
+import com.bacan.app.domain.enums.DefaultStorageEnum;
 import com.bacan.app.infrastructure.adapter.in.http.dto.media.MediaDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.Resource;
@@ -79,7 +79,7 @@ public class MediaFileController {
 
   @PostMapping("/default/{storageType}")
   public Mono<ResponseEntity<Mono<MediaDTO>>> storeDefaultFile(@PathVariable String storageType) {
-    return fileManagerUseCase.storeDefaultFile(DefaultStorageType.valueOf(storageType))
+    return fileManagerUseCase.storeDefaultFile(DefaultStorageEnum.valueOf(storageType))
       .flatMap(filename -> Mono.just(ResponseEntity
         .ok(Mono.just(MediaDTO.builder()
           .filename(filename)

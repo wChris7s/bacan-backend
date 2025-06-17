@@ -6,14 +6,14 @@ import com.bacan.app.application.port.in.UserFacadeUseCase;
 import com.bacan.app.application.port.in.UserRoleUseCase;
 import com.bacan.app.application.port.in.UserUseCase;
 import com.bacan.app.application.port.out.http.FileManager;
-import com.bacan.app.application.port.out.http.RolePort;
+import com.bacan.app.application.port.out.http.RoleMicroservice;
 import com.bacan.app.application.port.out.persistence.AddressDatabasePort;
 import com.bacan.app.application.port.out.persistence.UserDatabasePort;
 import com.bacan.app.application.port.out.persistence.UserRoleDatabasePort;
 import com.bacan.app.application.services.AddressService;
 import com.bacan.app.application.services.UserRoleService;
 import com.bacan.app.application.services.UserService;
-import com.bacan.app.infrastructure.adapter.out.http.RolePortClientAdapter;
+import com.bacan.app.infrastructure.adapter.out.http.RoleMicroserviceClientAdapter;
 import com.bacan.app.infrastructure.adapter.out.persistence.AddressPostgresAdapter;
 import com.bacan.app.infrastructure.adapter.out.persistence.UserPostgresAdapter;
 import com.bacan.app.infrastructure.adapter.out.persistence.UserRolePostgresAdapter;
@@ -65,21 +65,21 @@ public class UserConfig {
   }
 
   @Bean
-  public RolePort rolePort(@Value("${application.microservice.ms-role}") String baseUrl) {
-    return new RolePortClientAdapter(WebClient.create(baseUrl + "/bcn/api/role"));
+  public RoleMicroservice rolePort(@Value("${application.microservice.ms-role}") String baseUrl) {
+    return new RoleMicroserviceClientAdapter(WebClient.create(baseUrl + "/bcn/api/role"));
   }
 
   @Bean
   public UserFacadeUseCase userFacadeUseCase(
     UserUseCase userUseCase,
     UserRoleUseCase userRoleUseCase,
-    RolePort rolePort,
+    RoleMicroservice roleMicroservice,
     AddressUseCase addressUseCase,
     FileManager fileManager) {
     return UserFacade.builder()
       .userUseCase(userUseCase)
       .userRoleUseCase(userRoleUseCase)
-      .rolePort(rolePort)
+      .roleMicroservice(roleMicroservice)
       .addressUseCase(addressUseCase)
       .fileManager(fileManager)
       .build();

@@ -5,7 +5,6 @@ import com.bacan.app.domain.models.user.User;
 import com.bacan.app.infrastructure.adapter.out.persistence.entity.UserEntity;
 import com.bacan.app.infrastructure.adapter.out.persistence.mapper.UserEntityMapper;
 import com.bacan.app.infrastructure.adapter.out.persistence.repository.UserRepository;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public class UserPostgresAdapter implements UserDatabasePort {
@@ -20,12 +19,12 @@ public class UserPostgresAdapter implements UserDatabasePort {
     UserEntity userEntity = UserEntityMapper.mapToEntity(user);
     userEntity.setNew(true);
     return this.userRepository.save(userEntity)
-        .map(UserEntityMapper::mapToModel);
+      .map(UserEntityMapper::mapToModel);
   }
 
   @Override
-  public Flux<User> findAllUsers() {
-    return this.userRepository.findAll()
-        .map(UserEntityMapper::mapToModel);
+  public Mono<User> findUserById(String userId) {
+    return userRepository.findById(userId)
+      .map(UserEntityMapper::mapToModel);
   }
 }

@@ -5,7 +5,6 @@ import com.bacan.app.application.port.out.persistence.UserDatabasePort;
 import com.bacan.app.domain.models.user.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
@@ -23,7 +22,7 @@ public class UserService implements UserUseCase {
   @Override
   public Mono<User> createUser(User user) {
     LocalDateTime actualDateTime = LocalDateTime.now(ZoneId.of("America/Lima"));
-    return this.userDatabasePort.createUser(user
+    return userDatabasePort.createUser(user
         .withEnabled(true)
         .withCreatedAt(actualDateTime)
         .withUpdatedAt(actualDateTime)
@@ -33,7 +32,11 @@ public class UserService implements UserUseCase {
   }
 
   @Override
-  public Flux<User> getAllUser() {
-    return this.userDatabasePort.findAllUsers();
+  public Mono<User> getUserById(String userId) {
+    return userDatabasePort.findUserById(userId)
+      .switchIfEmpty(Mono.defer(() -> {
+        logger.error("User with Id {} not found.", userId);
+        throw new RuntimeException("User not found");
+      }));
   }
 }

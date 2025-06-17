@@ -17,6 +17,6 @@ public class UserRolePostgresAdapter implements UserRoleDatabasePort {
   @Override
   public Mono<Void> createUserRole(UserRole userRole) {
     UserRoleEntity userRoleEntity = UserRoleEntityMapper.mapToEntity(userRole);
-    return this.userRoleRepository.createUserRole(userRoleEntity);
+    return this.userRoleRepository.save(userRoleEntity);
   }
 }

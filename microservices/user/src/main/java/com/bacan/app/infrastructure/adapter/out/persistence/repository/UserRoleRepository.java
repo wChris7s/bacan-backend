@@ -13,7 +13,7 @@ public class UserRoleRepository {
     this.databaseClient = databaseClient;
   }
 
-  public Mono<Void> createUserRole(UserRoleEntity userRoleEntity) {
+  public Mono<Void> save(UserRoleEntity userRoleEntity) {
     return databaseClient.sql("INSERT INTO bacan.user_role(user_id, role_id) VALUES (:userId, :roleId)")
       .bind("userId", userRoleEntity.getUserId())
       .bind("roleId", userRoleEntity.getRoleId())
