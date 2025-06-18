@@ -9,8 +9,6 @@ import lombok.Builder;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.UUID;
-
 @Builder
 public class ProductFacade {
   private final ProductUseCase productUseCase;

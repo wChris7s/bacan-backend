@@ -13,7 +13,7 @@ import com.bacan.app.application.port.out.persistence.UserRoleDatabasePort;
 import com.bacan.app.application.services.AddressService;
 import com.bacan.app.application.services.UserRoleService;
 import com.bacan.app.application.services.UserService;
-import com.bacan.app.infrastructure.adapter.out.http.RoleMicroserviceClientAdapter;
+import com.bacan.app.infrastructure.adapter.out.http.RoleClientAdapter;
 import com.bacan.app.infrastructure.adapter.out.persistence.AddressPostgresAdapter;
 import com.bacan.app.infrastructure.adapter.out.persistence.UserPostgresAdapter;
 import com.bacan.app.infrastructure.adapter.out.persistence.UserRolePostgresAdapter;
@@ -66,7 +66,7 @@ public class UserConfig {
 
   @Bean
   public RoleMicroservice rolePort(@Value("${application.microservice.ms-role}") String baseUrl) {
-    return new RoleMicroserviceClientAdapter(WebClient.create(baseUrl + "/bcn/api/role"));
+    return new RoleClientAdapter(WebClient.create(baseUrl + "/bcn/api/role"));
   }
 
   @Bean

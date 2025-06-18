@@ -18,10 +18,8 @@ public interface CategoryRepository extends
 
   Mono<Long> countAllByNameContainingIgnoreCase(String name);
 
-  @Query("" +
-    "SELECT c.id, c.name, c.created_at, c.updated_at FROM bacan.category c " +
+  @Query("SELECT c.* FROM bacan.category c " +
     "INNER JOIN bacan.product_category pc ON c.id = pc.category_id " +
-    "WHERE pc.product_id = :productId"
-  )
+    "WHERE pc.product_id = :productId")
   Flux<CategoryEntity> findAllByProductId(@Param("productId") UUID productId);
 }

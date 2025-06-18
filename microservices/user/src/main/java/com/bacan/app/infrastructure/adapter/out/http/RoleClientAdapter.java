@@ -6,11 +6,11 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 @Slf4j
-public class RoleMicroserviceClientAdapter implements RoleMicroservice {
+public class RoleClientAdapter implements RoleMicroservice {
 
   private final WebClient webClient;
 
-  public RoleMicroserviceClientAdapter(WebClient webClient) {
+  public RoleClientAdapter(WebClient webClient) {
     this.webClient = webClient;
   }
 
