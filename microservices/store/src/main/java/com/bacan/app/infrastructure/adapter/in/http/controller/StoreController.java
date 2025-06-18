@@ -23,7 +23,7 @@ public class StoreController {
     this.storeUseCase = storeUseCase;
   }
 
-  @GetMapping("/")
+  @GetMapping()
   public Mono<Page<StoreResponseDTO>> getAllStores(
     @RequestParam(name = "page", defaultValue = "0") Integer page,
     @RequestParam(name = "size", defaultValue = "5") Integer size,

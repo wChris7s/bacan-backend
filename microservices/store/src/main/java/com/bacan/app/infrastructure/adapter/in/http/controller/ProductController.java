@@ -26,7 +26,7 @@ public class ProductController {
     this.productUseCase = productUseCase;
   }
 
-  @GetMapping("/")
+  @GetMapping()
   public Mono<Page<ProductResponseDTO>> getAllProducts(
     @RequestParam(name = "page", defaultValue = "0") Integer page,
     @RequestParam(name = "size", defaultValue = "5") Integer size,
