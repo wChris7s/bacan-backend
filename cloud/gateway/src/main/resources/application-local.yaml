@@ -24,8 +24,16 @@ spring:
             - id: ms-store
               uri: http://localhost:9093
               predicates:
-                - Path=/bcn/api/store/**
+                - Path=/bcn/api/store/**, /bcn/api/category/**, /bcn/api/product/**
             - id: ms-media
               uri: http://localhost:9094
               predicates:
                 - Path=/bcn/api/media/**
+          globalcors:
+            cors-configurations:
+              '[/**]':
+                allowedOrigins:
+                  - "http://127.0.0.1:4200"
+                  - "http://localhost:4200"
+                allowedMethods: "*"
+                allowedHeaders: "*"

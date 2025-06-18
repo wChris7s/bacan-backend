@@ -2,7 +2,6 @@ rootProject.name = 'bacan-backend'
 
 /* ======================== COMMON ======================== */
 include ':common'
-include ':common:cors'
 include ':common:shared-core'
 include ':common:file-manager'
 
