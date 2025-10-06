@@ -1,5 +1,8 @@
 services:
-  db:
+  postgres:
+    profiles:
+      - local
+      - docker
     image: postgres:16.7
     restart: always
     volumes:
@@ -10,6 +13,31 @@ services:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: change_me
       POSTGRES_DB: ecm
+
+  # Microservices
+  configserver:
+    profiles:
+      - docker
+    image: bacan/config-server:1.0.0
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - "8982:8982"
+    environment:
+      SPRING_PROFILE: native
+
+  ms-user:
+    profiles:
+      - docker
+    image: bacan/user:1.0.0
+    restart: always
+    depends_on:
+      - configserver
+    ports:
+      - "9090:9090"
+    environment:
+      SPRING_PROFILE: docker
 
 volumes:
   bacan:

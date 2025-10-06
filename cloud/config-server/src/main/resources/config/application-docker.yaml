@@ -4,6 +4,13 @@ spring:
     password: change_me
     url: r2dbc:postgresql://postgres:5432/ecm
 
+  liquibase:
+    url: jdbc:postgresql://postgres:5432/ecm
+    user: admin
+    password: change_me
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+    enabled: true
+
 logging:
   level:
     io.r2dbc.postgresql.QUERY: DEBUG

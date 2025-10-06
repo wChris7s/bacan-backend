@@ -103,5 +103,21 @@ terraform apply
 
 ## Swagger
 
-All microservices have documentations about it API, to access to that info its only need to config the microservice port and run the next link:
+All microservices have documentations about it API, to access to that info its only need to config the microservice port
+and run the next link:
 `http://localhost:<port>/bcn/api/openapi/ui/swagger-ui/index.html`
+
+# Build docker images
+
+After run the above commands, execute: `./star-docker-containers.sh`
+
+- Example for config server: `./gradlew :cloud:config-server:docker`
+
+- Example for user microservice: `./gradlew :microservices:user:docker`
+
+# Run stopped containers
+
+[https://stackoverflow.com/questions/65953634/how-do-i-inspect-the-stopped-docker-container-files](https://stackoverflow.com/questions/65953634/how-do-i-inspect-the-stopped-docker-container-files)
+
+- `docker run -d --entrypoint sleep <image> 3600`
+- `docker exec -ti <container-id_or_hash> sh`

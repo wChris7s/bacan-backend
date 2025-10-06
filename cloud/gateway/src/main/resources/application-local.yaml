@@ -5,8 +5,6 @@ spring:
   application:
     name: api-gateway
   cloud:
-    config:
-      enabled: false
     gateway:
       server:
         webflux:
@@ -44,24 +42,8 @@ spring:
                 allowedMethods: "*"
                 allowedHeaders: "*"
                 allow-credentials: true
-
-          httpclient:
-            wiretap: true
-          httpserver:
-            wiretap: true
   security:
     oauth2:
       resourceserver:
         jwt:
           issuer-uri: https://cognito-idp.sa-east-1.amazonaws.com/sa-east-1_159w2HKSs
-
-logging:
-  level:
-    org:
-      springframework:
-        cloud:
-          gateway:
-            TRACE
-    reactor:
-      netty:
-        TRACE

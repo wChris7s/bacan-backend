@@ -5,6 +5,7 @@ subprojects { Project subproject ->
       plugin "app-spring.plugin"
       plugin "app-cloud.plugin"
       plugin "app-reactive-db.plugin"
+      plugin 'com.palantir.docker'
     }
 
     bootRun {
@@ -13,25 +14,32 @@ subprojects { Project subproject ->
 
     dependencies {
       implementation project(':common:core')
+      implementation 'org.springframework.cloud:spring-cloud-starter-config'
     }
 
     // ======================== PALANTIR DOCKER ========================
     // =========== https://github.com/palantir/gradle-docker ===========
     docker {
       name "bacan/${subproject.name}:${subproject.version}"
-      dockerfile file("src/main/resources/template/Dockerfile")
+      dockerfile file("build/template/Dockerfile")
       files "build/libs/${subproject.name}-${subproject.version}.jar"
-      buildArgs(['JAR_FILE': "${subproject.name}-${subproject.version}.jar"])
+      copySpec.from("build/resources/main").into("src")
+      buildArgs([
+        'JAR_NAME'       : "src/${subproject.name}-${subproject.version}.jar",
+        'SOURCE_DIR_NAME': "src",
+      ])
     }
 
     tasks.register('copyDockerTemplate', Copy) {
       from "${rootDir}/docker/template/Dockerfile"
-      into subproject.getLayout().getProjectDirectory().dir("src/main/resources/template")
+      into layout.projectDirectory.dir("build/template")
     }
 
-    docker.dependsOn build
+    dockerPrepare.dependsOn build, copyDockerTemplate
     // ======================== =============== ========================
 
+    compileJava.dependsOn(clean)
+    docker.dependsOn(build)
 
     tasks.named('test') {
       useJUnitPlatform()
