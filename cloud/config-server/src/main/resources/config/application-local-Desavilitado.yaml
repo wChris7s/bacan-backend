@@ -1,0 +1,20 @@
+server:
+  port: 8982
+
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: local
+    include: native  # <- esto habilita el backend nativo junto con 'local'
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
