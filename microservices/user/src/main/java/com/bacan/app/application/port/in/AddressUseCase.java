@@ -4,7 +4,9 @@ import com.bacan.app.domain.models.address.Address;
 import reactor.core.publisher.Mono;
 
 public interface AddressUseCase {
-  Mono<Void> createUserAddress(Address address);
+  Mono<Address> createUserAddress(Address address);
 
-  Mono<Void> updateUserAddress(Address address);
+  Mono<Address> updateUserAddress(Long addressId, Address address);
+
+  Mono<Address> getUserByIdOrThrow(Long addressId);
 }

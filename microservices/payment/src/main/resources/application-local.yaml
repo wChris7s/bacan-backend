@@ -1,0 +1,9 @@
+server:
+  port: 9095
+spring:
+  application:
+    name: ms-user
+  config:
+    import: configserver:http://localhost:8982
+mercadopago:
+  access_token: ${MP_ACCESS_TOKEN}

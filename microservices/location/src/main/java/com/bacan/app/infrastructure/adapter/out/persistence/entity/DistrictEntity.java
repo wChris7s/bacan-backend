@@ -17,6 +17,4 @@ public class DistrictEntity {
   private String name;
   @Column(value = "province_id")
   private String provinceId;
-  @Column(value = "state_id")
-  private String stateId;
 }

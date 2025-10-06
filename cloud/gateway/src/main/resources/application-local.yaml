@@ -29,11 +29,37 @@ spring:
               uri: http://localhost:9094
               predicates:
                 - Path=/bcn/api/media/**
+            - id: ms-payment
+              uri: http://localhost:9095
+              predicates:
+                - Path=/bcn/api/payment/**
           globalcors:
             cors-configurations:
               '[/**]':
                 allowedOrigins:
-                  - "http://127.0.0.1:4200"
-                  - "http://localhost:4200"
+                  - "http://127.0.0.1:5173"
+                  - "http://localhost:5173"
                 allowedMethods: "*"
                 allowedHeaders: "*"
+                allow-credentials: true
+
+          httpclient:
+            wiretap: true
+          httpserver:
+            wiretap: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://cognito-idp.sa-east-1.amazonaws.com/sa-east-1_159w2HKSs
+
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          gateway:
+            TRACE
+    reactor:
+      netty:
+        TRACE

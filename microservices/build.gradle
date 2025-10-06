@@ -4,20 +4,11 @@ subprojects { Project subproject ->
       plugin "app-base.plugin"
       plugin "app-spring.plugin"
       plugin "app-cloud.plugin"
-    }
-
-    logger.info("Project name: {}", subproject.name);
-
-    if (subproject.name != "media") {
-      apply {
-        plugin "app-reactive-db.plugin"
-      }
+      plugin "app-reactive-db.plugin"
     }
 
     dependencies {
-      implementation project(':common:file-manager')
-      implementation project(':common:shared-core')
-      implementation 'org.springframework.cloud:spring-cloud-starter-config'
+      implementation project(':common:core')
     }
 
     // ======================== PALANTIR DOCKER ========================

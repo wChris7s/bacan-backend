@@ -1,41 +1,21 @@
 package com.bacan.app.infrastructure.adapter.out.persistence.mapper;
 
 import com.bacan.app.domain.models.address.Address;
+import com.bacan.app.domain.models.location.district.District;
 import com.bacan.app.infrastructure.adapter.out.persistence.entity.AddressEntity;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
-public class AddressEntityMapper {
-  public static AddressEntity mapToEntity(Address address) {
-    return AddressEntity.builder()
-      .id(address.getId())
-      .userId(address.getUserId())
-      .countryId(address.getCountryId())
-      .stateId(address.getStateId())
-      .provinceId(address.getProvinceId())
-      .districtId(address.getDistrictId())
-      .street(address.getStreet())
-      .postalCode(address.getPostalCode())
-      .number(address.getNumber())
-      .reference(address.getReference())
-      .createdAt(address.getCreatedAt())
-      .updatedAt(address.getUpdatedAt())
-      .build();
+@Mapper
+public interface AddressEntityMapper {
+  @Mapping(target = "districtId", source = "district.id")
+  AddressEntity mapToEntity(Address address);
 
-  }
+  @Mapping(target = "district", source = "districtId")
+  Address mapToModel(AddressEntity address);
 
-  public static Address mapToModel(AddressEntity address) {
-    return Address.builder()
-      .id(address.getId())
-      .userId(address.getUserId())
-      .countryId(address.getCountryId())
-      .stateId(address.getStateId())
-      .provinceId(address.getProvinceId())
-      .districtId(address.getDistrictId())
-      .street(address.getStreet())
-      .postalCode(address.getPostalCode())
-      .number(address.getNumber())
-      .reference(address.getReference())
-      .createdAt(address.getCreatedAt())
-      .updatedAt(address.getUpdatedAt())
-      .build();
+  default District toDistrict(String districtId) {
+    return districtId == null ? null :
+      District.builder().id(districtId).build();
   }
 }
