@@ -26,7 +26,5 @@ application:
   microservice:
     url:
       ms-user: http://localhost:9090
-      ms-role: http://localhost:9091
       ms-location: http://localhost:9092/bcn/api/location
       ms-store: http://localhost:9093
-      ms-media: http://localhost:9094

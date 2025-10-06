@@ -7,6 +7,10 @@ subprojects { Project subproject ->
       plugin "app-reactive-db.plugin"
     }
 
+    bootRun {
+      systemProperties = System.properties as Map<String, ?>
+    }
+
     dependencies {
       implementation project(':common:core')
     }

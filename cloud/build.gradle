@@ -1,5 +1,9 @@
 subprojects {
-    apply {
-        plugin 'app-cloud.plugin'
-    }
+  apply {
+    plugin 'app-cloud.plugin'
+  }
+
+  bootRun {
+    systemProperties = System.properties as Map<String, ?>
+  }
 }

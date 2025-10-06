@@ -16,11 +16,8 @@ springdoc:
     path: /bcn/api/openapi/docs/api-docs.yaml
 
 application:
-  upload:
-    path: /home/cw-lambda/Workspace/bacan-backend/upload
   microservice:
-    ms-user: http://ms-user:9090
-    ms-role: http://ms-role:9091
-    ms-location: http://ms-location:9092
-    ms-store: http://ms-store:9093
-    ms-media: http://ms-media:9094
+    url:
+      ms-user: http://ms-user:9090
+      ms-location: http://ms-location:9092/bcn/api/location
+      ms-store: http://ms-store:9093

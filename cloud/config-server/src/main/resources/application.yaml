@@ -1,10 +1,7 @@
 server:
-  address: 0.0.0.0
   port: 8982
 
 spring:
-  application:
-    name: config-server
   profiles:
     active: native
   cloud:
@@ -12,9 +9,5 @@ spring:
       server:
         native:
           search-locations: classpath:/config
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info
+  application:
+    name: configserver

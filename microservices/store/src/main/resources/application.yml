@@ -1,14 +1,7 @@
+server:
+  port: 9093
 spring:
   application:
     name: ms-store
-
-  # Activa SIEMPRE el perfil local al arrancar
-  profiles:
-    active: local
-
-  # Importa config del Config Server (sin bootstrap)
   config:
-    import: "optional:configserver:http://127.0.0.1:8982"
-
-# Si el config server no está arriba, que NO truene al iniciar
-spring.cloud.config.fail-fast: false
+    import: configserver:http://localhost:8982
