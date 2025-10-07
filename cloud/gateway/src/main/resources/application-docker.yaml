@@ -10,19 +10,19 @@ spring:
         webflux:
           routes:
             - id: ms-user
-              uri: http://localhost:9090
+              uri: http://ms-user:9090
               predicates:
                 - Path=/bcn/api/user/**
             - id: ms-location
-              uri: http://localhost:9092
+              uri: http://ms-location:9092
               predicates:
                 - Path=/bcn/api/location/**
             - id: ms-store
-              uri: http://localhost:9093
+              uri: http://ms-store:9093
               predicates:
                 - Path=/bcn/api/store/**, /bcn/api/category/**, /bcn/api/product/**
             - id: ms-payment
-              uri: http://localhost:9095
+              uri: http://ms-payment:9095
               predicates:
                 - Path=/bcn/api/payment/**
           globalcors:

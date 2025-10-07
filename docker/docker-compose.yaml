@@ -33,6 +33,25 @@ services:
     environment:
       SPRING_PROFILE: native
 
+  gateway:
+    profiles:
+      - docker
+    image: bacan/gateway:1.0.0
+    restart: always
+    depends_on:
+      configserver:
+        condition: service_healthy
+    healthcheck:
+      test: "wget -qO - http://gateway:8991/actuator/health | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    ports:
+      - "8991:8991"
+    environment:
+      SPRING_PROFILE: docker
+
   ms-user:
     profiles:
       - docker

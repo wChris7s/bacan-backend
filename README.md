@@ -114,6 +114,7 @@ and run the next link:
 After run the above commands, execute: `./star-docker-containers.sh`
 
 - Config server: `./gradlew :cloud:config-server:docker`
+- Gateway server: `./gradlew :cloud:gateway:docker`
 - User microservice: `./gradlew :microservices:user:docker`
 - Location microservice: `./gradlew :microservices:location:docker`
 
