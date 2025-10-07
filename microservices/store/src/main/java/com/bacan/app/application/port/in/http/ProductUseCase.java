@@ -5,7 +5,7 @@ import com.bacan.app.domain.queries.product.ProductQuery;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-public interface ProductUseCase { 
+public interface ProductUseCase {
   Mono<Product> createProduct(Product product);
 
   Flux<Product> getAllProductsByQuery(ProductQuery productQuery);
@@ -13,5 +13,6 @@ public interface ProductUseCase {
   Mono<Long> countAllProductsByQuery(ProductQuery productQuery);
 
   Mono<Product> getProductById(Long productId);
-  Mono<Product> createProduct(Product product);
+  Mono<Product> updateProduct(Long productId, Product product);
+  Mono<Void> deleteProduct(Long productId);
 }

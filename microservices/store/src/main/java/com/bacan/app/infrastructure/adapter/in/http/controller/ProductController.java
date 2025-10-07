@@ -2,6 +2,7 @@ package com.bacan.app.infrastructure.adapter.in.http.controller;
 
 import com.bacan.app.application.facades.ProductFacade;
 import com.bacan.app.application.port.in.http.ProductUseCase;
+import com.bacan.app.domain.models.product.Product;
 import com.bacan.app.domain.queries.product.ProductQuery;
 import com.bacan.app.infrastructure.adapter.in.http.dto.product.ProductDTO;
 import com.bacan.app.infrastructure.adapter.in.http.dto.product.ProductResponseDTO;
@@ -60,12 +61,25 @@ public class ProductController {
         .map(ProductDTOMapper::mapToDto);
   }
 
-  // === NEW: Create product ===
   @PostMapping
   public Mono<Void> createProduct(@RequestBody ProductDTO dto) {
-    return productUseCase.createProduct(ProductDTOMapper.mapToDomain(dto))
-        .then();
+    Product toCreate = ProductDTOMapper.mapToDomain(dto);
+    return productUseCase.createProduct(toCreate).then();
   }
 
-  /* TODO: Create product */
+  // === UPDATE ===
+  @PutMapping("/{productId}")
+  public Mono<ProductResponseDTO> updateProduct(@PathVariable Long productId, @RequestBody ProductDTO dto) {
+    Product toUpdate = ProductDTOMapper.mapToDomain(dto);
+    return productUseCase.updateProduct(productId, toUpdate)
+        .flatMap(updated -> productFacade
+            .getProductWithTheirCategoriesAndStoreById(String.valueOf(productId)))
+        .map(ProductDTOMapper::mapToDto);
+  }
+
+  // === DELETE ===
+  @DeleteMapping("/{productId}")
+  public Mono<Void> deleteProduct(@PathVariable Long productId) {
+    return productUseCase.deleteProduct(productId);
+  }
 }

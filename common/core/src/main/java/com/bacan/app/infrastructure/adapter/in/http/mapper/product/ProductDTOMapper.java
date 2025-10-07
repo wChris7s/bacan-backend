@@ -33,15 +33,14 @@ public class ProductDTOMapper {
         .build();
   }
 
-  // NEW: DTO -> Domain (para POST / futuro PUT)
+  // DTO -> Domain (para POST / PUT)
   public static Product mapToDomain(ProductDTO dto) {
     return Product.builder()
-        // id en create normalmente lo genera la DB/capa persistencia
-        // .id(dto.getId()) // si tu Product de dominio lo acepta, puedes activarlo
+        // id: en create suele ignorarse (lo genera la persistencia)
+        // .id(dto.getId() == null ? null : Long.valueOf(dto.getId()))
 
-        // storeId: si el dominio lo maneja como Long, convierte aquí:
-        // .storeId(dto.getStoreId() == null ? null : Long.valueOf(dto.getStoreId()))
-        .storeId(dto.getStoreId())
+        // storeId viene como String en el DTO y es Long en el dominio:
+        .storeId(dto.getStoreId() == null || dto.getStoreId().isBlank() ? null : Long.valueOf(dto.getStoreId()))
 
         .name(dto.getName())
         .price(dto.getPrice())

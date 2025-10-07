@@ -57,7 +57,6 @@ public class CategoryController {
     return categoryUseCase.createCategory(category).then();
   }
 
-  // UPDATE (requiere que el CategoryUseCase tenga updateCategory)
   @PutMapping("/{categoryId}")
   @Operation(summary = "Update category by id")
   public Mono<CategoryResponseDTO> updateCategory(
@@ -68,7 +67,6 @@ public class CategoryController {
         .map(CategoryDTOMapper::mapToDto);
   }
 
-  // DELETE (requiere que el CategoryUseCase tenga deleteCategory)
   @DeleteMapping("/{categoryId}")
   @Operation(summary = "Delete category by id")
   public Mono<Void> deleteCategory(@PathVariable Long categoryId) {
@@ -82,10 +80,4 @@ public class CategoryController {
         .map(CategoryDTOMapper::mapToDto)
         .collectList();
   }
-
-  /* TODO: Get category by Id */
-
-  /* TODO: Create category */
-
-  /* TODO: Assign category to a product using category id and product id */
 }
