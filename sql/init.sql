@@ -4,6 +4,10 @@
 
 -- DROP TABLE bacan.category;
 
+CREATE SCHEMA IF NOT EXISTS bacan;
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 CREATE TABLE bacan.category
 (
     id         bigserial    NOT NULL,

@@ -24,14 +24,23 @@ import io.r2dbc.spi.ConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.r2dbc.core.R2dbcEntityTemplate;
 import org.springframework.r2dbc.core.DatabaseClient;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
 public class StoreConfig {
+
+  /** Provee un R2dbcEntityTemplate si no existe ya en el contexto. */
   @Bean
-  public StoreDatabase storeDatabasePort(StoreRepository storeRepository) {
-    return new StorePostgresAdapter(storeRepository);
+  public R2dbcEntityTemplate r2dbcEntityTemplate(ConnectionFactory connectionFactory) {
+    return new R2dbcEntityTemplate(connectionFactory);
+  }
+
+  @Bean
+  public StoreDatabase storeDatabasePort(StoreRepository storeRepository,
+                                         R2dbcEntityTemplate r2dbcEntityTemplate) {
+    return new StorePostgresAdapter(storeRepository, r2dbcEntityTemplate);
   }
 
   @Bean
@@ -40,7 +49,8 @@ public class StoreConfig {
   }
 
   @Bean
-  public ProductDatabase productDatabase(ProductRepository productRepository, ProductCategoryRepository productCategoryRepository) {
+  public ProductDatabase productDatabase(ProductRepository productRepository,
+                                         ProductCategoryRepository productCategoryRepository) {
     return new ProductPostgresAdapter(productRepository, productCategoryRepository);
   }
 
@@ -65,15 +75,14 @@ public class StoreConfig {
   }
 
   @Bean
-  public ProductFacade productFacade(
-    ProductUseCase productUseCase,
-    CategoryUseCase categoryUseCase,
-    StoreUseCase storeUseCase) {
+  public ProductFacade productFacade(ProductUseCase productUseCase,
+                                     CategoryUseCase categoryUseCase,
+                                     StoreUseCase storeUseCase) {
     return ProductFacade.builder()
-      .productUseCase(productUseCase)
-      .categoryUseCase(categoryUseCase)
-      .storeUseCase(storeUseCase)
-      .build();
+        .productUseCase(productUseCase)
+        .categoryUseCase(categoryUseCase)
+        .storeUseCase(storeUseCase)
+        .build();
   }
 
   @Bean
@@ -84,8 +93,8 @@ public class StoreConfig {
   @Bean
   public StoreFacade storeFacade(StoreUseCase storeUseCase, UserMicroservice userMicroservice) {
     return StoreFacade.builder()
-      .storeUseCase(storeUseCase)
-      .userMicroservice(userMicroservice)
-      .build();
+        .storeUseCase(storeUseCase)
+        .userMicroservice(userMicroservice)
+        .build();
   }
 }

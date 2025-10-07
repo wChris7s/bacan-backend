@@ -6,11 +6,10 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface StoreDatabase {
-  Mono<Store> createStore(Store store);
-
-  Mono<Store> findStoreById(String storeId);
-
-  Flux<Store> findAllStores(StoreQuery query);
-
-  Mono<Long> countAllStores(StoreQuery query);
+  Flux<Store> findAllByQuery(StoreQuery query);
+  Mono<Long> countByQuery(StoreQuery query);
+  Mono<Store> findById(String storeId);
+  Mono<Store> save(Store store);
+  Mono<Store> update(String storeId, Store store);
+  Mono<Void> deleteById(String storeId);
 }

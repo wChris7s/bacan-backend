@@ -3,10 +3,10 @@ services:
     image: postgres:16.7
     restart: always
     volumes:
-      # - ../sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ../sql/init.sql:/docker-entrypoint-initdb.d/init.sql
       - bacan:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5432:5432" 
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}

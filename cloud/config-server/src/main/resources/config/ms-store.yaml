@@ -1,0 +1,17 @@
+server:
+  port: 9093
+
+spring:
+  application:
+    name: ms-store
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/ecm?schema=bacan
+    username: user1234
+    password: passwduser1234
+  config:
+    import: "optional:configserver:${SPRING_CLOUD_CONFIG_URI:http://localhost:8982}"
+
+application:
+  microservice:
+    ms-user: http://localhost:9090
+    ms-media: http://localhost:9094
