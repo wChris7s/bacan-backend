@@ -10,7 +10,7 @@ import org.springframework.data.relational.core.mapping.Table;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "country", schema = "bacan")
+@Table(name = "country", schema = "location")
 public class CountryEntity {
   @Id
   private Long id;

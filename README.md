@@ -53,17 +53,19 @@ Reference: [https://docs.liquibase.com/reference-guide/generate-changelog](https
 ```bash
 # Table
 liquibase generateChangeLog \
---changelogFile=microservices/user/src/main/resources/db/changelog/migrations/003_create_address_table.xml \
---default-schema-name=usr \
---include-objects=address \
+--changelogFile=microservices/location/src/main/resources/changelog/migrations/004_create_district_table.xml \
+--default-schema-name=location \
+--include-objects=district \
 --include-schema=true \
 --author="Christian W. Aranibar Solaligue"
 
 # Data -> Is necessary specify the table name to avoid populate unnecessary data.
 liquibase generateChangeLog \
---include-objects=<table> \
+--default-schema-name=location \
+--include-objects=district \
 --diff-types=data \
---data-output-directory=src/main/resources/db/changelog/data \
+--include-schema=true \
+--data-output-directory=microservices/location/src/main/resources/changelog/data \
 --author="Christian W. Aranibar Solaligue"
 ```
 
@@ -111,9 +113,9 @@ and run the next link:
 
 After run the above commands, execute: `./star-docker-containers.sh`
 
-- Example for config server: `./gradlew :cloud:config-server:docker`
-
-- Example for user microservice: `./gradlew :microservices:user:docker`
+- Config server: `./gradlew :cloud:config-server:docker`
+- User microservice: `./gradlew :microservices:user:docker`
+- Location microservice: `./gradlew :microservices:location:docker`
 
 # Run stopped containers
 

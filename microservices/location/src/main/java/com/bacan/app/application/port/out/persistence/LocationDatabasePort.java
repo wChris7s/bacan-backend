@@ -17,4 +17,10 @@ public interface LocationDatabasePort {
   Flux<Province> findAllProvincesByStateId(String stateId);
 
   Mono<District> findDistrictById(String districtId);
+
+  Mono<Province> findProvinceById(String provinceId);
+
+  Mono<State> findStateById(String stateId);
+
+  Mono<Country> findCountryById(Long countryId);
 }

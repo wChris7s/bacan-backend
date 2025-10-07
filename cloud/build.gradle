@@ -8,6 +8,10 @@ subprojects {
     systemProperties = System.properties as Map<String, ?>
   }
 
+  dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+  }
+
   // ======================== PALANTIR DOCKER ========================
   // =========== https://github.com/palantir/gradle-docker ===========
   docker {

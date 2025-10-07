@@ -10,7 +10,7 @@ import org.springframework.data.relational.core.mapping.Table;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "district", schema = "bacan")
+@Table(name = "district", schema = "location")
 public class DistrictEntity {
   @Id
   private String id;

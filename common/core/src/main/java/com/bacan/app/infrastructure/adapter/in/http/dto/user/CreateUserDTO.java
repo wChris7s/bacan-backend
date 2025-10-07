@@ -16,5 +16,4 @@ public class CreateUserDTO {
   private String email;
   private Long roleId;
   private CreateAddressDTO address;
-  private Boolean enabled;
 }

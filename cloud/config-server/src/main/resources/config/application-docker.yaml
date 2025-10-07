@@ -26,5 +26,5 @@ application:
   microservice:
     url:
       ms-user: http://ms-user:9090
-      ms-location: http://ms-location:9092/bcn/api/location
+      ms-location: http://ms-location:9092
       ms-store: http://ms-store:9093

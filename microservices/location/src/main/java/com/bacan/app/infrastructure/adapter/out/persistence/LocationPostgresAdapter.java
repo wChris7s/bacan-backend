@@ -57,4 +57,22 @@ public class LocationPostgresAdapter implements LocationDatabasePort {
     return districtRepository.findById(districtId)
       .map(DistrictEntityMapper::mapToModel);
   }
+
+  @Override
+  public Mono<Province> findProvinceById(String provinceId) {
+    return provinceRepository.findById(provinceId)
+      .map(ProvinceEntityMapper::mapToModel);
+  }
+
+  @Override
+  public Mono<State> findStateById(String stateId) {
+    return stateRepository.findById(stateId)
+      .map(StateEntityMapper::mapToModel);
+  }
+
+  @Override
+  public Mono<Country> findCountryById(Long countryId) {
+    return countryRepository.findById(countryId)
+      .map(CountryEntityMapper::mapToModel);
+  }
 }

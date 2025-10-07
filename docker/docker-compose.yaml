@@ -22,6 +22,12 @@ services:
     restart: always
     depends_on:
       - postgres
+    healthcheck:
+      test: "wget -qO - http://configserver:8982/actuator/health | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
     ports:
       - "8982:8982"
     environment:
@@ -33,9 +39,35 @@ services:
     image: bacan/user:1.0.0
     restart: always
     depends_on:
-      - configserver
+      configserver:
+        condition: service_healthy
+    healthcheck:
+      test: "wget -qO - http://ms-user:9090/actuator/health | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
     ports:
       - "9090:9090"
+    environment:
+      SPRING_PROFILE: docker
+
+  ms-location:
+    profiles:
+      - docker
+    image: bacan/location:1.0.0
+    restart: always
+    depends_on:
+      configserver:
+        condition: service_healthy
+    healthcheck:
+      test: "wget -qO - http://ms-location:9092/actuator/health | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    ports:
+      - "9092:9092"
     environment:
       SPRING_PROFILE: docker
 

@@ -32,10 +32,10 @@ public class UserEntity {
   private String profilePhotoUrl;
 
   @Column("role_id")
-  private String roleId;
+  private Long roleId;
 
   @Column("address_id")
-  private String addressId;
+  private Long addressId;
 
   @Column("created_at")
   @CreatedDate
