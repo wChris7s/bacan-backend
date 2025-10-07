@@ -15,6 +15,7 @@ import com.bacan.app.infrastructure.adapter.out.persistence.repository.ProvinceR
 import com.bacan.app.infrastructure.adapter.out.persistence.repository.StateRepository;
 import lombok.Builder;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Builder
 public class LocationPostgresAdapter implements LocationDatabasePort {
@@ -34,8 +35,8 @@ public class LocationPostgresAdapter implements LocationDatabasePort {
   }
 
   @Override
-  public Flux<District> findAllDistrictsByProvinceAndStateId(String provinceId, String stateId) {
-    return districtRepository.findAllByProvinceIdAndStateId(provinceId, stateId)
+  public Flux<District> findAllDistrictsByProvinceAndStateId(String provinceId) {
+    return districtRepository.findAllByProvinceId(provinceId)
       .map(DistrictEntityMapper::mapToModel);
   }
 
@@ -49,5 +50,29 @@ public class LocationPostgresAdapter implements LocationDatabasePort {
   public Flux<Province> findAllProvincesByStateId(String stateId) {
     return provinceRepository.findAllByStateId(stateId)
       .map(ProvinceEntityMapper::mapToModel);
+  }
+
+  @Override
+  public Mono<District> findDistrictById(String districtId) {
+    return districtRepository.findById(districtId)
+      .map(DistrictEntityMapper::mapToModel);
+  }
+
+  @Override
+  public Mono<Province> findProvinceById(String provinceId) {
+    return provinceRepository.findById(provinceId)
+      .map(ProvinceEntityMapper::mapToModel);
+  }
+
+  @Override
+  public Mono<State> findStateById(String stateId) {
+    return stateRepository.findById(stateId)
+      .map(StateEntityMapper::mapToModel);
+  }
+
+  @Override
+  public Mono<Country> findCountryById(Long countryId) {
+    return countryRepository.findById(countryId)
+      .map(CountryEntityMapper::mapToModel);
   }
 }

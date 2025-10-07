@@ -1,5 +1,8 @@
 services:
-  db:
+  postgres:
+    profiles:
+      - local
+      - docker
     image: postgres:16.7
     restart: always
     volumes:
@@ -8,9 +11,85 @@ services:
     ports:
       - "5432:5432" 
     environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: change_me
       POSTGRES_DB: ecm
+
+  # Microservices
+  configserver:
+    profiles:
+      - docker
+    image: bacan/config-server:1.0.0
+    restart: always
+    depends_on:
+      - postgres
+    healthcheck:
+      test: "wget -qO - http://configserver:8982/actuator/health | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    ports:
+      - "8982:8982"
+    environment:
+      SPRING_PROFILE: native
+
+  gateway:
+    profiles:
+      - docker
+    image: bacan/gateway:1.0.0
+    restart: always
+    depends_on:
+      configserver:
+        condition: service_healthy
+    healthcheck:
+      test: "wget -qO - http://gateway:8991/actuator/health | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    ports:
+      - "8991:8991"
+    environment:
+      SPRING_PROFILE: docker
+
+  ms-user:
+    profiles:
+      - docker
+    image: bacan/user:1.0.0
+    restart: always
+    depends_on:
+      configserver:
+        condition: service_healthy
+    healthcheck:
+      test: "wget -qO - http://ms-user:9090/actuator/health | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    ports:
+      - "9090:9090"
+    environment:
+      SPRING_PROFILE: docker
+
+  ms-location:
+    profiles:
+      - docker
+    image: bacan/location:1.0.0
+    restart: always
+    depends_on:
+      configserver:
+        condition: service_healthy
+    healthcheck:
+      test: "wget -qO - http://ms-location:9092/actuator/health | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    ports:
+      - "9092:9092"
+    environment:
+      SPRING_PROFILE: docker
 
 volumes:
   bacan:

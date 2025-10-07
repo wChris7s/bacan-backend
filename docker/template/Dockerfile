@@ -3,12 +3,14 @@ LABEL app.author="cw.aranibar.solaligue@gmail.com" \
       app.github="https://github.com/wChris7s" \
       app.version="1.0.0"
 
-WORKDIR .
+WORKDIR /app
 
-ARG JAR_FILE=""
+ARG SOURCE_DIR_NAME=""
+ARG JAR_NAME=""
 
 ENV SPRING_PROFILE=""
 
-COPY ${JAR_FILE} app.jar
+COPY ${SOURCE_DIR_NAME} .
+COPY ${JAR_NAME} app.jar
 
-ENTRYPOINT ["java","-jar","app.jar","--spring.profiles.active=${SPRING_PROFILE}"]
+ENTRYPOINT ["java","-jar","-Dspring.profiles.active=${SPRING_PROFILE}", "app.jar"]

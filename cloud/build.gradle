@@ -1,5 +1,38 @@
 subprojects {
-    apply {
-        plugin 'app-cloud.plugin'
-    }
+  apply {
+    plugin 'app-cloud.plugin'
+    plugin 'com.palantir.docker'
+  }
+
+  bootRun {
+    systemProperties = System.properties as Map<String, ?>
+  }
+
+  dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+  }
+
+  // ======================== PALANTIR DOCKER ========================
+  // =========== https://github.com/palantir/gradle-docker ===========
+  docker {
+    name "bacan/${project.name}:${project.version}"
+    dockerfile file("build/template/Dockerfile")
+    files "build/libs/${project.name}-${project.version}.jar"
+    copySpec.from("build/resources/main").into("src")
+    buildArgs([
+      'JAR_NAME'       : "src/${project.name}-${project.version}.jar",
+      'SOURCE_DIR_NAME': "src",
+    ])
+  }
+
+  compileJava.dependsOn(clean)
+  docker.dependsOn(build)
+
+  tasks.register('copyDockerTemplate', Copy) {
+    from "${rootDir}/docker/template/Dockerfile"
+    into layout.projectDirectory.dir("build/template")
+  }
+
+  dockerPrepare.dependsOn build, copyDockerTemplate
+  // ======================== =============== ========================
 }

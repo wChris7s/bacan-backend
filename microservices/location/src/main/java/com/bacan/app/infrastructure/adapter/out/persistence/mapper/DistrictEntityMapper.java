@@ -11,7 +11,6 @@ public class DistrictEntityMapper {
       .id(districtEntity.getId())
       .name(districtEntity.getName())
       .provinceId(districtEntity.getProvinceId())
-      .stateId(districtEntity.getStateId())
       .build();
   }
 
@@ -20,7 +19,6 @@ public class DistrictEntityMapper {
       .id(district.id())
       .name(district.name())
       .provinceId(district.provinceId())
-      .stateId(district.stateId())
       .build();
   }
 }

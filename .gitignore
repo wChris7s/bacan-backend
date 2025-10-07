@@ -43,3 +43,5 @@ docker/.env
 
 ## Upload
 upload
+
+.env

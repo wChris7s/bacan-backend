@@ -1,0 +1,4 @@
+dependencies {
+  implementation 'com.mercadopago:sdk-java:2.5.0'
+  implementation 'org.springframework.boot:spring-boot-starter-security'
+}

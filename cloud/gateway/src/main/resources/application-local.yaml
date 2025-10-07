@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: api-gateway
+    name: gateway
   cloud:
     gateway:
       server:
@@ -13,10 +13,6 @@ spring:
               uri: http://localhost:9090
               predicates:
                 - Path=/bcn/api/user/**
-            - id: ms-role
-              uri: http://localhost:9091
-              predicates:
-                - Path=/bcn/api/role/**
             - id: ms-location
               uri: http://localhost:9092
               predicates:
@@ -25,15 +21,16 @@ spring:
               uri: http://localhost:9093
               predicates:
                 - Path=/bcn/api/store/**, /bcn/api/category/**, /bcn/api/product/**
-            - id: ms-media
-              uri: http://localhost:9094
+            - id: ms-payment
+              uri: http://localhost:9095
               predicates:
-                - Path=/bcn/api/media/**
+                - Path=/bcn/api/payment/**
           globalcors:
             cors-configurations:
               '[/**]':
                 allowedOrigins:
-                  - "http://127.0.0.1:4200"
-                  - "http://localhost:4200"
+                  - "http://127.0.0.1:5173"
+                  - "http://localhost:5173"
                 allowedMethods: "*"
                 allowedHeaders: "*"
+                allow-credentials: true

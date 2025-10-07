@@ -1,0 +1,34 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="Christian W. Aranibar Solaligue" id="1759642211359-1">
+        <createTable tableName="role" schemaName="usr">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="role_pk"/>
+            </column>
+            <column name="name" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enabled" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Christian W. Aranibar Solaligue" id="1759642563661-1">
+        <loadData commentLineStartsWith="#" encoding="UTF-8" file="classpath:db/changelog/data/role.csv"
+                  quotchar="&quot;" separator="," tableName="role" schemaName="usr">
+            <column header="id" name="id" type="NUMERIC"/>
+            <column header="name" name="name" type="STRING"/>
+            <column header="created_at" name="created_at" type="DATE"/>
+            <column header="updated_at" name="updated_at" type="DATE"/>
+            <column header="enabled" name="enabled" type="BOOLEAN"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

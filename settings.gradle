@@ -2,17 +2,14 @@ rootProject.name = 'bacan-backend'
 
 /* ======================== COMMON ======================== */
 include ':common'
-include ':common:shared-core'
-include ':common:file-manager'
+include ':common:core'
 
 /* ======================== MICROSERVICES ======================== */
 include ':microservices'
 include ':microservices:user'
-include ':microservices:role'
-include ':microservices:address'
 include ':microservices:location'
-include ':microservices:media'
 include ':microservices:store'
+include ':microservices:payment'
 
 /* ======================== CLOUD ======================== */
 include ':cloud'

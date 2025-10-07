@@ -10,13 +10,11 @@ import org.springframework.data.relational.core.mapping.Table;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "district", schema = "bacan")
+@Table(name = "district", schema = "location")
 public class DistrictEntity {
   @Id
   private String id;
   private String name;
   @Column(value = "province_id")
   private String provinceId;
-  @Column(value = "state_id")
-  private String stateId;
 }

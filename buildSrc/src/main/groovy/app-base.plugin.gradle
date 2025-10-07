@@ -1,28 +1,31 @@
 plugins {
-    id 'java'
+  id 'java'
 }
 
 java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(javaVersion)
-    }
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(javaVersion)
+  }
 }
 
 configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
+  compileOnly {
+    extendsFrom annotationProcessor
+  }
 }
 
 group = 'com.bacan.app'
 version = '1.0.0'
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 dependencies {
-    implementation "commons-io:commons-io:${commonsIOVersion}"
-    compileOnly "org.projectlombok:lombok:${lombokVersion}"
-    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+  implementation "commons-io:commons-io:${commonsIOVersion}"
+  compileOnly "org.projectlombok:lombok:${lombokVersion}"
+  annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+  implementation "org.mapstruct:mapstruct:${mapStructVersion}"
+  annotationProcessor "org.mapstruct:mapstruct-processor:${mapStructVersion}"
+  testAnnotationProcessor "org.mapstruct:mapstruct-processor:${mapStructVersion}"
 }

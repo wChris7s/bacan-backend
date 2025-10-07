@@ -1,8 +1,0 @@
-server:
-  port: 9091
-spring:
-  application:
-    name: ms-role
-  config:
-    import: configserver:http://localhost:8982
-    

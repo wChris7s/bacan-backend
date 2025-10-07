@@ -1,7 +1,0 @@
-server:
-  port: 9090
-spring:
-  application:
-    name: ms-user
-  config:
-    import: configserver:http://localhost:8982

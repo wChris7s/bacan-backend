@@ -1,0 +1,62 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="Christian W. Aranibar Solaligue" id="1759728247568-1">
+        <createTable schemaName="usr" tableName="user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_pk"/>
+            </column>
+            <column name="document_id" type="VARCHAR(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lastname" type="VARCHAR(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="VARCHAR(9)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enabled" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="profile_photo_url" type="VARCHAR(255)"/>
+            <column name="role_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Christian W. Aranibar Solaligue" id="1759728247568-2">
+        <addUniqueConstraint columnNames="document_id" constraintName="user_unique_document_id" schemaName="usr"
+                             tableName="user"/>
+    </changeSet>
+    <changeSet author="Christian W. Aranibar Solaligue" id="1759728247568-3">
+        <addUniqueConstraint columnNames="email" constraintName="user_unique_email" schemaName="usr" tableName="user"/>
+    </changeSet>
+    <changeSet author="Christian W. Aranibar Solaligue" id="1759728247568-4">
+        <addForeignKeyConstraint baseColumnNames="address_id" baseTableName="user" baseTableSchemaName="usr"
+                                 constraintName="user_address_fk" deferrable="false" initiallyDeferred="false"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"
+                                 referencedTableName="address" referencedTableSchemaName="usr" validate="true"/>
+    </changeSet>
+    <changeSet author="Christian W. Aranibar Solaligue" id="1759728247568-5">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="user" baseTableSchemaName="usr"
+                                 constraintName="user_role_fk" deferrable="false" initiallyDeferred="false"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"
+                                 referencedTableName="role" referencedTableSchemaName="usr" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

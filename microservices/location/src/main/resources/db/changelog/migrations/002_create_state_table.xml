@@ -1,0 +1,34 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="Christian W. Aranibar Solaligue" id="1759790483520-1">
+        <createTable remarks="Departamento" schemaName="location" tableName="state">
+            <column name="id" type="VARCHAR(2)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="state_pk"/>
+            </column>
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Christian W. Aranibar Solaligue" id="1759790483520-2">
+        <addForeignKeyConstraint baseColumnNames="country_id" baseTableName="state" baseTableSchemaName="location"
+                                 constraintName="state_country_fk" deferrable="false" initiallyDeferred="false"
+                                 onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id"
+                                 referencedTableName="country" referencedTableSchemaName="location" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Christian W. Aranibar Solaligue" id="1759790692385-1">
+        <loadData commentLineStartsWith="#" encoding="UTF-8"
+                  file="classpath:db/changelog/data/state.csv" quotchar="&quot;"
+                  schemaName="location" separator="," tableName="state">
+            <column header="id" name="id" type="STRING"/>
+            <column header="name" name="name" type="STRING"/>
+            <column header="country_id" name="country_id" type="NUMERIC"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

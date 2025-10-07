@@ -2,6 +2,7 @@ package com.bacan.app.infrastructure.adapter.in.http.controller;
 
 import com.bacan.app.application.port.in.DistrictUseCase;
 import com.bacan.app.infrastructure.adapter.in.http.dto.location.district.DistrictDTO;
+import com.bacan.app.infrastructure.adapter.in.http.dto.location.district.FullDistrictDTO;
 import com.bacan.app.infrastructure.adapter.in.http.mapper.location.district.DistrictDTOMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,13 +22,26 @@ public class DistrictController {
     this.districtUseCase = districtUseCase;
   }
 
-  @GetMapping("province/{provinceId}/state/{stateId}")
-  public Mono<ResponseEntity<Flux<DistrictDTO>>> getAllDistricts(
-    @PathVariable String provinceId,
-    @PathVariable String stateId) {
+  @GetMapping("province/{provinceId}")
+  public Mono<ResponseEntity<Flux<DistrictDTO>>> getAllDistricts(@PathVariable String provinceId) {
     return Mono.just(ResponseEntity.ok(districtUseCase
-      .findDistrictsByProvinceAndStateId(provinceId, stateId)
+      .getDistrictsByProvinceId(provinceId)
       .map(DistrictDTOMapper::mapToDto))
+    );
+  }
+
+  @GetMapping("/{districtId}")
+  public Mono<ResponseEntity<Mono<DistrictDTO>>> getDistrictById(@PathVariable String districtId) {
+    return Mono.just(ResponseEntity.ok(districtUseCase
+      .getDistrictById(districtId)
+      .map(DistrictDTOMapper::mapToDto))
+    );
+  }
+
+  @GetMapping("/full/{districtId}")
+  public Mono<ResponseEntity<Mono<FullDistrictDTO>>> getFullDistrictById(@PathVariable String districtId) {
+    return Mono.just(ResponseEntity.ok(districtUseCase
+      .getFullDistrictById(districtId))
     );
   }
 }
