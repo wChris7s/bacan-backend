@@ -81,9 +81,9 @@ terraform plan
 terraform apply
 ```
 
-# Deploy
+## Deploy
 
-## Docker
+### Docker
 
 - Start container: `./start-docker-containers.sh` or `docker-compose -f ./docker/docker-compose.yaml up -d`
 - Start containers with logs: `docker-compose -f ./docker/docker-compose.yaml up`
@@ -91,7 +91,7 @@ terraform apply
 - View container logs: `docker logs <container-id>`
 - Stop containers: `./stop-docker-containers.sh` or `docker-compose -f ./docker/docker-compose.yaml down`
 
-## Gradle
+### Gradle
 
 - Stage for start microservice:
   - Stage one:
@@ -103,13 +103,13 @@ terraform apply
     - `./gradlew :microservices:<ms>:clean`
     - `./gradlew :microservices:<ms>:bootRun -Dspring.profiles.active=local`
 
-## Swagger
+### Swagger
 
 All microservices have documentations about it API, to access to that info its only need to config the microservice port
 and run the next link:
 `http://localhost:<port>/bcn/api/openapi/ui/swagger-ui/index.html`
 
-# Build docker images
+### Build docker images
 
 After run the above commands, execute: `./star-docker-containers.sh`
 
@@ -119,16 +119,44 @@ After run the above commands, execute: `./star-docker-containers.sh`
 - Location microservice: `./gradlew :microservices:location:docker`
 - Store microservice: `./gradlew :microservices:store:docker`
 
-# Pull docker images to aws
+### Pull docker images to aws
 
 - `docker push 556180171691.dkr.ecr.us-east-2.amazonaws.com/config-server:1.0.0`
 - `docker push 556180171691.dkr.ecr.us-east-2.amazonaws.com/user:1.0.0`
 - `docker push 556180171691.dkr.ecr.us-east-2.amazonaws.com/location:1.0.0`
 - `docker push 556180171691.dkr.ecr.us-east-2.amazonaws.com/store:1.0.0`
 
-# Run stopped containers
+### Run stopped containers
 
 [https://stackoverflow.com/questions/65953634/how-do-i-inspect-the-stopped-docker-container-files](https://stackoverflow.com/questions/65953634/how-do-i-inspect-the-stopped-docker-container-files)
 
 - `docker run -d --entrypoint sleep <image> 3600`
 - `docker exec -ti <container-id_or_hash> sh`
+
+## Kubernetes
+
+Install the above dependencies:
+
+### eksctl
+
+[https://docs.aws.amazon.com/eks/latest/eksctl/installation.html](https://docs.aws.amazon.com/eks/latest/eksctl/installation.html)
+
+```bash
+eksctl version
+```
+
+### helm
+
+[https://helm.sh/docs/intro/install/](https://helm.sh/docs/intro/install/)
+
+```bash
+helm version
+```
+
+### kubectl
+
+[https://v1-32.docs.kubernetes.io/docs/tasks/tools/install-kubectl-linux/](https://v1-32.docs.kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+
+```bash
+kubectl version --client
+```
