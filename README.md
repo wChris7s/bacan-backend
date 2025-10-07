@@ -117,6 +117,14 @@ After run the above commands, execute: `./star-docker-containers.sh`
 - Gateway server: `./gradlew :cloud:gateway:docker`
 - User microservice: `./gradlew :microservices:user:docker`
 - Location microservice: `./gradlew :microservices:location:docker`
+- Store microservice: `./gradlew :microservices:store:docker`
+
+# Pull docker images to aws
+
+- `docker push 556180171691.dkr.ecr.us-east-2.amazonaws.com/config-server:1.0.0`
+- `docker push 556180171691.dkr.ecr.us-east-2.amazonaws.com/user:1.0.0`
+- `docker push 556180171691.dkr.ecr.us-east-2.amazonaws.com/location:1.0.0`
+- `docker push 556180171691.dkr.ecr.us-east-2.amazonaws.com/store:1.0.0`
 
 # Run stopped containers
 

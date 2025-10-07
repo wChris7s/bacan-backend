@@ -1,0 +1,7 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: ms-user
+  config:
+    import: optional:configserver:${CONFIG_SERVER}
