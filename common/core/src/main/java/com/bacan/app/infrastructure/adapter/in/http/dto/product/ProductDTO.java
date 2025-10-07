@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
+@NoArgsConstructor 
 @AllArgsConstructor
 public class ProductDTO {
   private String id;

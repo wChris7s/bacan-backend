@@ -17,4 +17,5 @@ public interface StoreUseCase {
   Mono<Store> updateStore(Long storeId, Store store);
 
   Mono<Void> deleteStore(Long storeId);
+  
 }

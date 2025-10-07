@@ -2,6 +2,7 @@ package com.bacan.app.infrastructure.adapter.in.http.controller;
 
 import com.bacan.app.application.facades.StoreFacade;
 import com.bacan.app.application.port.in.http.StoreUseCase;
+import com.bacan.app.domain.models.store.Store;
 import com.bacan.app.domain.queries.store.StoreQuery;
 import com.bacan.app.infrastructure.adapter.in.http.controller.dto.store.StoreRequest;
 import com.bacan.app.infrastructure.adapter.in.http.dto.store.StoreResponseDTO;
@@ -16,6 +17,7 @@ import reactor.core.publisher.Mono;
 @RestController
 @RequestMapping(path = "/bcn/api/store")
 public class StoreController {
+
   private final StoreFacade storeFacade;
   private final StoreUseCase storeUseCase;
 
@@ -24,41 +26,60 @@ public class StoreController {
     this.storeUseCase = storeUseCase;
   }
 
+  // === READ ALL ===
   @GetMapping
   public Mono<Page<StoreResponseDTO>> getAllStores(
-    @RequestParam(name = "page", defaultValue = "0") Integer page,
-    @RequestParam(name = "size", defaultValue = "5") Integer size,
-    @RequestParam(name = "direction", defaultValue = "ASC") String direction,
-    @RequestParam(name = "property") String property,
-    @RequestParam(name = "name", required = false) String name) {
+      @RequestParam(name = "page", defaultValue = "0") Integer page,
+      @RequestParam(name = "size", defaultValue = "5") Integer size,
+      @RequestParam(name = "direction", defaultValue = "ASC") String direction,
+      @RequestParam(name = "property") String property,
+      @RequestParam(name = "name", required = false) String name) {
 
     Sort sort = Sort.by(Sort.Direction.fromString(direction), property);
     Pageable pageable = PageRequest.of(page, size, sort);
     StoreQuery storeQuery = StoreQuery.builder()
-      .name(name)
-      .pageable(pageable)
-      .build();
+        .name(name)
+        .pageable(pageable)
+        .build();
 
     return storeFacade.getAllStoresWithUserByQuery(storeQuery)
-      .map(StoreDTOMapper::mapToDto)
-      .collectList()
-      .zipWith(storeUseCase.countAllStoresByQuery(storeQuery))
-      .map(p -> new PageImpl<>(p.getT1(), pageable, p.getT2()));
+        .map(StoreDTOMapper::mapToDto)
+        .collectList()
+        .zipWith(storeUseCase.countAllStoresByQuery(storeQuery))
+        .map(p -> new PageImpl<>(p.getT1(), pageable, p.getT2()));
   }
 
+  // === READ BY ID ===
   @ResponseStatus(HttpStatus.OK)
   @GetMapping("/{storeId}")
   public Mono<StoreResponseDTO> getStoreById(@PathVariable Long storeId) {
     return storeFacade.getStoreWithUserById(storeId)
-      .map(StoreDTOMapper::mapToDto);
+        .map(StoreDTOMapper::mapToDto);
   }
 
+  // === CREATE ===
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
   public Mono<StoreResponseDTO> create(@RequestBody StoreRequest body) {
     return storeUseCase.createStore(StoreDTOMapper.toDomain(body))
-      .flatMap(created -> storeFacade.getStoreWithUserById(created.id()))
-      .map(StoreDTOMapper::mapToDto);
+        .flatMap(created -> storeFacade.getStoreWithUserById(created.id()))
+        .map(StoreDTOMapper::mapToDto);
+  }
+
+  // === UPDATE ===
+  @PutMapping("/{storeId}")
+  @ResponseStatus(HttpStatus.OK)
+  public Mono<StoreResponseDTO> updateStore(@PathVariable Long storeId, @RequestBody StoreRequest body) {
+    Store toUpdate = StoreDTOMapper.toDomain(body);
+    return storeUseCase.updateStore(storeId, toUpdate)
+        .flatMap(updated -> storeFacade.getStoreWithUserById(updated.id()))
+        .map(StoreDTOMapper::mapToDto);
+  }
+
+  // === DELETE ===
+  @DeleteMapping("/{storeId}")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  public Mono<Void> deleteStore(@PathVariable Long storeId) {
+    return storeUseCase.deleteStore(storeId);
   }
 }
- 

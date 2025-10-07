@@ -7,7 +7,7 @@ import com.bacan.app.infrastructure.adapter.in.http.dto.user.CreateUserDTO;
 import com.bacan.app.infrastructure.adapter.in.http.dto.user.UpdateUserDTO;
 import com.bacan.app.infrastructure.adapter.in.http.dto.user.UserDTO;
 import com.bacan.app.infrastructure.adapter.in.http.mapper.user.UserDTOMapper;
-import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Operation; 
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
 import org.springframework.web.bind.annotation.*;
@@ -54,7 +54,7 @@ public class UserController {
     return userUseCase.getUserByDocumentIdOrThrow(documentId)
       .map(dtoMapper::map);
   }
-}
+} 
 
 
 
