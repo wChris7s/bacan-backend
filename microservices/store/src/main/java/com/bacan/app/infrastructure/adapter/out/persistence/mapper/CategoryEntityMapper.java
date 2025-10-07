@@ -12,6 +12,7 @@ public class CategoryEntityMapper {
       .name(category.name())
       .createdAt(category.createdAt())
       .updatedAt(category.updatedAt())
+      .enabled(category.enabled())
       .build();
   }
 
@@ -21,6 +22,7 @@ public class CategoryEntityMapper {
       .name(category.getName())
       .createdAt(category.getCreatedAt())
       .updatedAt(category.getUpdatedAt())
+      .enabled(category.getEnabled())
       .build();
   }
 }

@@ -5,12 +5,14 @@ import com.bacan.app.application.port.out.persistence.ProductDatabase;
 import com.bacan.app.domain.models.product.Product;
 import com.bacan.app.domain.queries.product.ProductQuery;
 import com.bacan.app.domain.utilities.ApplicationTimeUtil;
+import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@Service
 public class ProductService implements ProductUseCase {
   private final ProductDatabase productDatabase;
 
@@ -37,7 +39,7 @@ public class ProductService implements ProductUseCase {
   }
 
   @Override
-  public Mono<Product> getProductById(String productId) {
+  public Mono<Product> getProductById(Long productId) {
     return productDatabase.findProductById(UUID.fromString(productId));
   }
 }

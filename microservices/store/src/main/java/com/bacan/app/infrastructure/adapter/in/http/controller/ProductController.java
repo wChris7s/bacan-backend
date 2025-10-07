@@ -59,4 +59,6 @@ public class ProductController {
     return productFacade.getProductWithTheirCategoriesAndStoreById(productId)
       .map(ProductDTOMapper::mapToDto);
   }
+
+  /* TODO: Create product */
 }

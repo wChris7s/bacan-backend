@@ -12,5 +12,5 @@ public interface ProductUseCase {
 
   Mono<Long> countAllProductsByQuery(ProductQuery productQuery);
 
-  Mono<Product> getProductById(String productId);
+  Mono<Product> getProductById(Long productId);
 }

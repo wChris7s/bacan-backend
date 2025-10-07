@@ -10,8 +10,8 @@ import java.util.List;
 
 @Builder
 public record Product(
-  String id,
-  String storeId,
+  Long id,
+  Long storeId,
   String name,
   Double price,
   Integer stock,
@@ -19,7 +19,7 @@ public record Product(
   @With String photo,
   @With LocalDateTime createdAt,
   @With LocalDateTime updatedAt,
-
+  @With Boolean enabled,
   @With List<Category> categories,
   @With Store store) {
 }

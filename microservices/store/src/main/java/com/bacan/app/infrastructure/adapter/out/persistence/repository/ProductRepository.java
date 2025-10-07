@@ -10,11 +10,10 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
-import java.util.UUID;
 
 public interface ProductRepository extends
-  ReactiveCrudRepository<ProductEntity, UUID>,
-  ReactiveSortingRepository<ProductEntity, UUID> {
+  ReactiveCrudRepository<ProductEntity, Long>,
+  ReactiveSortingRepository<ProductEntity, Long> {
 
   @Query("SELECT DISTINCT p.* FROM bacan.product p " +
     "INNER JOIN bacan.product_category pc on p.id = pc.product_id " +

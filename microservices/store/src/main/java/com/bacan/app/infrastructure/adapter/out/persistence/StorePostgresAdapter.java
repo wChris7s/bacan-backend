@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.r2dbc.core.R2dbcEntityTemplate;
 import org.springframework.data.relational.core.query.Criteria;
 import org.springframework.data.relational.core.query.Query;
+import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -18,9 +19,11 @@ import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.UUID;
 
+@Component
 public class StorePostgresAdapter implements StoreDatabase {
 
   private final StoreRepository repo;
+
   private final R2dbcEntityTemplate template;
 
   public StorePostgresAdapter(StoreRepository repo, R2dbcEntityTemplate template) {
@@ -83,8 +86,8 @@ public class StorePostgresAdapter implements StoreDatabase {
   }
 
   @Override
-  public Mono<Store> findById(String storeId) {
-    return repo.findById(UUID.fromString(storeId))
+  public Mono<Store> findById(Long storeId) {
+    return repo.findById(storeId)
         .map(StoreEntityMapper::mapToModel);
   }
 
@@ -98,13 +101,12 @@ public class StorePostgresAdapter implements StoreDatabase {
   }
 
   @Override
-  public Mono<Store> update(String storeId, Store store) {
-    var id = UUID.fromString(storeId);
-    return repo.findById(id)
+  public Mono<Store> update(Long storeId, Store store) {
+    return repo.findById(storeId)
         .switchIfEmpty(Mono.error(new IllegalArgumentException("Store " + storeId + " no existe")))
         .flatMap(existing -> {
           var e = StoreEntityMapper.mapToEntity(store);
-          e.setId(id);
+          e.setId(storeId);
           e.setCreatedAt(existing.getCreatedAt());   // preservar created_at
           e.setUpdatedAt(LocalDateTime.now());
           return repo.save(e);
@@ -113,7 +115,7 @@ public class StorePostgresAdapter implements StoreDatabase {
   }
 
   @Override
-  public Mono<Void> deleteById(String storeId) {
-    return repo.deleteById(UUID.fromString(storeId));
+  public Mono<Void> deleteById(Long storeId) {
+    return repo.deleteById(storeId);
   }
 }

@@ -4,17 +4,15 @@ import lombok.*;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-import java.util.UUID;
-
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "product_category", schema = "bacan")
+@Table(name = "product_category", schema = "store")
 public class ProductCategoryEntity {
   @Column(value = "product_id")
-  private UUID productId;
+  private Long productId;
   @Column(value = "category_id")
   private Long categoryId;
 }

@@ -2,8 +2,10 @@ package com.bacan.app.infrastructure.adapter.out.persistence.repository;
 
 import com.bacan.app.infrastructure.adapter.out.persistence.entity.ProductCategoryEntity;
 import org.springframework.r2dbc.core.DatabaseClient;
+import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
+@Component
 public class ProductCategoryRepository {
   private final DatabaseClient databaseClient;
 

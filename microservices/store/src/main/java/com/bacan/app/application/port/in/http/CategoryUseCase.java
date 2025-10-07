@@ -10,5 +10,9 @@ public interface CategoryUseCase {
 
   Flux<Category> getAllCategoriesByQuery(CategoryQuery categoryQuery);
 
-  Flux<Category> getCategoriesByProductId(String productId);
+  Flux<Category> getCategoriesByProductId(Long productId);
+
+  Mono<Category> createCategory(Category category);
+
+  Mono<Category> getCategoryById(Long categoryId);
 }

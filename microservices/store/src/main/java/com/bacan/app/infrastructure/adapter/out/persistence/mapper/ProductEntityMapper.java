@@ -4,14 +4,11 @@ import com.bacan.app.domain.models.product.Product;
 import com.bacan.app.infrastructure.adapter.out.persistence.entity.ProductEntity;
 import lombok.experimental.UtilityClass;
 
-import java.util.Objects;
-import java.util.UUID;
-
 @UtilityClass
 public class ProductEntityMapper {
   public static ProductEntity mapToEntity(Product product) {
     return ProductEntity.builder()
-      .id(UUID.fromString(product.id()))
+      .id(product.id())
       .storeId(product.storeId())
       .name(product.name())
       .price(product.price())
@@ -20,12 +17,13 @@ public class ProductEntityMapper {
       .photo(product.photo())
       .createdAt(product.createdAt())
       .updatedAt(product.updatedAt())
+      .enabled(product.enabled())
       .build();
   }
 
   public static Product mapToModel(ProductEntity product) {
     return Product.builder()
-      .id(Objects.requireNonNull(product.getId()).toString())
+      .id(product.getId())
       .storeId(product.getStoreId())
       .name(product.getName())
       .price(product.getPrice())
@@ -34,6 +32,7 @@ public class ProductEntityMapper {
       .photo(product.getPhoto())
       .createdAt(product.getCreatedAt())
       .updatedAt(product.getUpdatedAt())
+      .enabled(product.getEnabled())
       .build();
   }
 }

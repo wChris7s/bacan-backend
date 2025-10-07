@@ -5,7 +5,6 @@ import com.bacan.app.infrastructure.adapter.in.http.dto.store.StoreResponseDTO;
 import com.bacan.app.infrastructure.adapter.in.http.dto.store.StoreUserDTO;
 import lombok.experimental.UtilityClass;
 
-
 @UtilityClass
 public class StoreDTOMapper {
   public static StoreResponseDTO mapToDto(Store store) {

@@ -10,11 +10,11 @@ import com.bacan.app.infrastructure.adapter.out.persistence.mapper.ProductCatego
 import com.bacan.app.infrastructure.adapter.out.persistence.mapper.ProductEntityMapper;
 import com.bacan.app.infrastructure.adapter.out.persistence.repository.ProductCategoryRepository;
 import com.bacan.app.infrastructure.adapter.out.persistence.repository.ProductRepository;
+import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.UUID;
-
+@Component
 public class ProductPostgresAdapter implements ProductDatabase {
   private final ProductRepository productRepository;
 
@@ -52,7 +52,7 @@ public class ProductPostgresAdapter implements ProductDatabase {
   }
 
   @Override
-  public Mono<Product> findProductById(UUID productId) {
+  public Mono<Product> findProductById(Long productId) {
     return productRepository.findById(productId)
       .map(ProductEntityMapper::mapToModel);
   }

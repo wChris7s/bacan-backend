@@ -10,7 +10,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StoreResponseDTO {
-  private String id;
+  private Long id;
   private String name;
   private LocalTime open;
   private LocalTime close;

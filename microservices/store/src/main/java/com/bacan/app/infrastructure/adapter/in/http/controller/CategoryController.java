@@ -41,4 +41,10 @@ public class CategoryController {
       .zipWith(categoryUseCase.countAllCategoriesByQuery(categoryQuery))
       .map(p -> new PageImpl<>(p.getT1(), pageable, p.getT2()));
   }
+
+  /* TODO: Get category by Id */
+
+  /* TODO: Create category */
+
+  /* TODO: Assign category to a product using category id and product id */
 }

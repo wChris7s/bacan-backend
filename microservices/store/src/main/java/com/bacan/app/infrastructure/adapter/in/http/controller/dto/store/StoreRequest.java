@@ -1,4 +1,4 @@
-package com.bacan.app.infrastructure.adapter.in.http.dto.store;
+package com.bacan.app.infrastructure.adapter.in.http.controller.dto.store;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -32,8 +32,8 @@ public class StoreRequest {
   private String logo;
   private String background;
 
-  @NotBlank(message = "El userId es obligatorio")
-  private String userId;
+  @NotBlank(message = "El número de documento del usuario es obligatorio")
+  private String documentId;
 
   private boolean enabled;
 }

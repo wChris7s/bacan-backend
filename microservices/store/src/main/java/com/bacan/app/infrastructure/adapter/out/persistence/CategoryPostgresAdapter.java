@@ -6,11 +6,13 @@ import com.bacan.app.domain.queries.category.CategoryQuery;
 import com.bacan.app.infrastructure.adapter.out.persistence.entity.CategoryEntity;
 import com.bacan.app.infrastructure.adapter.out.persistence.mapper.CategoryEntityMapper;
 import com.bacan.app.infrastructure.adapter.out.persistence.repository.CategoryRepository;
+import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.UUID;
 
+@Component
 public class CategoryPostgresAdapter implements CategoryDatabase {
   private final CategoryRepository categoryRepository;
 

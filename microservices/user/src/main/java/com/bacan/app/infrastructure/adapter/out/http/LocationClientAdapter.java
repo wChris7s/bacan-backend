@@ -1,5 +1,6 @@
 package com.bacan.app.infrastructure.adapter.out.http;
 
+import com.bacan.app.application.port.out.http.LocationClient;
 import com.bacan.app.infrastructure.adapter.in.http._const.ApiPathConstant;
 import com.bacan.app.infrastructure.adapter.in.http.dto.location.district.FullDistrictDTO;
 import lombok.NonNull;
@@ -9,11 +10,11 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 @Component
-public class LocationClient implements com.bacan.app.application.port.out.http.LocationClient {
+public class LocationClientAdapter implements LocationClient {
 
   private final WebClient webClient;
 
-  public LocationClient(
+  public LocationClientAdapter(
     @NonNull
     @Value("${application.microservice.url.ms-location}") String msLocationUrl) {
     this.webClient = WebClient.create(msLocationUrl + ApiPathConstant.LOCATION_DISTRICT_URL);

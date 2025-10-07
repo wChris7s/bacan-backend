@@ -10,5 +10,6 @@ public record Category(
   Long id,
   String name,
   @With LocalDateTime createdAt,
-  @With LocalDateTime updatedAt) {
+  @With LocalDateTime updatedAt,
+  @With Boolean enabled) {
 }

@@ -9,7 +9,7 @@ import java.time.LocalTime;
 
 @Builder
 public record Store(
-  String id,
+  Long id,
   String name,
   LocalTime open,
   LocalTime close,
@@ -20,7 +20,6 @@ public record Store(
   @With LocalDateTime createdAt,
   @With LocalDateTime updatedAt,
   @With boolean enabled,
-
   @With User user) {
 }
 

@@ -6,15 +6,13 @@ import com.bacan.app.domain.queries.product.ProductQuery;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.UUID;
-
 public interface ProductDatabase {
   /* ============ Product ============ */
   Mono<Product> createProduct(Product product);
 
   Flux<Product> findAllProducts(ProductQuery query);
 
-  Mono<Product> findProductById(UUID productId);
+  Mono<Product> findProductById(Long productId);
 
   Mono<Long> countProductsByQuery(ProductQuery query);
 
