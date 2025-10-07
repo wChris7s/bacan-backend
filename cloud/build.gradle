@@ -14,8 +14,21 @@ subprojects {
 
   // ======================== PALANTIR DOCKER ========================
   // =========== https://github.com/palantir/gradle-docker ===========
+  /* > Locally
   docker {
     name "bacan/${project.name}:${project.version}"
+    dockerfile file("build/template/Dockerfile")
+    files "build/libs/${project.name}-${project.version}.jar"
+    copySpec.from("build/resources/main").into("src")
+    buildArgs([
+      'JAR_NAME'       : "src/${project.name}-${project.version}.jar",
+      'SOURCE_DIR_NAME': "src",
+    ])
+  }
+  */
+
+  docker {
+    name "556180171691.dkr.ecr.us-east-2.amazonaws.com/${project.name}:${project.version}"
     dockerfile file("build/template/Dockerfile")
     files "build/libs/${project.name}-${project.version}.jar"
     copySpec.from("build/resources/main").into("src")
