@@ -1,0 +1,305 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "OpenAPI definition",
+    "version": "v0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:9092",
+      "description": "Generated server url"
+    }
+  ],
+  "paths": {
+    "/bcn/api/location/state/country/{countryId}": {
+      "get": {
+        "tags": [
+          "state-controller"
+        ],
+        "operationId": "getAllDistricts",
+        "parameters": [
+          {
+            "name": "countryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StateDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bcn/api/location/province/state/{stateId}": {
+      "get": {
+        "tags": [
+          "province-controller"
+        ],
+        "operationId": "getAllDistricts_1",
+        "parameters": [
+          {
+            "name": "stateId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProvinceDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bcn/api/location/district/{districtId}": {
+      "get": {
+        "tags": [
+          "district-controller"
+        ],
+        "operationId": "getDistrictById",
+        "parameters": [
+          {
+            "name": "districtId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/DistrictDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bcn/api/location/district/province/{provinceId}": {
+      "get": {
+        "tags": [
+          "district-controller"
+        ],
+        "operationId": "getAllDistricts_2",
+        "parameters": [
+          {
+            "name": "provinceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DistrictDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bcn/api/location/district/full/{districtId}": {
+      "get": {
+        "tags": [
+          "district-controller"
+        ],
+        "operationId": "getFullDistrictById",
+        "parameters": [
+          {
+            "name": "districtId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/FullDistrictDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bcn/api/location/country": {
+      "get": {
+        "tags": [
+          "country-controller"
+        ],
+        "operationId": "getAllCountriesByName",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CountryDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "StateDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "countryId": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "ProvinceDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "stateId": {
+            "type": "string"
+          }
+        }
+      },
+      "DistrictDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "provinceId": {
+            "type": "string"
+          }
+        }
+      },
+      "CountryDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "phoneCode": {
+            "type": "string"
+          },
+          "langCode": {
+            "type": "string"
+          }
+        }
+      },
+      "FullDistrictDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "province": {
+            "$ref": "#/components/schemas/FullProvinceDTO"
+          }
+        }
+      },
+      "FullProvinceDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "state": {
+            "$ref": "#/components/schemas/FullStateDTO"
+          }
+        }
+      },
+      "FullStateDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "country": {
+            "$ref": "#/components/schemas/CountryDTO"
+          }
+        }
+      }
+    }
+  }
+}
