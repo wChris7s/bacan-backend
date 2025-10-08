@@ -16,59 +16,79 @@ import reactor.core.publisher.Mono;
 
 @Component
 public class ProductPostgresAdapter implements ProductDatabase {
-  private final ProductRepository productRepository;
 
+  private final ProductRepository productRepository;
   private final ProductCategoryRepository productCategoryRepository;
 
-  //private final DatabaseClient databaseClient;
-
-  public ProductPostgresAdapter(ProductRepository productRepository, ProductCategoryRepository productCategoryRepository) {
+  public ProductPostgresAdapter(ProductRepository productRepository,
+                                ProductCategoryRepository productCategoryRepository) {
     this.productRepository = productRepository;
     this.productCategoryRepository = productCategoryRepository;
   }
+
+  /* ============ Product ============ */
 
   @Override
   public Mono<Product> createProduct(Product product) {
     ProductEntity productEntity = ProductEntityMapper.mapToEntity(product);
     return productRepository.save(productEntity)
-      .map(ProductEntityMapper::mapToModel);
+        .map(ProductEntityMapper::mapToModel);
   }
 
   @Override
   public Flux<Product> findAllProducts(ProductQuery query) {
     if (query.getCategoryIds().isEmpty()) {
       return productRepository.findAllByName(
-          query.getName(),
-          query.getStoreId(),
-          query.getPageable())
-        .map(ProductEntityMapper::mapToModel);
+              query.getName(),
+              query.getStoreId(),
+              query.getPageable())
+          .map(ProductEntityMapper::mapToModel);
     }
     return productRepository.findAllByNameOrCategories(
-        query.getName(),
-        query.getStoreId(),
-        query.getCategoryIds(),
-        query.getPageable())
-      .map(ProductEntityMapper::mapToModel);
+            query.getName(),
+            query.getStoreId(),
+            query.getCategoryIds(),
+            query.getPageable())
+        .map(ProductEntityMapper::mapToModel);
   }
 
   @Override
   public Mono<Product> findProductById(Long productId) {
     return productRepository.findById(productId)
-      .map(ProductEntityMapper::mapToModel);
+        .map(ProductEntityMapper::mapToModel);
   }
 
   @Override
   public Mono<Long> countProductsByQuery(ProductQuery query) {
     if (query.getCategoryIds().isEmpty()) {
       return productRepository.countAllByName(
-        query.getName(),
-        query.getStoreId());
+          query.getName(),
+          query.getStoreId());
     }
     return productRepository.countAllByNameOrCategories(
-      query.getName(),
-      query.getStoreId(),
-      query.getCategoryIds());
+        query.getName(),
+        query.getStoreId(),
+        query.getCategoryIds());
   }
+
+  // ✅ NUEVO: updateProduct (coincide con ProductDatabase)
+  @Override
+  public Mono<Product> updateProduct(Long productId, Product product) {
+    // Mapeamos a entity y forzamos el id del path
+    ProductEntity entity = ProductEntityMapper.mapToEntity(product);
+    // Si tu ProductEntity no tiene setter, reemplaza por un builder/constructor equivalente
+    entity.setId(productId);
+    return productRepository.save(entity)
+        .map(ProductEntityMapper::mapToModel);
+  }
+
+  // ✅ NUEVO: deleteById (coincide con ProductDatabase)
+  @Override
+  public Mono<Void> deleteById(Long productId) {
+    return productRepository.deleteById(productId);
+  }
+
+  /* ============ Product Category ============ */
 
   @Override
   public Mono<Void> createProductCategory(ProductCategory productCategory) {

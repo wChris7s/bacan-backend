@@ -6,16 +6,17 @@ spring:
     name: ms-store
   cloud:
     config:
-      enabled: false          # NO usar Config Server en local
+      enabled: false          # No usar Config Server en local
   r2dbc:
-    url: r2dbc:postgresql://localhost:5432/ecm   # <--- usa la DB que sí existe en el contenedor
-    username: user1234                            # <--- igual al POSTGRES_USER
-    password: passwduser1234                      # <--- igual al POSTGRES_PASSWORD
- 
+    url: r2dbc:postgresql://localhost:5432/ecm   # Base de datos que sí existe en el contenedor
+    username: user1234                            # Igual al POSTGRES_USER
+    password: passwduser1234                      # Igual al POSTGRES_PASSWORD
+
 application:
   microservice:
-    ms-user: http://localhost:9090
-    ms-media: http://localhost:9094
+    url:                      # <--- Clave corregida
+      ms-user: http://localhost:9090
+      ms-media: http://localhost:9094
 
 management:
   endpoints:

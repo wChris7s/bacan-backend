@@ -7,6 +7,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface ProductDatabase {
+
   /* ============ Product ============ */
   Mono<Product> createProduct(Product product);
 
@@ -15,6 +16,11 @@ public interface ProductDatabase {
   Mono<Product> findProductById(Long productId);
 
   Mono<Long> countProductsByQuery(ProductQuery query);
+
+  // ✅ Métodos CRUD adicionales
+  Mono<Product> updateProduct(Long productId, Product product);
+
+  Mono<Void> deleteById(Long productId);
 
   /* ============ Product Category ============ */
   Mono<Void> createProductCategory(ProductCategory productCategory);
