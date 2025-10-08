@@ -10,10 +10,10 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Service
 public class ProductService implements ProductUseCase {
+
   private final ProductDatabase productDatabase;
 
   public ProductService(ProductDatabase productDatabase) {
@@ -22,10 +22,10 @@ public class ProductService implements ProductUseCase {
 
   @Override
   public Mono<Product> createProduct(Product product) {
-    LocalDateTime actualDateTime = ApplicationTimeUtil.getActualDateTime();
-    return productDatabase.createProduct(product
-      .withCreatedAt(actualDateTime)
-      .withUpdatedAt(actualDateTime));
+    LocalDateTime now = ApplicationTimeUtil.getActualDateTime();
+    return productDatabase.createProduct(
+        product.withCreatedAt(now).withUpdatedAt(now)
+    );
   }
 
   @Override
@@ -40,6 +40,17 @@ public class ProductService implements ProductUseCase {
 
   @Override
   public Mono<Product> getProductById(Long productId) {
-    return productDatabase.findProductById(UUID.fromString(productId));
+    return productDatabase.findProductById(productId);
+  }
+
+  @Override
+  public Mono<Product> updateProduct(Long productId, Product product) {
+    LocalDateTime now = ApplicationTimeUtil.getActualDateTime();
+    return productDatabase.updateProduct(productId, product.withUpdatedAt(now));
+  }
+
+  @Override
+  public Mono<Void> deleteProduct(Long productId) {
+    return productDatabase.deleteById(productId);
   }
 }

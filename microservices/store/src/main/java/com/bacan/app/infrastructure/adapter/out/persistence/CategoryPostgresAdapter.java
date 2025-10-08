@@ -14,6 +14,7 @@ import java.util.UUID;
 
 @Component
 public class CategoryPostgresAdapter implements CategoryDatabase {
+
   private final CategoryRepository categoryRepository;
 
   public CategoryPostgresAdapter(CategoryRepository categoryRepository) {
@@ -24,7 +25,7 @@ public class CategoryPostgresAdapter implements CategoryDatabase {
   public Mono<Category> createCategory(Category category) {
     CategoryEntity categoryEntity = CategoryEntityMapper.mapToEntity(category);
     return categoryRepository.save(categoryEntity)
-      .map(CategoryEntityMapper::mapToModel);
+        .map(CategoryEntityMapper::mapToModel);
   }
 
   @Override
@@ -35,12 +36,34 @@ public class CategoryPostgresAdapter implements CategoryDatabase {
   @Override
   public Flux<Category> findAllCategories(CategoryQuery query) {
     return categoryRepository.findAllByNameContainingIgnoreCase(query.getName(), query.getPageable())
-      .map(CategoryEntityMapper::mapToModel);
+        .map(CategoryEntityMapper::mapToModel);
   }
 
   @Override
   public Flux<Category> findCategoriesByProductId(String productId) {
     return categoryRepository.findAllByProductId(UUID.fromString(productId))
-      .map(CategoryEntityMapper::mapToModel);
+        .map(CategoryEntityMapper::mapToModel);
+  }
+
+  // ✅ NUEVOS: coinciden con CategoryDatabase actualizado
+
+  @Override
+  public Mono<Category> findById(Long categoryId) {
+    return categoryRepository.findById(categoryId)
+        .map(CategoryEntityMapper::mapToModel);
+  }
+
+  @Override
+  public Mono<Category> update(Long categoryId, Category category) {
+    CategoryEntity entity = CategoryEntityMapper.mapToEntity(category);
+    // Si tu CategoryEntity es inmutable, crea por builder con id.
+    entity.setId(categoryId);
+    return categoryRepository.save(entity)
+        .map(CategoryEntityMapper::mapToModel);
+  }
+
+  @Override
+  public Mono<Void> deleteById(Long categoryId) {
+    return categoryRepository.deleteById(categoryId);
   }
 }

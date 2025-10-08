@@ -13,4 +13,11 @@ public interface CategoryDatabase {
   Flux<Category> findAllCategories(CategoryQuery query);
 
   Flux<Category> findCategoriesByProductId(String productId);
+
+  // ✅ Métodos CRUD adicionales
+  Mono<Category> findById(Long categoryId);
+
+  Mono<Category> update(Long categoryId, Category category);
+
+  Mono<Void> deleteById(Long categoryId);
 }

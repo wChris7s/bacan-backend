@@ -19,6 +19,7 @@ import java.util.Objects;
 @RestController
 @RequestMapping(path = "/bcn/api/product")
 public class ProductController {
+
   private final ProductFacade productFacade;
   private final ProductUseCase productUseCase;
 
@@ -27,7 +28,7 @@ public class ProductController {
     this.productUseCase = productUseCase;
   }
 
-  @GetMapping()
+  @GetMapping
   public Mono<Page<ProductResponseDTO>> getAllProducts(
       @RequestParam(name = "page", defaultValue = "0") Integer page,
       @RequestParam(name = "size", defaultValue = "5") Integer size,
@@ -41,9 +42,10 @@ public class ProductController {
 
     Sort sort = Sort.by(Sort.Direction.fromString(direction), property);
     Pageable pageable = PageRequest.of(page, size, sort);
+
     ProductQuery productQuery = ProductQuery.builder()
         .name(name)
-        .storeId(storeId)
+        .storeId(storeId)       // lo dejamos como String porque tu Query lo recibe así
         .categoryIds(categoryIds)
         .pageable(pageable)
         .build();
@@ -56,8 +58,8 @@ public class ProductController {
   }
 
   @GetMapping("/{productId}")
-  public Mono<ProductResponseDTO> getProductById(@PathVariable String productId) {
-    return productFacade.getProductWithTheirCategoriesAndStoreById(productId)
+  public Mono<ProductResponseDTO> getProductById(@PathVariable Long productId) { // <-- String -> Long
+    return productFacade.getProductWithTheirCategoriesAndStoreById(productId)    // <-- pasamos Long
         .map(ProductDTOMapper::mapToDto);
   }
 
@@ -67,17 +69,14 @@ public class ProductController {
     return productUseCase.createProduct(toCreate).then();
   }
 
-  // === UPDATE ===
   @PutMapping("/{productId}")
   public Mono<ProductResponseDTO> updateProduct(@PathVariable Long productId, @RequestBody ProductDTO dto) {
     Product toUpdate = ProductDTOMapper.mapToDomain(dto);
     return productUseCase.updateProduct(productId, toUpdate)
-        .flatMap(updated -> productFacade
-            .getProductWithTheirCategoriesAndStoreById(String.valueOf(productId)))
+        .flatMap(updated -> productFacade.getProductWithTheirCategoriesAndStoreById(productId)) // <-- sin String.valueOf
         .map(ProductDTOMapper::mapToDto);
   }
 
-  // === DELETE ===
   @DeleteMapping("/{productId}")
   public Mono<Void> deleteProduct(@PathVariable Long productId) {
     return productUseCase.deleteProduct(productId);
