@@ -9,7 +9,7 @@ services:
       - ../sql/init.sql:/docker-entrypoint-initdb.d/init.sql
       - bacan:/var/lib/postgresql/data
     ports:
-      - "5432:5432" 
+      - "5432:5432"
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: change_me
@@ -88,6 +88,25 @@ services:
       start_period: 5s
     ports:
       - "9092:9092"
+    environment:
+      SPRING_PROFILE: docker
+
+  ms-store:
+    profiles:
+      - docker
+    image: bacan/store:1.0.0
+    restart: always
+    depends_on:
+      configserver:
+        condition: service_healthy
+    healthcheck:
+      test: "wget -qO - http://ms-store:9093/actuator/health | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    ports:
+      - "9093:9093"
     environment:
       SPRING_PROFILE: docker
 

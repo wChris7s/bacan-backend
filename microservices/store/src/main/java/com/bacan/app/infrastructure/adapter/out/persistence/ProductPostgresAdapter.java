@@ -2,23 +2,26 @@ package com.bacan.app.infrastructure.adapter.out.persistence;
 
 import com.bacan.app.application.port.out.persistence.ProductDatabase;
 import com.bacan.app.domain.models.product.Product;
-import com.bacan.app.domain.models.product.ProductCategory;
 import com.bacan.app.domain.queries.product.ProductQuery;
-import com.bacan.app.infrastructure.adapter.out.persistence.entity.ProductCategoryEntity;
 import com.bacan.app.infrastructure.adapter.out.persistence.entity.ProductEntity;
-import com.bacan.app.infrastructure.adapter.out.persistence.mapper.ProductCategoryEntityMapper;
 import com.bacan.app.infrastructure.adapter.out.persistence.mapper.ProductEntityMapper;
 import com.bacan.app.infrastructure.adapter.out.persistence.repository.ProductCategoryRepository;
 import com.bacan.app.infrastructure.adapter.out.persistence.repository.ProductRepository;
+import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.Collections;
 
 @Component
 public class ProductPostgresAdapter implements ProductDatabase {
 
   private final ProductRepository productRepository;
+
   private final ProductCategoryRepository productCategoryRepository;
+
+  static final ProductEntityMapper productEntityMapper = Mappers.getMapper(ProductEntityMapper.class);
 
   public ProductPostgresAdapter(ProductRepository productRepository,
                                 ProductCategoryRepository productCategoryRepository) {
@@ -30,69 +33,48 @@ public class ProductPostgresAdapter implements ProductDatabase {
 
   @Override
   public Mono<Product> createProduct(Product product) {
-    ProductEntity productEntity = ProductEntityMapper.mapToEntity(product);
+    ProductEntity productEntity = productEntityMapper.toEntity(product);
     return productRepository.save(productEntity)
-        .map(ProductEntityMapper::mapToModel);
+      .map(productEntityMapper::toModel);
   }
 
   @Override
   public Flux<Product> findAllProducts(ProductQuery query) {
     if (query.getCategoryIds().isEmpty()) {
-      return productRepository.findAllByName(
-              query.getName(),
-              query.getStoreId(),
-              query.getPageable())
-          .map(ProductEntityMapper::mapToModel);
+      query.setCategoryIds(Collections.emptyList());
     }
-    return productRepository.findAllByNameOrCategories(
-            query.getName(),
-            query.getStoreId(),
-            query.getCategoryIds(),
-            query.getPageable())
-        .map(ProductEntityMapper::mapToModel);
+    return productRepository.findAllByQuery(query, query.getPageable())
+      .map(productEntityMapper::toModel);
   }
 
   @Override
   public Mono<Product> findProductById(Long productId) {
     return productRepository.findById(productId)
-        .map(ProductEntityMapper::mapToModel);
+      .map(productEntityMapper::toModel);
   }
 
   @Override
   public Mono<Long> countProductsByQuery(ProductQuery query) {
     if (query.getCategoryIds().isEmpty()) {
-      return productRepository.countAllByName(
-          query.getName(),
-          query.getStoreId());
+      query.setCategoryIds(Collections.emptyList());
     }
-    return productRepository.countAllByNameOrCategories(
-        query.getName(),
-        query.getStoreId(),
-        query.getCategoryIds());
+    return productRepository.countAllByQuery(query);
   }
 
-  // ✅ NUEVO: updateProduct (coincide con ProductDatabase)
   @Override
-  public Mono<Product> updateProduct(Long productId, Product product) {
-    // Mapeamos a entity y forzamos el id del path
-    ProductEntity entity = ProductEntityMapper.mapToEntity(product);
-    // Si tu ProductEntity no tiene setter, reemplaza por un builder/constructor equivalente
-    entity.setId(productId);
-    return productRepository.save(entity)
-        .map(ProductEntityMapper::mapToModel);
-  }
-
-  // ✅ NUEVO: deleteById (coincide con ProductDatabase)
-  @Override
-  public Mono<Void> deleteById(Long productId) {
-    return productRepository.deleteById(productId);
+  public Mono<Product> updateProduct(Product product) {
+    return this.createProduct(product);
   }
 
   /* ============ Product Category ============ */
 
   @Override
-  public Mono<Void> createProductCategory(ProductCategory productCategory) {
-    ProductCategoryEntity productCategoryEntity = ProductCategoryEntityMapper.mapToEntity(productCategory);
-    return productCategoryRepository.save(productCategoryEntity);
+  public Mono<Void> createProductCategory(Long productId, Long categoryId) {
+    return productCategoryRepository.save(productId, categoryId);
+  }
+
+  @Override
+  public Mono<Void> deleteProductCategory(Long productId, Long categoryId) {
+    return productCategoryRepository.delete(productId, categoryId);
   }
 }

@@ -38,6 +38,9 @@ public interface UserDTOMapper {
 
   UserDTO map(User dto);
 
+  @Mapping(target = "id", ignore = true)
+  User map(UserDTO dto);
+
   default Role map(Long roleId) {
     return Role.builder()
       .id(roleId)

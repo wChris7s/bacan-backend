@@ -7,7 +7,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductStoreDTO {
+public class ProductStoreResponseDTO {
   private String name;
-  private String logo;
+  private String logoUrl;
 }

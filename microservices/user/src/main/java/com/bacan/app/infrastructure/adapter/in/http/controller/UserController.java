@@ -7,7 +7,7 @@ import com.bacan.app.infrastructure.adapter.in.http.dto.user.CreateUserDTO;
 import com.bacan.app.infrastructure.adapter.in.http.dto.user.UpdateUserDTO;
 import com.bacan.app.infrastructure.adapter.in.http.dto.user.UserDTO;
 import com.bacan.app.infrastructure.adapter.in.http.mapper.user.UserDTOMapper;
-import io.swagger.v3.oas.annotations.Operation; 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
 import org.springframework.web.bind.annotation.*;
@@ -48,10 +48,17 @@ public class UserController {
       .map(dtoMapper::map);
   }
 
-  @GetMapping("/{documentId}")
+  @GetMapping("doc/{documentId}")
   @Operation(summary = "Get user by document id")
   public Mono<UserDTO> getUserByDocumentId(@PathVariable String documentId) {
     return userUseCase.getUserByDocumentIdOrThrow(documentId)
+      .map(dtoMapper::map);
+  }
+
+  @GetMapping("/{storeId}")
+  @Operation(summary = "Get user by id")
+  public Mono<UserDTO> getUserById(@PathVariable Long storeId) {
+    return userUseCase.getUserByIdOrThrow(storeId)
       .map(dtoMapper::map);
   }
 } 

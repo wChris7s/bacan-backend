@@ -1,7 +1,6 @@
 package com.bacan.app.application.port.out.persistence;
 
 import com.bacan.app.domain.models.product.Product;
-import com.bacan.app.domain.models.product.ProductCategory;
 import com.bacan.app.domain.queries.product.ProductQuery;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -9,6 +8,7 @@ import reactor.core.publisher.Mono;
 public interface ProductDatabase {
 
   /* ============ Product ============ */
+
   Mono<Product> createProduct(Product product);
 
   Flux<Product> findAllProducts(ProductQuery query);
@@ -17,11 +17,11 @@ public interface ProductDatabase {
 
   Mono<Long> countProductsByQuery(ProductQuery query);
 
-  // ✅ Métodos CRUD adicionales
-  Mono<Product> updateProduct(Long productId, Product product);
-
-  Mono<Void> deleteById(Long productId);
+  Mono<Product> updateProduct(Product product);
 
   /* ============ Product Category ============ */
-  Mono<Void> createProductCategory(ProductCategory productCategory);
+
+  Mono<Void> createProductCategory(Long productId, Long categoryId);
+
+  Mono<Void> deleteProductCategory(Long productId, Long categoryId);
 }

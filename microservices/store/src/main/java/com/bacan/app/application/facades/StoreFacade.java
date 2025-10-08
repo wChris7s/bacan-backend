@@ -4,7 +4,6 @@ import com.bacan.app.application.port.in.http.StoreUseCase;
 import com.bacan.app.application.port.out.http.UserClient;
 import com.bacan.app.domain.models.store.Store;
 import com.bacan.app.domain.queries.store.StoreQuery;
-import com.bacan.app.domain.models.user.User; // <-- dominio
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -15,32 +14,38 @@ import reactor.core.publisher.Mono;
 public class StoreFacade {
 
   private final StoreUseCase storeUseCase;
+
   private final UserClient userClient;
 
-  public Flux<Store> getAllStoresWithUserByQuery(StoreQuery storeQuery) {
-    return storeUseCase.getAllStoresByQuery(storeQuery)
-        .flatMap(this::fillStore);
+  public Flux<Store> getAllStoresWithUserByQuery(StoreQuery query) {
+    return storeUseCase.getAllStoresByQuery(query)
+      .flatMap(store -> userClient.getUserByDocumentId(store.documentId())
+        .map(store::withUser));
+  }
+
+  public Mono<Long> countAllStoresByQuery(StoreQuery query) {
+    return storeUseCase.countAllStoresByQuery(query);
   }
 
   public Mono<Store> getStoreWithUserById(Long storeId) {
-    return storeUseCase.getStoreById(storeId)
-        .flatMap(this::fillStore);
+    return storeUseCase.getStoreByIdOrThrow(storeId)
+      .flatMap(store -> userClient.getUserByDocumentId(store.documentId())
+        .map(store::withUser));
   }
 
-  private Mono<Store> fillStore(Store store) {
-    return userClient.getUserByDocumentId(store.userId())
-        .map(this::mapToDomainUser)      // UserDTO -> User (dominio)
-        .map(store::withUser);
+  public Mono<Store> createStore(String documentId, Store store) {
+    return userClient.getUserByDocumentId(documentId)
+      .flatMap(user -> storeUseCase
+        .createStore(store
+          .withDocumentId(documentId)
+          .withUser(user)));
   }
 
-  private User mapToDomainUser(com.bacan.app.infrastructure.adapter.in.http.dto.user.UserDTO dto) {
-    // Ajusta campos si tu UserDTO/dominio tienen otros nombres
-    return User.builder()
-        .name(dto.getName())
-        .lastname(dto.getLastname())
-        .phone(dto.getPhone())
-        .email(dto.getEmail())
-        .profilePhotoUrl(dto.getProfilePhotoUrl())
-        .build();
+  public Mono<Store> updateStore(Long storeId, String documentId, Store store) {
+    return userClient.getUserByDocumentId(documentId)
+      .flatMap(user -> storeUseCase
+        .updateStore(storeId, store
+          .withDocumentId(documentId)
+          .withUser(user)));
   }
 }

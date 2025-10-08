@@ -1,0 +1,9 @@
+namespace: default
+dbPort: 5432
+dbUser: admin
+dbPassword: change_me
+dbName: ecm
+volumeName: bacan-data
+volumePath: /var/lib/postgresql/data
+volumeStorage: 2Gi
+volumeClaimStorage: 2Gi

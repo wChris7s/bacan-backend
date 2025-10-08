@@ -3,7 +3,7 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
     <changeSet author="Christian W. Aranibar Solaligue" id="1759642211359-1">
-        <createTable tableName="role" schemaName="usr">
+        <createTable tableName="role" schemaName="person">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="role_pk"/>
             </column>
@@ -23,7 +23,7 @@
     </changeSet>
     <changeSet author="Christian W. Aranibar Solaligue" id="1759642563661-1">
         <loadData commentLineStartsWith="#" encoding="UTF-8" file="classpath:db/changelog/data/role.csv"
-                  quotchar="&quot;" separator="," tableName="role" schemaName="usr">
+                  quotchar="&quot;" separator="," tableName="role" schemaName="person">
             <column header="id" name="id" type="NUMERIC"/>
             <column header="name" name="name" type="STRING"/>
             <column header="created_at" name="created_at" type="DATE"/>

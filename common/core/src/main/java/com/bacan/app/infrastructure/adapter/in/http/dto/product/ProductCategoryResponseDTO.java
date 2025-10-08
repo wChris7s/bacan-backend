@@ -7,6 +7,6 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductCategoryDTO {
+public class ProductCategoryResponseDTO {
   private String name;
 }

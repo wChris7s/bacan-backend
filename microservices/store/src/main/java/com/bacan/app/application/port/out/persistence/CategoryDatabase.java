@@ -8,16 +8,13 @@ import reactor.core.publisher.Mono;
 public interface CategoryDatabase {
   Mono<Category> createCategory(Category category);
 
-  Mono<Long> countCategoriesByQuery(CategoryQuery query);
+  Mono<Long> countAllByQuery(CategoryQuery query);
 
-  Flux<Category> findAllCategories(CategoryQuery query);
+  Flux<Category> findAllByQuery(CategoryQuery query);
 
-  Flux<Category> findCategoriesByProductId(String productId);
+  Flux<Category> findByProductId(Long productId);
 
-  // ✅ Métodos CRUD adicionales
   Mono<Category> findById(Long categoryId);
 
-  Mono<Category> update(Long categoryId, Category category);
-
-  Mono<Void> deleteById(Long categoryId);
+  Mono<Category> updateCategory(Category category);
 }

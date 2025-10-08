@@ -10,31 +10,49 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class ProductFacade {
 
   private final ProductUseCase productUseCase;
+
   private final CategoryUseCase categoryUseCase;
+
   private final StoreUseCase storeUseCase;
 
   public Flux<Product> getAllProductsWithTheirCategoriesAndStore(ProductQuery productQuery) {
     return productUseCase.getAllProductsByQuery(productQuery)
-        .flatMap(this::fillProduct);
+      .flatMap(this::fillProduct);
   }
 
   public Mono<Product> getProductWithTheirCategoriesAndStoreById(Long productId) {
-    return productUseCase.getProductById(productId)
-        .flatMap(this::fillProduct);
+    return productUseCase.getProductByIdOrThrow(productId)
+      .flatMap(this::fillProduct);
   }
 
   private Mono<Product> fillProduct(Product product) {
     return Mono.zip(
-        categoryUseCase.getCategoriesByProductId(product.id()).collectList(),
-        storeUseCase.getStoreById(product.storeId())
+      categoryUseCase.getCategoriesByProductId(product.id()).collectList(),
+      storeUseCase.getStoreByIdOrThrow(product.storeId())
     ).map(tuple -> product
-        .withCategories(tuple.getT1())
-        .withStore(tuple.getT2())
+      .withCategories(tuple.getT1())
+      .withStore(tuple.getT2())
     );
+  }
+
+  public Mono<Product> createProduct(Long storeId, Product product) {
+    return storeUseCase.getStoreByIdOrThrow(storeId)
+      .flatMap(store -> productUseCase
+        .createProduct(product
+          .withStoreId(storeId)
+          .withStore(store)));
+  }
+
+  public Mono<Product> updateProduct(Long productId, Long storeId, Product product) {
+    return storeUseCase.getStoreByIdOrThrow(storeId)
+      .flatMap(store -> productUseCase
+        .updateProduct(productId, product
+          .withStoreId(storeId)
+          .withStore(store)));
   }
 }

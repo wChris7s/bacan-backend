@@ -10,12 +10,9 @@ public interface StoreUseCase {
 
   Mono<Long> countAllStoresByQuery(StoreQuery query);
 
-  Mono<Store> getStoreById(Long storeId);
+  Mono<Store> getStoreByIdOrThrow(Long storeId);
 
   Mono<Store> createStore(Store store);
 
   Mono<Store> updateStore(Long storeId, Store store);
-
-  Mono<Void> deleteStore(Long storeId);
-  
 }

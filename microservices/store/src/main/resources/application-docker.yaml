@@ -1,0 +1,7 @@
+server:
+  port: 9093
+spring:
+  application:
+    name: ms-store
+  config:
+    import: optional:configserver:http://configserver:8982

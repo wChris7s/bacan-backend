@@ -12,7 +12,7 @@ public interface ProductUseCase {
 
   Mono<Long> countAllProductsByQuery(ProductQuery productQuery);
 
-  Mono<Product> getProductById(Long productId);
+  Mono<Product> getProductByIdOrThrow(Long productId);
+
   Mono<Product> updateProduct(Long productId, Product product);
-  Mono<Void> deleteProduct(Long productId);
 }

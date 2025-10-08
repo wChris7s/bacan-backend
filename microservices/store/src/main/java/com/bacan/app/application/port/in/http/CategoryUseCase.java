@@ -15,7 +15,6 @@ public interface CategoryUseCase {
   Mono<Category> createCategory(Category category);
 
   Mono<Category> getCategoryById(Long categoryId);
-    // NUEVO
+
   Mono<Category> updateCategory(Long categoryId, Category category);
-  Mono<Void> deleteCategory(Long categoryId);
 }

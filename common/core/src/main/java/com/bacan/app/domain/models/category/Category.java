@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Builder
 public record Category(
   Long id,
-  String name,
+  @With String name,
   @With LocalDateTime createdAt,
   @With LocalDateTime updatedAt,
   @With Boolean enabled) {

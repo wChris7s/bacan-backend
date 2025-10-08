@@ -12,5 +12,5 @@ public class StoreUserDTO {
   private String lastname;
   private String phone;
   private String email;
-  private String photo;
+  private String profilePhotoUrl;
 }

@@ -11,16 +11,16 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductResponseDTO {
-  private String id;
+  private Long id;
   private String name;
   private Double price;
   private Integer stock;
   private String description;
-  private String photo;
+  private String photoUrl;
   private LocalDateTime createdAt;
 
   /* ======== Details ======== */
-  private ProductStoreDTO store;
-  private List<ProductCategoryDTO> categories;
+  private ProductStoreResponseDTO store;
+  private List<ProductCategoryResponseDTO> categories;
   /* ========================= */
 }

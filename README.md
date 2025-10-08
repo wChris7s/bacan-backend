@@ -53,19 +53,20 @@ Reference: [https://docs.liquibase.com/reference-guide/generate-changelog](https
 ```bash
 # Table
 liquibase generateChangeLog \
---changelogFile=microservices/location/src/main/resources/changelog/migrations/004_create_district_table.xml \
---default-schema-name=location \
---include-objects=district \
+--changelogFile=microservices/store/src/main/resources/db/changelog/migrations/004_create_product_category_table.xml \
+--default-schema-name=store \
+--include-objects=product_category \
 --include-schema=true \
 --author="Christian W. Aranibar Solaligue"
 
 # Data -> Is necessary specify the table name to avoid populate unnecessary data.
 liquibase generateChangeLog \
---default-schema-name=location \
---include-objects=district \
+--changelogFile=microservices/store/src/main/resources/db/changelog/migrations/005_populate_categories_table.xml \
+--default-schema-name=store \
+--include-objects=category \
 --diff-types=data \
 --include-schema=true \
---data-output-directory=microservices/location/src/main/resources/changelog/data \
+--data-output-directory=microservices/store/src/main/resources/db/changelog/data \
 --author="Christian W. Aranibar Solaligue"
 ```
 
@@ -111,7 +112,7 @@ and run the next link:
 
 ### Build docker images
 
-After run the above commands, execute: `./star-docker-containers.sh`
+After run the above commands, execute: `./star-docker-containers.sh docker`
 
 - Config server: `./gradlew :cloud:config-server:docker`
 - Gateway server: `./gradlew :cloud:gateway:docker`
