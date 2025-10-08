@@ -11,12 +11,12 @@ import java.util.List;
 @Builder
 public record Product(
   Long id,
-  Long storeId,
-  String name,
-  Double price,
-  Integer stock,
-  String description,
-  @With String photo,
+  @With Long storeId,
+  @With String name,
+  @With Double price,
+  @With Integer stock,
+  @With String description,
+  @With String photoUrl,
   @With LocalDateTime createdAt,
   @With LocalDateTime updatedAt,
   @With Boolean enabled,

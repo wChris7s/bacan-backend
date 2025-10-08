@@ -15,4 +15,6 @@ public interface CategoryUseCase {
   Mono<Category> createCategory(Category category);
 
   Mono<Category> getCategoryById(Long categoryId);
+
+  Mono<Category> updateCategory(Long categoryId, Category category);
 }

@@ -2,8 +2,11 @@ package com.bacan.app.infrastructure.adapter.in.http.controller;
 
 import com.bacan.app.application.facades.ProductFacade;
 import com.bacan.app.application.port.in.http.ProductUseCase;
+import com.bacan.app.domain.models.product.Product;
 import com.bacan.app.domain.queries.product.ProductQuery;
+import com.bacan.app.infrastructure.adapter.in.http.dto.product.CreateProductDTO;
 import com.bacan.app.infrastructure.adapter.in.http.dto.product.ProductResponseDTO;
+import com.bacan.app.infrastructure.adapter.in.http.dto.product.UpdateProductDTO;
 import com.bacan.app.infrastructure.adapter.in.http.mapper.product.ProductDTOMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.*;
@@ -17,8 +20,8 @@ import java.util.Objects;
 @RestController
 @RequestMapping(path = "/bcn/api/product")
 public class ProductController {
-  private final ProductFacade productFacade;
 
+  private final ProductFacade productFacade;
   private final ProductUseCase productUseCase;
 
   public ProductController(ProductFacade productFacade, ProductUseCase productUseCase) {
@@ -26,13 +29,13 @@ public class ProductController {
     this.productUseCase = productUseCase;
   }
 
-  @GetMapping()
+  @GetMapping
   public Mono<Page<ProductResponseDTO>> getAllProducts(
     @RequestParam(name = "page", defaultValue = "0") Integer page,
     @RequestParam(name = "size", defaultValue = "5") Integer size,
     @RequestParam(name = "direction", defaultValue = "ASC") String direction,
     @RequestParam(name = "property") String property,
-    @RequestParam(name = "storeId", required = false) String storeId,
+    @RequestParam(name = "storeId", required = false) Long storeId,
     @RequestParam(name = "categoryId", required = false) List<Long> categoryIds,
     @RequestParam(name = "name", required = false) String name) {
 
@@ -40,6 +43,7 @@ public class ProductController {
 
     Sort sort = Sort.by(Sort.Direction.fromString(direction), property);
     Pageable pageable = PageRequest.of(page, size, sort);
+
     ProductQuery productQuery = ProductQuery.builder()
       .name(name)
       .storeId(storeId)
@@ -48,17 +52,29 @@ public class ProductController {
       .build();
 
     return productFacade.getAllProductsWithTheirCategoriesAndStore(productQuery)
-      .map(ProductDTOMapper::mapToDto)
+      .map(ProductDTOMapper::map)
       .collectList()
       .zipWith(productUseCase.countAllProductsByQuery(productQuery))
       .map(p -> new PageImpl<>(p.getT1(), pageable, p.getT2()));
   }
 
   @GetMapping("/{productId}")
-  public Mono<ProductResponseDTO> getProductById(@PathVariable String productId) {
+  public Mono<ProductResponseDTO> getProductById(@PathVariable Long productId) {
     return productFacade.getProductWithTheirCategoriesAndStoreById(productId)
-      .map(ProductDTOMapper::mapToDto);
+      .map(ProductDTOMapper::map);
   }
 
-  /* TODO: Create product */
+  @PostMapping("/store/{storeId}")
+  public Mono<Void> createProduct(@PathVariable Long storeId, @RequestBody CreateProductDTO dto) {
+    Product product = ProductDTOMapper.map(dto);
+    return productFacade.createProduct(storeId, product)
+      .then();
+  }
+
+  @PutMapping("/{productId}/store/{storeId}")
+  public Mono<Void> updateProduct(@PathVariable Long productId, @PathVariable Long storeId, @RequestBody UpdateProductDTO dto) {
+    Product product = ProductDTOMapper.map(dto);
+    return productFacade.updateProduct(productId, storeId, product)
+      .then();
+  }
 }

@@ -11,15 +11,15 @@ import java.time.LocalTime;
 public record Store(
   Long id,
   String name,
-  LocalTime open,
-  LocalTime close,
-  String story,
-  String logo,
-  String background,
-  String userId,
+  @With LocalTime open,
+  @With LocalTime close,
+  @With String story,
+  String logoUrl,
+  String backgroundUrl,
+  @With String documentId,
   @With LocalDateTime createdAt,
   @With LocalDateTime updatedAt,
-  @With boolean enabled,
+  @With Boolean enabled,
   @With User user) {
 }
 

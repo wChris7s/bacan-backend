@@ -15,10 +15,9 @@ public class StoreResponseDTO {
   private LocalTime open;
   private LocalTime close;
   private String story;
-  private String logo;
-  private String background;
+  private String logoUrl;
+  private String backgroundUrl;
 
   /* ======== Details ======== */
   private StoreUserDTO user;
-  /* ========================= */
 }

@@ -48,13 +48,20 @@ public class UserController {
       .map(dtoMapper::map);
   }
 
-  @GetMapping("/{documentId}")
+  @GetMapping("doc/{documentId}")
   @Operation(summary = "Get user by document id")
   public Mono<UserDTO> getUserByDocumentId(@PathVariable String documentId) {
     return userUseCase.getUserByDocumentIdOrThrow(documentId)
       .map(dtoMapper::map);
   }
-}
+
+  @GetMapping("/{storeId}")
+  @Operation(summary = "Get user by id")
+  public Mono<UserDTO> getUserById(@PathVariable Long storeId) {
+    return userUseCase.getUserByIdOrThrow(storeId)
+      .map(dtoMapper::map);
+  }
+} 
 
 
 

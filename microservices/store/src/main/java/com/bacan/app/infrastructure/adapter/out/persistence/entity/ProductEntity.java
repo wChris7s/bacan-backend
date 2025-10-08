@@ -18,12 +18,14 @@ import java.time.LocalDateTime;
 public class ProductEntity {
   @Id
   private Long id;
+  @Column(value = "store_id")
   private String storeId;
   private String name;
   private Double price;
   private Integer stock;
   private String description;
-  private String photo;
+  @Column(value = "photo_url")
+  private String photoUrl;
   @Column(value = "created_at")
   @CreatedDate
   private LocalDateTime createdAt;

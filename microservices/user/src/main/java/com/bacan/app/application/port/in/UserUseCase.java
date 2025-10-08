@@ -5,7 +5,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface UserUseCase {
-  Mono<User> createUser(User user);
+  Mono<User> createUser(User user); 
 
   Mono<User> updateUser(String documentId, User user);
 

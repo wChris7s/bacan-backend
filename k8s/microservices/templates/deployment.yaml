@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Release.Name }}
+  name: {{ .Release.Name }}
+spec:
+  replicas: {{ .Values.microservicesReplicas }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{.Release.Name}}
+          image: wchris7s/{{.Release.Name}}:1.0.0
+          ports:
+            - containerPort: {{ .Values.microservicesPort }}
+          env:
+            - name: SPRING_PROFILE
+              valueFrom:
+                configMapKeyRef:
+                  key: springProfile
+                  name: {{ .Release.Name }}-configmap
+            - name: DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  key: dbUser
+                  name: {{ .Release.Name }}-configmap
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: dbName
+                  name: {{ .Release.Name }}-configmap
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: db-password
+                  name: postgres-secret

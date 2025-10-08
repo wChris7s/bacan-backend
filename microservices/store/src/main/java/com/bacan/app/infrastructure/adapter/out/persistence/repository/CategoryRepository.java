@@ -9,17 +9,13 @@ import org.springframework.data.repository.reactive.ReactiveSortingRepository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.UUID;
-
-public interface CategoryRepository extends
-  ReactiveCrudRepository<CategoryEntity, Long>,
-  ReactiveSortingRepository<CategoryEntity, Long> {
+public interface CategoryRepository extends ReactiveCrudRepository<CategoryEntity, Long>, ReactiveSortingRepository<CategoryEntity, Long> {
   Flux<CategoryEntity> findAllByNameContainingIgnoreCase(String name, Pageable pageable);
 
   Mono<Long> countAllByNameContainingIgnoreCase(String name);
 
-  @Query("SELECT c.* FROM bacan.category c " +
-    "INNER JOIN bacan.product_category pc ON c.id = pc.category_id " +
+  @Query("SELECT c FROM store.category c " +
+    "INNER JOIN store.product_category pc ON c.id = pc.category_id " +
     "WHERE pc.product_id = :productId")
-  Flux<CategoryEntity> findAllByProductId(@Param("productId") UUID productId);
+  Flux<CategoryEntity> findAllByProductId(@Param("productId") Long productId);
 }

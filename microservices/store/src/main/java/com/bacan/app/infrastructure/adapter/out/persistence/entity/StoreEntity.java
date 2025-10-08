@@ -23,10 +23,12 @@ public class StoreEntity {
   private LocalTime open;
   private LocalTime close;
   private String story;
-  private String logo;
-  private String background;
-  @Column("user_id")
-  private String userId;
+  @Column("logo_url")
+  private String logoUrl;
+  @Column("background_url")
+  private String backgroundUrl;
+  @Column("document_id")
+  private String documentId;
   @Column("created_at")
   @CreatedDate
   private LocalDateTime createdAt;

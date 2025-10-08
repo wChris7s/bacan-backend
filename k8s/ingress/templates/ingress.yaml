@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+  namespace: {{ .Values.namespace }}
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /bcn/api/user
+            pathType: Prefix
+            backend:
+              service: # Corresponde al Service del Deployment.
+                name: ms-user
+                port:
+                  number: 9090
+          - path: /bcn/api/location
+            pathType: Prefix
+            backend:
+              service:
+                name: ms-location
+                port:
+                  number: 9092

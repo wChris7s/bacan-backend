@@ -8,13 +8,11 @@ import reactor.core.publisher.Mono;
 public interface StoreDatabase {
   Flux<Store> findAllByQuery(StoreQuery query);
 
-  Mono<Long> countByQuery(StoreQuery query);
+  Mono<Long> countAllByQuery(StoreQuery query);
 
   Mono<Store> findById(Long storeId);
 
-  Mono<Store> save(Store store);
+  Mono<Store> createStore(Store store);
 
-  Mono<Store> update(Long storeId, Store store);
-
-  Mono<Void> deleteById(Long storeId);
+  Mono<Store> updateStore(Store store);
 }

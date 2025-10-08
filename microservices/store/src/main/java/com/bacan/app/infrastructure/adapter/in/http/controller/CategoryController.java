@@ -1,26 +1,27 @@
 package com.bacan.app.infrastructure.adapter.in.http.controller;
 
 import com.bacan.app.application.port.in.http.CategoryUseCase;
+import com.bacan.app.domain.models.category.Category;
 import com.bacan.app.domain.queries.category.CategoryQuery;
 import com.bacan.app.infrastructure.adapter.in.http.dto.category.CategoryResponseDTO;
+import com.bacan.app.infrastructure.adapter.in.http.dto.category.CreateCategoryDTO;
+import com.bacan.app.infrastructure.adapter.in.http.dto.category.UpdateCategoryDTO;
 import com.bacan.app.infrastructure.adapter.in.http.mapper.category.CategoryDTOMapper;
+import io.swagger.v3.oas.annotations.Operation;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping(path = "/bcn/api/category")
+@RequiredArgsConstructor
 public class CategoryController {
+
   private final CategoryUseCase categoryUseCase;
 
-  public CategoryController(CategoryUseCase categoryUseCase) {
-    this.categoryUseCase = categoryUseCase;
-  }
-
   @GetMapping
+  @Operation(summary = "Get all categories")
   public Mono<Page<CategoryResponseDTO>> getCategories(
     @RequestParam(name = "page", defaultValue = "0") Integer page,
     @RequestParam(name = "size", defaultValue = "5") Integer size,
@@ -30,21 +31,49 @@ public class CategoryController {
 
     Sort sort = Sort.by(Sort.Direction.fromString(direction), property);
     Pageable pageable = PageRequest.of(page, size, sort);
+
     CategoryQuery categoryQuery = CategoryQuery.builder()
       .name(name)
       .pageable(pageable)
       .build();
 
     return categoryUseCase.getAllCategoriesByQuery(categoryQuery)
-      .map(CategoryDTOMapper::mapToDto)
+      .map(CategoryDTOMapper::map)
       .collectList()
       .zipWith(categoryUseCase.countAllCategoriesByQuery(categoryQuery))
       .map(p -> new PageImpl<>(p.getT1(), pageable, p.getT2()));
   }
 
-  /* TODO: Get category by Id */
+  @GetMapping("/{categoryId}")
+  @Operation(summary = "Get category by id")
+  public Mono<CategoryResponseDTO> getCategoryById(@PathVariable Long categoryId) {
+    return categoryUseCase.getCategoryById(categoryId)
+      .map(CategoryDTOMapper::map);
+  }
 
-  /* TODO: Create category */
+  @PostMapping
+  @Operation(summary = "Create category")
+  public Mono<Void> createCategory(@RequestBody CreateCategoryDTO dto) {
+    Category category = CategoryDTOMapper.map(dto);
+    return categoryUseCase.createCategory(category).then();
+  }
 
-  /* TODO: Assign category to a product using category id and product id */
+  @PutMapping("/{categoryId}")
+  @Operation(summary = "Update category by id")
+  public Mono<CategoryResponseDTO> updateCategory(
+    @PathVariable Long categoryId,
+    @RequestBody UpdateCategoryDTO dto) {
+    Category toUpdate = CategoryDTOMapper.map(dto);
+    return categoryUseCase.updateCategory(categoryId, toUpdate)
+      .map(CategoryDTOMapper::map);
+  }
+
+  @GetMapping("/product/{productId}")
+  @Operation(summary = "Get categories by product id")
+  public Mono<java.util.List<CategoryResponseDTO>> getCategoriesByProductId(@PathVariable Long productId) {
+    return categoryUseCase.getCategoriesByProductId(productId)
+      .map(CategoryDTOMapper::map)
+      .collectList();
+  }
 }
+ 
