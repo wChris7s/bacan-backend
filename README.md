@@ -120,6 +120,20 @@ After run the above commands, execute: `./star-docker-containers.sh docker`
 - Location microservice: `./gradlew :microservices:location:docker`
 - Store microservice: `./gradlew :microservices:store:docker`
 
+#### To use pushed images:
+
+```bash
+docker login
+```
+
+#### To push images into docker hub:
+
+- Config server: `./gradlew :cloud:config-server:dockerPush`
+- Gateway server: `./gradlew :cloud:gateway:dockerPush`
+- User microservice: `./gradlew :microservices:user:dockerPush`
+- Location microservice: `./gradlew :microservices:location:dockerPush`
+- Store microservice: `./gradlew :microservices:store:dockerPush`
+
 ### Pull docker images to aws
 
 - `docker push 556180171691.dkr.ecr.us-east-2.amazonaws.com/config-server:1.0.0`

@@ -20,7 +20,7 @@ subprojects { Project subproject ->
     // ======================== PALANTIR DOCKER ========================
     // =========== https://github.com/palantir/gradle-docker ===========
     docker {
-      name "bacan/${subproject.name}:${subproject.version}"
+      name "wchris7s/ms-${subproject.name}:${subproject.version}"
       dockerfile file("build/template/Dockerfile")
       files "build/libs/${subproject.name}-${subproject.version}.jar"
       copySpec.from("build/resources/main").into("src")
@@ -40,6 +40,7 @@ subprojects { Project subproject ->
 
     compileJava.dependsOn(clean)
     docker.dependsOn(build)
+    dockerPush.dependsOn(tasks.docker)
 
     tasks.named('test') {
       useJUnitPlatform()
