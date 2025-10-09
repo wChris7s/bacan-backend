@@ -61,12 +61,12 @@ liquibase generateChangeLog \
 
 # Data -> Is necessary specify the table name to avoid populate unnecessary data.
 liquibase generateChangeLog \
---changelogFile=microservices/store/src/main/resources/db/changelog/migrations/005_populate_categories_table.xml \
---default-schema-name=store \
---include-objects=category \
+--changelogFile=microservices/user/src/main/resources/db/changelog/migrations/005_populate_user_table.xml \
+--default-schema-name=person \
+--include-objects=user \
 --diff-types=data \
 --include-schema=true \
---data-output-directory=microservices/store/src/main/resources/db/changelog/data \
+--data-output-directory=microservices/user/src/main/resources/db/changelog/data \
 --author="Christian W. Aranibar Solaligue"
 ```
 

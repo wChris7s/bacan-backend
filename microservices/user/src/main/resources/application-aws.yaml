@@ -4,4 +4,4 @@ spring:
   application:
     name: ms-user
   config:
-    import: optional:configserver:${CONFIG_SERVER}
+    import: optional:configserver:http://configserver:8982

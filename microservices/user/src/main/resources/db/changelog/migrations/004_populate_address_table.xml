@@ -1,0 +1,20 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="Christian W. Aranibar Solaligue" id="1759989924841-1">
+        <loadData commentLineStartsWith="#" encoding="UTF-8"
+                  file="classpath:db/changelog/data/address.csv" quotchar="&quot;"
+                  schemaName="person" separator="," tableName="address">
+            <column header="id" name="id" type="NUMERIC"/>
+            <column header="district_id" name="district_id" type="STRING"/>
+            <column header="street" name="street" type="STRING"/>
+            <column header="postal_code" name="postal_code" type="STRING"/>
+            <column header="number" name="number" type="STRING"/>
+            <column header="reference" name="reference" type="STRING"/>
+            <column header="created_at" name="created_at" type="DATE"/>
+            <column header="updated_at" name="updated_at" type="DATE"/>
+            <column header="enabled" name="enabled" type="BOOLEAN"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

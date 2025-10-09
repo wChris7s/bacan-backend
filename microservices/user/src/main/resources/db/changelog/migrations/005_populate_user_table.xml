@@ -1,0 +1,23 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="Christian W. Aranibar Solaligue" id="1759989984774-1">
+        <loadData commentLineStartsWith="#" encoding="UTF-8"
+                  file="classpath:db/changelog/data/user.csv" quotchar="&quot;"
+                  schemaName="person" separator="," tableName="user">
+            <column header="id" name="id" type="NUMERIC"/>
+            <column header="document_id" name="document_id" type="STRING"/>
+            <column header="name" name="name" type="STRING"/>
+            <column header="lastname" name="lastname" type="STRING"/>
+            <column header="phone" name="phone" type="STRING"/>
+            <column header="email" name="email" type="STRING"/>
+            <column header="created_at" name="created_at" type="DATE"/>
+            <column header="updated_at" name="updated_at" type="DATE"/>
+            <column header="enabled" name="enabled" type="BOOLEAN"/>
+            <column header="profile_photo_url" name="profile_photo_url" type="STRING"/>
+            <column header="role_id" name="role_id" type="NUMERIC"/>
+            <column header="address_id" name="address_id" type="NUMERIC"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

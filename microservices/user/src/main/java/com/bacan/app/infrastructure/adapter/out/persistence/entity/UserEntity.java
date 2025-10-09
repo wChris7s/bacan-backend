@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Builder
-@Table(name = "user", schema = "usr")
+@Table(name = "user", schema = "person")
 public class UserEntity {
   @Id
   private Long id;

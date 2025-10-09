@@ -1,0 +1,90 @@
+services:
+  configserver:
+    image: wchris7s/config-server:1.0.0
+    restart: always
+    healthcheck:
+      test: "wget -qO - http://configserver:8982/actuator/health | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    ports:
+      - "8982:8982"
+    environment:
+      SPRING_PROFILE: native
+
+  gateway:
+    image: wchris7s/gateway:1.0.0
+    restart: always
+    depends_on:
+      configserver:
+        condition: service_healthy
+    healthcheck:
+      test: "wget -qO - http://gateway:8991/actuator/health | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    ports:
+      - "8991:8991"
+    environment:
+      SPRING_PROFILE: aws
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+
+  ms-user:
+    image: wchris7s/ms-user:1.0.0
+    restart: always
+    depends_on:
+      configserver:
+        condition: service_healthy
+    healthcheck:
+      test: "wget -qO - http://ms-user:9090/actuator/health | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    ports:
+      - "9090:9090"
+    environment:
+      SPRING_PROFILE: aws
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+
+  ms-location:
+    image: wchris7s/ms-location:1.0.0
+    restart: always
+    depends_on:
+      configserver:
+        condition: service_healthy
+    healthcheck:
+      test: "wget -qO - http://ms-location:9092/actuator/health | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    ports:
+      - "9092:9092"
+    environment:
+      SPRING_PROFILE: aws
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+
+  ms-store:
+    image: wchris7s/ms-store:1.0.0
+    restart: always
+    depends_on:
+      configserver:
+        condition: service_healthy
+    healthcheck:
+      test: "wget -qO - http://ms-store:9093/actuator/health | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    ports:
+      - "9093:9093"
+    environment:
+      SPRING_PROFILE: aws
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}

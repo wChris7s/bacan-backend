@@ -1,0 +1,3 @@
+"id","district_id","street","postal_code","number","reference","created_at","updated_at","enabled"
+"1","040101","Av. Los Álamos 345","04000","345","Frente al parque principal","2025-10-01T00:00:00","2025-10-01T00:00:00","true"
+"2","040101","Jr. Las Orquídeas 120","04000","120","A una cuadra del colegio San Martín","2025-10-01T00:00:00","2025-10-01T00:00:00","true"

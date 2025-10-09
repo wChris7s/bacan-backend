@@ -2,10 +2,12 @@ spring:
   r2dbc:
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
-    url: r2dbc:postgresql://${DB_HOST}:5432/ecm
+    url: r2dbc:postgresql://bcn-database.czuieagmspgl.us-east-2.rds.amazonaws.com:5432/bacan
+    properties:
+      sslMode: DISABLE # Update rds.force_ssl to 0
 
   liquibase:
-    url: jdbc:postgresql://${DB_HOST}:5432/ecm
+    url: jdbc:postgresql://bcn-database.czuieagmspgl.us-east-2.rds.amazonaws.com:5432/bacan
     user: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     change-log: classpath:/db/changelog/db.changelog-master.yaml
@@ -25,6 +27,6 @@ springdoc:
 application:
   microservice:
     url:
-      ms-user: ${MS_USER}
-      ms-location: ${MS_LOCATION}
-      ms-store: ${MS_STORE}
+      ms-user: http://ms-user:9090
+      ms-location: http://ms-location:9092
+      ms-store: http://ms-store:9093
