@@ -1,16 +1,12 @@
 server:
   port: 8982
-
 spring:
-  application:
-    name: config-server
   profiles:
     active: native
   cloud:
-    # El CONFIG SERVER no debe actuar como cliente
     config:
-      enabled: false
       server:
         native:
-          # Puedes tener ambos orígenes; deja al menos uno
-          search-locations: classpath:/config, file:./config
+          search-locations: classpath:/config
+  application:
+    name: configserver
