@@ -6,7 +6,7 @@ metadata:
     app: {{ .Release.Name }}
   name: {{ .Release.Name }}
 spec:
-  replicas: {{ .Values.microservicesReplicas }}
+  replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
       app: {{ .Release.Name }}
@@ -19,7 +19,7 @@ spec:
         - name: {{.Release.Name}}
           image: wchris7s/{{.Release.Name}}:1.0.0
           ports:
-            - containerPort: {{ .Values.microservicesPort }}
+            - containerPort: {{ .Values.port }}
           env:
             - name: SPRING_PROFILE
               valueFrom:
@@ -31,13 +31,15 @@ spec:
                 configMapKeyRef:
                   key: dbUser
                   name: {{ .Release.Name }}-configmap
-            - name: DB_NAME
-              valueFrom:
-                configMapKeyRef:
-                  key: dbName
-                  name: {{ .Release.Name }}-configmap
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   key: db-password
                   name: postgres-secret
+      resources:
+        requests:
+          cpu: "250m"
+          memory: "256Mi"
+        limits:
+          cpu: "500m"
+          memory: "512Mi"

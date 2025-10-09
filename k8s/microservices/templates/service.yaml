@@ -5,9 +5,9 @@ metadata:
   name: {{ .Release.Name }}
 spec:
   ports:
-    - port: {{ .Values.microservicesPort }}
+    - port: {{ .Values.port }}
       protocol: TCP
-      targetPort: {{ .Values.microservicesPort }}
+      targetPort: {{ .Values.port }}
   selector:
     app: {{ .Release.Name }}
   type: {{ .Values.microservicesServiceType }}

@@ -1,6 +1,6 @@
 namespace: default
-microservicesReplicas: 2
-microservicesPort: 6789
+replicas: 2
+port: 6789
 microservicesServiceType: LoadBalancer
 dbUser: admin
 dbName: ecm

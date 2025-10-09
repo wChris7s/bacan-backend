@@ -14,30 +14,23 @@ spec:
         app: postgres
     spec:
       containers:
-        - image: postgres:latest
+        - image: postgres:16.7
           name: postgres
           ports:
             - containerPort: {{ .Values.dbPort }}
           env:
-            - name: DB_NAME
+            - name: POSTGRES_DB
               valueFrom:
                 configMapKeyRef:
                   key: dbName
                   name: app-config-db
-            - name: DB_USER
+            - name: POSTGRES_USER
               valueFrom:
                 configMapKeyRef:
                   key: dbUser
                   name: app-config-db
-            - name: DB_PASSWORD
+            - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   key: db-password
                   name: postgres-secret
-          volumeMounts:
-            - mountPath: {{ .Values.volumePath }}
-              name: {{ .Values.volumeName }}
-      volumes:
-        - name: {{ .Values.volumeName }}
-          persistentVolumeClaim:
-            claimName: postgres-pvc

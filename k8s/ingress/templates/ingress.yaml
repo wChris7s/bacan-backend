@@ -3,6 +3,13 @@ kind: Ingress
 metadata:
   name: app-ingress
   namespace: {{ .Values.namespace }}
+  annotations:
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "http://127.0.0.1:5173,http://localhost:5173"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "GET, PUT, POST, DELETE, PATCH, OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "*"
+    nginx.ingress.kubernetes.io/cors-expose-headers: "Content-Length,Content-Range"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
 spec:
   ingressClassName: nginx
   rules:
@@ -11,7 +18,7 @@ spec:
           - path: /bcn/api/user
             pathType: Prefix
             backend:
-              service: # Corresponde al Service del Deployment.
+              service:
                 name: ms-user
                 port:
                   number: 9090
@@ -22,3 +29,26 @@ spec:
                 name: ms-location
                 port:
                   number: 9092
+          - path: /bcn/api/store
+            pathType: Prefix
+            backend:
+              service:
+                name: ms-store
+                port:
+                  number: 9093
+
+          - path: /bcn/api/category
+            pathType: Prefix
+            backend:
+              service:
+                name: ms-store
+                port:
+                  number: 9093
+
+          - path: /bcn/api/product
+            pathType: Prefix
+            backend:
+              service:
+                name: ms-store
+                port:
+                  number: 9093
