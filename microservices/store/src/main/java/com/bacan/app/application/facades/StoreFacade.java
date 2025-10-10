@@ -38,7 +38,10 @@ public class StoreFacade {
       .flatMap(user -> storeUseCase
         .createStore(store
           .withDocumentId(documentId)
-          .withUser(user)));
+          .withUser(user)
+          .withLogoUrl("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png")
+          .withBackgroundUrl("https://t3.ftcdn.net/jpg/04/96/63/80/360_F_496638091_v0Y3hmCvb9y8JDKEGyWC455Ex4aNGPen.jpg")
+        ));
   }
 
   public Mono<Store> updateStore(Long storeId, String documentId, Store store) {

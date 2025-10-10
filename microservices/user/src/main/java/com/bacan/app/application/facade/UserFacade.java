@@ -23,6 +23,7 @@ public class UserFacade {
 
   @Transactional
   public Mono<User> createUser(User user) {
+    user.setProfilePhotoUrl("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png");
     return roleService.getRoleById(user.getRole().getId())
       .switchIfEmpty(Mono.defer(() -> Mono.error(new RuntimeException("Role not found."))))
       .then(locationClient.getFullDistrictById(user.getAddress().getDistrict().id()))

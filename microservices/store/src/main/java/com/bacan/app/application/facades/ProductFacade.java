@@ -45,7 +45,9 @@ public class ProductFacade {
       .flatMap(store -> productUseCase
         .createProduct(product
           .withStoreId(storeId)
-          .withStore(store)));
+          .withStore(store)
+          .withPhotoUrl("https://t3.ftcdn.net/jpg/04/96/63/80/360_F_496638091_v0Y3hmCvb9y8JDKEGyWC455Ex4aNGPen.jpg")
+        ));
   }
 
   public Mono<Product> updateProduct(Long productId, Long storeId, Product product) {
