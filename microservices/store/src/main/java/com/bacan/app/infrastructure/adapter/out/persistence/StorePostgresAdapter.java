@@ -7,11 +7,13 @@ import com.bacan.app.infrastructure.adapter.out.persistence.entity.StoreEntity;
 import com.bacan.app.infrastructure.adapter.out.persistence.mapper.StoreEntityMapper;
 import com.bacan.app.infrastructure.adapter.out.persistence.repository.StoreRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class StorePostgresAdapter implements StoreDatabase {
@@ -22,7 +24,8 @@ public class StorePostgresAdapter implements StoreDatabase {
 
   @Override
   public Flux<Store> findAllByQuery(StoreQuery query) {
-    return storeRepository.findAllByQuery(query, query.getPageable())
+    String property = query.getPageable().getSort().get().findFirst().get().getProperty();
+    return storeRepository.findAllByQuery(query, property, query.getPageable())
       .map(storeEntityMapper::toMapper);
   }
 

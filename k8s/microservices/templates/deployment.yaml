@@ -38,8 +38,8 @@ spec:
                   name: postgres-secret
       resources:
         requests:
-          cpu: "250m"
-          memory: "256Mi"
+          cpu: "250m" # 0.25 millicores / 1.00
+          memory: "256Mi" # 0.25 / 1 Gb ram
         limits:
-          cpu: "500m"
-          memory: "512Mi"
+          cpu: "500m" # 0.5 millicores / 1.00
+          memory: "512Mi" # 0.5 Ram / 1 Gb
