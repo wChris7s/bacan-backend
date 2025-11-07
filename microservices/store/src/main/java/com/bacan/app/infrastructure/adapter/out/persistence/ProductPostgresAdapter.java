@@ -12,69 +12,71 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.Collections;
+import java.util.Objects;
 
 @Component
 public class ProductPostgresAdapter implements ProductDatabase {
 
-  private final ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
-  private final ProductCategoryRepository productCategoryRepository;
+    private final ProductCategoryRepository productCategoryRepository;
 
-  static final ProductEntityMapper productEntityMapper = Mappers.getMapper(ProductEntityMapper.class);
+    static final ProductEntityMapper productEntityMapper = Mappers.getMapper(ProductEntityMapper.class);
 
-  public ProductPostgresAdapter(ProductRepository productRepository,
-                                ProductCategoryRepository productCategoryRepository) {
-    this.productRepository = productRepository;
-    this.productCategoryRepository = productCategoryRepository;
-  }
-
-  /* ============ Product ============ */
-
-  @Override
-  public Mono<Product> createProduct(Product product) {
-    ProductEntity productEntity = productEntityMapper.toEntity(product);
-    return productRepository.save(productEntity)
-      .map(productEntityMapper::toModel);
-  }
-
-  @Override
-  public Flux<Product> findAllProducts(ProductQuery query) {
-    if (query.getCategoryIds().isEmpty()) {
-      query.setCategoryIds(Collections.emptyList());
+    public ProductPostgresAdapter(ProductRepository productRepository,
+                                  ProductCategoryRepository productCategoryRepository) {
+        this.productRepository = productRepository;
+        this.productCategoryRepository = productCategoryRepository;
     }
-    return productRepository.findAllByQuery(query, query.getPageable())
-      .map(productEntityMapper::toModel);
-  }
 
-  @Override
-  public Mono<Product> findProductById(Long productId) {
-    return productRepository.findById(productId)
-      .map(productEntityMapper::toModel);
-  }
+    /* ============ Product ============ */
 
-  @Override
-  public Mono<Long> countProductsByQuery(ProductQuery query) {
-    if (query.getCategoryIds().isEmpty()) {
-      query.setCategoryIds(Collections.emptyList());
+    @Override
+    public Mono<Product> createProduct(Product product) {
+        ProductEntity productEntity = productEntityMapper.toEntity(product);
+        return productRepository.save(productEntity)
+                .map(productEntityMapper::toModel);
     }
-    return productRepository.countAllByQuery(query);
-  }
 
-  @Override
-  public Mono<Product> updateProduct(Product product) {
-    return this.createProduct(product);
-  }
+    @Override
+    public Flux<Product> findAllProducts(ProductQuery query) {
+        // Force nullable values to pass the query condition on repository.
+        if (Objects.isNull(query.getCategoryIds()) || query.getCategoryIds().isEmpty()) {
+            query.setCategoryIds(null);
+        }
+        return productRepository.findAllByQuery(query, query.getPageable())
+                .map(productEntityMapper::toModel);
+    }
 
-  /* ============ Product Category ============ */
+    @Override
+    public Mono<Product> findProductById(Long productId) {
+        return productRepository.findById(productId)
+                .map(productEntityMapper::toModel);
+    }
 
-  @Override
-  public Mono<Void> createProductCategory(Long productId, Long categoryId) {
-    return productCategoryRepository.save(productId, categoryId);
-  }
+    @Override
+    public Mono<Long> countProductsByQuery(ProductQuery query) {
+        // Force nullable values to pass the query condition on repository.
+        if (Objects.isNull(query.getCategoryIds()) || query.getCategoryIds().isEmpty()) {
+            query.setCategoryIds(null);
+        }
+        return productRepository.countAllByQuery(query);
+    }
 
-  @Override
-  public Mono<Void> deleteProductCategory(Long productId, Long categoryId) {
-    return productCategoryRepository.delete(productId, categoryId);
-  }
+    @Override
+    public Mono<Product> updateProduct(Product product) {
+        return this.createProduct(product);
+    }
+
+    /* ============ Product Category ============ */
+
+    @Override
+    public Mono<Void> createProductCategory(Long productId, Long categoryId) {
+        return productCategoryRepository.save(productId, categoryId);
+    }
+
+    @Override
+    public Mono<Void> deleteProductCategory(Long productId, Long categoryId) {
+        return productCategoryRepository.delete(productId, categoryId);
+    }
 }
